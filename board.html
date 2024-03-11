@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="/js/storage.js"></script>
+    <script src="/js/user.js"></script>
+    <link rel="shortcut icon" href="/assets/img/logo-dark.svg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="initBorad()">
+    <div w3-include-html="assets/templates/desktop_template.html"></div>
+    <div class="board">
+        <div class="board-head">
+            <div>
+                <h1>Board</h1>
+            </div>
+            <div class="board-head gap16 search-area">
+                <div class="search">
+                    <input type="text">
+                    <img src="assets/img/seaarch.svg" alt="">
+                </div>
+                <input class="dark-btn add-btn s20" type="button" value="">
+            </div>
+        </div>
+        <div class="full-board">
+            <div class="board-cat">
+                <div class="board-topic s20 fw700">
+                    <span>To do</span>
+                    <img class="add-btn-board" src="assets/img/plus-btn.svg" alt="">
+                </div>
+                <div class="no-tasks">
+                    <div class=><span>No tasks To do</span></div>
+
+                </div>
+            </div>
+            <div class="board-cat">
+                <div class="board-topic s20 fw700">
+                    <span>In progress</span>
+                    <img class="add-btn-board" src="assets/img/plus-btn.svg" alt="">
+                </div>
+                <div class="board-card">
+                    <div><span class="lable-board-card">User Story</span></div>
+                    <div>
+                        <h3>Kochwelt Page & Recipe Recommander</h3>
+                    </div>
+                    <div><span>Build start page with recipe recommendation...</span></div>
+                    <div class="progress">
+                        <progress id="progress" value="50" max="100"></progress>
+                        <span>1/2 Subtask</span>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="icons">
+                            <div class="icon-board">SM</div>
+                            <div class="icon-board">GG</div>
+                        </div>
+                        <img src="assets/img/prio-alta.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="board-cat">
+                <div class="board-topic s20 fw700">
+                    <span>Await feedback</span>
+                    <img class="add-btn-board" src="assets/img/plus-btn.svg" alt="">
+                </div>
+                <div class="board-card">
+                    <div><span class="lable-board-card">User Story</span></div>
+                    <div>
+                        <h3>Kochwelt Page & Recipe Recommander</h3>
+                    </div>
+                    <div><span>Build start page with recipe recommendation...</span></div>
+                    <div class="progress">
+                        <progress id="progress" value="50" max="100"></progress>
+                        <span>1/2 Subtask</span>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="icons">
+                            <div class="icon-board">SM</div>
+                            <div class="icon-board">GG</div>
+                        </div>
+                        <img src="assets/img/prio-baja.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="board-cat">
+                <div class="board-topic s20 fw700">
+                    <span>Done</span>
+                    <img class="add-btn-board" src="assets/img/plus-btn.svg" alt="">
+                </div>
+                <div class="board-card">
+                    <div><span class="lable-board-card">User Story</span></div>
+                    <div>
+                        <h3>Kochwelt Page & Recipe Recommander</h3>
+                    </div>
+                    <div><span>Build start page with recipe recommendation...</span></div>
+                    <div class="progress">
+                        <progress id="progress" value="50" max="100"></progress>
+                        <span>1/2 Subtask</span>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="icons">
+                            <div class="icon-board">SM</div>
+                            <div class="icon-board">GG</div>
+                        </div>
+                        <img src="assets/img/prio-media.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>includeHTML();</script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="/js/storage.js"></script>
+    <script src="/js/user.js"></script>
+    <script src="/js/contact.js"></script>
+    <link rel="shortcut icon" href="/assets/img/logo-dark.svg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="initContact()">
+    <div w3-include-html="assets/templates/desktop_template.html"></div>
+    <div w3-include-html="assets/templates/mobile_template.html"></div>
+    <div class="contacts">
+        <div class="contact-side">
+            <div>
+                <input class="dark-btn add-contact" type="button">
+            </div>
+            <div class="contact-list">
+                <div class="sign">
+                    <span class="s20">A</span>
+                </div>
+                <div  id="contactBlock">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="contacts-right">
+            <div class="contacts-head">
+                <h1>Contacts</h1>
+                <img src="assets/img/v-line-contact.svg" alt="">
+                <span class="contact-better">Better with a team</span>
+            </div>
+            <div>
+                <div class="contact-information">
+
+                    <div class="contact-information-top">
+                        <div  class="icon-contact s47">AM</div>
+                        <div>
+                            <div class="s47 fw500">Anton Mayer</div>
+                            <div class="contact-edit">
+                                <div class="edit-contact"></div>
+                                <div class="delete-contact"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="s20">Contact Information</span>
+           
+                    <h4 style="margin-top: 50px;">Email</h4>
+                    <a class="s16 contact-mail" href="mailto:antonm@gmail.com">antonm@gmail.com</a>
+                    <h4>Phone</h4>
+                    <a class="s16 contact-mail" href="tel:+491111111111">+49 1111 111 11 1</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>includeHTML();</script>
+</body>
+
+</html>
