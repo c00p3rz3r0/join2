@@ -45,9 +45,9 @@ function includeHTML() {
     initTaskform();
   }
 
-  function initBorad(){
-    actUser();
+  function initBoard(){
     loadUsers();
+    initBoardForm();
   }
 
   async function initContact(){
