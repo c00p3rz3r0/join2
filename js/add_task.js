@@ -61,7 +61,7 @@ function selectPriority(buttonId) {
 function showContacts(){
     let contactdiv = document.getElementById('assignedContacts');
     contactdiv.innerHTML = ``;
-    document.getElementById('headerAssigne').classList.add('display-none')
+    document.getElementById('assignedContacts').classList.remove('display-none')
     for (let i = 0; i < allContacts.length; i++) {
         let bgcolor = colors[Math.floor(Math.random()*colors.length)];
         const element = allContacts[i];
@@ -70,3 +70,11 @@ function showContacts(){
         <div class="assigneContact"><div class="assigned-circle" style="background-color: ${bgcolor};">${firstLetter}</div><p>${element['firstName']}</p> <input id=${i} type="checkbox"></div>`
     }
 }
+
+window.addEventListener('mouseup', function(event)
+{
+        var pol = document.getElementById('assignedContacts');
+        if(event.target != pol && event.target.parentNode != pol){
+            pol.classList.add('display-none');
+        }
+});

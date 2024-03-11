@@ -53,7 +53,7 @@ function includeHTML() {
   async function initContact(){
     actUser();
     loadUsers();
-    await loadAllContacts();
+   // await loadAllContacts();
     await loadContactPage();
     sortNames();
   }

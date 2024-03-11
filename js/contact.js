@@ -2,15 +2,16 @@
 let sortedNames = [];
 
 function sortNames(){
-    sortedNames = allContacts.sort();
+    let sorteNames = allContacts.sort();
+    sortedNames.push(sorteNames);
 }
 
 
 function loadContactPage(){
     let contactsDiv = document.getElementById('contactBlock');
     contactsDiv.innerHTML = ``;
-    for (let i = 0; i < sortedNames.length; i++) {
-        const element = sortedNames[i];
+    for (let i = 0; i < allContacts.length; i++) {
+        const element = allContacts[i];
         const name = element['name'];
         const mail = element['email'];
         const inital = getInitials(element['name']); 
