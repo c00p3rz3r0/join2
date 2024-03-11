@@ -1,18 +1,16 @@
 let allTasks = [];
 let selectedPrio ='';
 let assignedPerson = [];
-var assinedPersons = [];
 let allAssigned = [];
 const htmlfields = ['assinedPersons', 'task-list'];
 let taskIdCounter = 0;
 const subTasks = [];
-let allContacts = [];
 
 async function initTaskform(){
     await loadContacts();
     await loadAllTask();
     await loadAllContacts();
-    sortContact();
+    await sortContact();
 }
 
 let colors = ['#00BEE8','#FF7A00', '#9327FF', '#FC71FF'];
@@ -60,21 +58,63 @@ function selectPriority(buttonId) {
 
 function showContacts(){
     let contactdiv = document.getElementById('assignedContacts');
-    contactdiv.innerHTML = ``;
-    document.getElementById('assignedContacts').classList.remove('display-none')
-    for (let i = 0; i < allContacts.length; i++) {
-        let bgcolor = colors[Math.floor(Math.random()*colors.length)];
-        const element = allContacts[i];
-        const firstLetter = element['firstName'].charAt(0).toUpperCase();
-        contactdiv.innerHTML +=`
-        <div class="assigneContact"><div class="assigned-circle" style="background-color: ${bgcolor};">${firstLetter}</div><p>${element['firstName']}</p> <input id=${i} type="checkbox"></div>`
+    let assDiv = document.getElementById('assinedPersons');
+    if (contactdiv.classList.contains('display-none')) {
+        contactdiv.innerHTML = ``;
+        assDiv.innerHTML = ``;
+        contactdiv.classList.remove('display-none');
+        for (let i = 0; i < allContacts.length; i++) {
+            const element = allContacts[i];
+            const firstLetter = element['name'].charAt(0).toUpperCase();
+            const checkChecked = checked(i);
+            contactdiv.innerHTML +=`
+            <div class="assigneContact">
+            <div class="assigned-circle" style="background-color: ${element['bgcolor']};">${firstLetter}</div>
+            <p>${element['name']}</p> 
+            <input onclick="addAssigne(${i})" ${checkChecked} id="check${i}" type="checkbox">
+            </div>`
+        }
+    }else{
+        contactdiv.classList.add('display-none');
+        showAssignedPersons();
     }
 }
 
-window.addEventListener('mouseup', function(event)
-{
-        var pol = document.getElementById('assignedContacts');
-        if(event.target != pol && event.target.parentNode != pol){
-            pol.classList.add('display-none');
+function addAssigne(index){
+    assignedPerson = [];
+    for (let i = 0; i < allContacts.length; i++) {
+        const element = allContacts[i];
+        if (document.getElementById('check'+i).checked == true) {
+            let firstname = allContacts[i]['name'];
+            let color = allContacts[i]['bgcolor']
+            assignedPerson.push({
+                firstname: firstname,
+                color: color,
+            });
         }
-});
+    }
+
+}
+
+function checked(index){
+    for (let i = 0; i < assignedPerson.length; i++) {
+        const element = assignedPerson[i]['firstname'];
+        if (element == allContacts[index]['name']) {
+            return "checked";
+        }
+    } return false;
+}
+
+function showAssignedPersons() {
+    let assDiv = document.getElementById('assinedPersons');
+    assDiv.innerHTML = ``;
+    for (let i = 0; i < assignedPerson.length; i++) {
+        const element = assignedPerson[i];
+        const firstLetter = element['firstname'].charAt(0).toUpperCase();
+        assDiv.innerHTML += `
+        <div>
+        <div class="assigned-circle" style="background-color: ${element['color']};">${firstLetter}</div>
+        </div>
+        `;
+    }
+}
