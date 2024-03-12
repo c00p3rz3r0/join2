@@ -187,7 +187,6 @@ async function addContact() {
         phone: phone.value,
         color: currentColor,
     })
-    console.log(firstName);
     await setItem('contact', JSON.stringify(allContacts));
     /*cancleNewContact();*/
     initContact();
