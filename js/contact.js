@@ -181,7 +181,7 @@ async function addContact() {
     let email = document.getElementById('mailInputField');
     let phone = document.getElementById('phoneInputField');
     allContacts.push({
-        firstname: firstName.value,
+        name: firstName.value,
         /*lastname: lastName.value,*/
         mail: email.value,
         phone: phone.value,
@@ -231,8 +231,8 @@ function loadgeneralContacts() {
 
 function getFirstLetters() {
     for (let i = 0; i < allContacts.length; i++) {
-        console.log(firstName);
-        const firstLetter = allContacts[i].firstname.charAt(0).toUpperCase();
+    
+        const firstLetter = allContacts[i].name.charAt(0).toUpperCase();
         
         alphabet.push(firstLetter);
     }

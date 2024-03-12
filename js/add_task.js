@@ -4,7 +4,7 @@ let assignedPerson = [];
 let allAssigned = [];
 const htmlfields = ['assinedPersons', 'task-list'];
 let taskIdCounter = 0;
-const subTasks = [];
+let subTasks = [];
 
 async function initTaskform(){
     await loadContacts();
@@ -12,8 +12,6 @@ async function initTaskform(){
     await loadAllContacts();
     await sortContact();
 }
-
-let colors = ['#00BEE8','#FF7A00', '#9327FF', '#FC71FF'];
 
 
 function clearTaskForm(){
@@ -117,4 +115,36 @@ function showAssignedPersons() {
         </div>
         `;
     }
+}
+
+function addSubtask(){
+    let inputSubtask = document.getElementById('subtask');
+    if (inputSubtask.value == "") {
+        alert('Enter new Subtask')
+    }else{
+    subTasks.push(inputSubtask.value);
+    inputSubtask.value = ``;
+    generateSubTask();
+    }
+}
+
+function generateSubTask(){
+    let addedSubtask = document.getElementById('addSubtask');
+    addedSubtask.innerHTML = ``;
+    for (let i = 0; i < subTasks.length; i++) {
+        const element = subTasks[i];
+        addedSubtask.innerHTML +=`
+        <div id=subTask${i} class="input-subtask">
+        <input onselect="editSubtask(${i})"  value="${i+1}   ${element}">
+        <img src="/assets/img/add-subtask.svg" id=subTaskEdit${i} onclick="addSubtask()" class="display-none" alt="" srcset="">
+        </div>
+        `
+        //document.getElementById('subTask'+i).addEventListener('focusin',editSubtask(i));
+    }
+}
+
+
+function editSubtask(index){
+    document.getElementById('subTask'+index).classList.add('subtasks-focus');
+    document.getElementById('subTaskEdit'+index).classList.remove('display-none');
 }

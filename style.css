@@ -171,6 +171,46 @@ h1{
     top: 15px; 
     right: 21px 
 }
+.input-subtask { 
+    position: relative; 
+}
+.input-subtask input { 
+    display:block; 
+    align-items: center;
+    width: 100%; 
+    box-sizing: border-box; 
+    width:440px; 
+    height: 48px;
+    font-size: 20px;
+    padding: 15px 21px 12px 21px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+}
+.input-subtask input:focus{
+    color: black;
+}
+.input-subtask img { 
+    position: absolute; 
+    top: 12px; 
+    right: 21px;
+    cursor: pointer;
+}
+#addSubtask{
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.subtask{
+    padding: 2px 5px 2px 21px;
+}
+
+.subtasks-focus{
+    background-color: white;
+    border-radius: 10px;
+}
+.subtask:hover{
+    background-color: gray;
+}
 .remember{
     display: flex;
     align-items: center;
