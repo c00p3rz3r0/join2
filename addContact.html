@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Contact</title>
+
+   <!-- <link rel="stylesheet" type="text/css" href="css/general_css_classes.css"> -->
+    <link rel="stylesheet" type="text/css" href="addContact.css">
+   <!-- <link rel="stylesheet" href="css/addContactResponsive.css"> -->
+    
+
+    <!-- customize Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+        
+    
+        
+
+
+    <!-- JS-functions -->
+    <script src="js/addContact.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/editContact.js"></script>
+    <script src="js/edit-add-Contact-CSS-functions.js"></script>
+    <script src="script.js"></script>
+
+</head>
+
+
+<body>
+
+    <div id="overlay-add-contact" class="overlay-add-contact-outer-div display-none">
+        <div class="overlay-add-contact">
+            <div onclick=" emptyInputfields(),closeAddContactOverlay(), showCreateContactBtns(), displayNone('add-contact-img-mobile-div', 'remove'), displayNone('contacts', 'remove'), displayNone('edit-contact-img-mobile-div', 'remove'), displayFlex('show-contact', 'remove')" class="close-div">
+                <img src="assets/img/contact-imgs/close.svg" alt="" class="close-img">
+            </div>
+
+            <div class="person-img-group13">
+                <img src="assets/img/contact-imgs/person.svg" alt="" class="person-img">
+            </div>
+
+            <div id="cancel-create-contact" class="cancel-create-contact">
+                <button onclick="emptyInputfields() ,closeAddContactOverlay()" class="cancel-btn">
+                    <div class="cancel-btn-txt">Cancel</div>
+                    <img src="assets/img/contact-imgs/close.svg" alt="" class="cancel-btn-img">
+                </button>
+
+                <button onclick="addContact(), closeAddContactOverlay(), displayNone('add-contact-img-mobile-div', 'remove'), displayNone('contacts', 'remove')" class="create-contact-btn">
+                    <div class="create-contact-txt">Create contact</div>
+                    <div class="create-contact-bounding-box-img">
+                        <img src="assets/img/contact-imgs/check.svg" alt="" class="create-contact-img">
+                    </div>
+                </button>
+            </div>
+
+
+            <!-- Buttons for edit contact option -->
+            <div id="edit-contact" class="edit-contact display-none">
+                <button onclick="emptyInputfields() ,closeAddContactOverlay(), displayNone('edit-contact', 'add'), displayNone('cancel-create-contact', 'remove'), displayNone('edit-contact-img-mobile-div', 'remove'), displayNone('contacts', 'remove'), displayFlex('show-contact', 'remove'), removeContact()" class="delete-btn">
+                    <div class="cancel-btn-txt">Delete</div>
+                    <img src="assets/img/contact-imgs/close.svg" alt="" class="cancel-btn-img">
+                </button>
+
+                <button onclick="removeContact(), addContact(), displayNone('edit-contact', 'add'), displayNone('cancel-create-contact', 'remove'), displayNone('edit-contact-img-mobile-div', 'remove'), displayNone('contacts', 'remove'), displayFlex('show-contact', 'remove'), closeAddContactOverlay()"
+                    class="save-edits-contact-btn">
+                    <div class="create-contact-txt">Save</div>
+                    <div class="create-contact-bounding-box-img">
+                        <img src="assets/img/contact-imgs/check.svg" alt="" class="save-edits-contact-img">
+                    </div>
+                </button>
+            </div>
+
+
+
+            <!--Input-Section-->
+            <form class="add-contact-textfileds">
+                <div class="inputfield-1-around">
+                    <input id="nameInputField" type="text" class="inputfield-1" placeholder="Name">
+
+
+                    <div class="inputfield-img-div">
+                        <img src="assets/img/contact-imgs/person(1).svg" alt="" class="inputfield-img">
+                    </div>
+                </div>
+
+                <div class="inputfield-1-around">
+                    <input id="mailInputField" required type="emai" class="inputfield-1" placeholder="Email">
+
+
+                    <div class="inputfield-img-div">
+                        <img src="assets/img/contact-imgs/mail.svg" alt="" class="inputfield-mail-img">
+                    </div>
+                </div>
+
+                <div class="inputfield-1-around">
+                    <input id="phoneInputField" required type="tel" class="inputfield-1" placeholder="Phone">
+
+
+                    <div class="inputfield-img-div">
+                        <img src="assets/img/contact-imgs/call.svg" alt="" class="inputfield-phone-img">
+                    </div>
+                </div>
+            </form>
+
+
+            <!--Add-Contact-Sidebar-->
+            <div class="contact-sidebar">
+                <div class="contact-sidebar-txt-div">
+                    <div id="contact-sidebar-txt-add" class="contact-sidebar-txt-1">Add Contact</div>
+                    <div id="contact-sidebar-txt-edit" class="contact-sidebar-txt-1 d-none">Edit Contact</div>
+                    <!--edit-contact-text-->
+                    <div class="contact-sidebar-txt-2">Tasks are better whith a team</div>
+                    <div class="contact-sidebar-graphic">
+                        <img src="assed/svg/contact-imgs/Vector 5(2).svg" alt="" class="contact-sidebar-graphic-img">
+                    </div>
+                </div>
+
+                <div class="contact-sidebar-logo-div">
+                    <img src="assets/img/contact-imgs/Capa 1.svg" alt="" class="contact-sidebar-logo">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

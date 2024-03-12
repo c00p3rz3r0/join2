@@ -10,6 +10,7 @@
     <script src="/js/storage.js"></script>
     <script src="/js/user.js"></script>
     <script src="/js/contact.js"></script>
+    <script src="js/edit-add-Contact-CSS-functions.js"></script>
     <link rel="shortcut icon" href="/assets/img/logo-dark.svg" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,9 +21,10 @@
 <body onload="initContact()">
     <div w3-include-html="assets/templates/desktop_template.html"></div>
     <div w3-include-html="assets/templates/mobile_template.html"></div>
+    <div w3-include-html="addContact.html"></div>  <!-- Fügt die HTML-Datei des des addContact-Overlays ein -->
     <div class="contacts">
         <div class="contact-side">
-            <div>
+            <div onclick="displayNone('overlay-add-contact', 'remove')">
                 <input class="dark-btn add-contact" type="button">
             </div>
             <div class="contact-list">
