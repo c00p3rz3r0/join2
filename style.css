@@ -189,16 +189,22 @@ h1{
 .input-subtask input:focus{
     color: black;
 }
-.input-subtask img { 
+
+.input-subtask-img{
     position: absolute; 
     top: 12px; 
     right: 21px;
+}
+.subtaskIcons img { 
     cursor: pointer;
 }
 #addSubtask{
     gap: 5px;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 150px;
 }
 .subtask{
     padding: 2px 5px 2px 21px;
@@ -210,6 +216,12 @@ h1{
 }
 .subtask:hover{
     background-color: gray;
+}
+.subtaskIcons{
+    position: absolute; 
+    top: 12px; 
+    right: 21px;
+
 }
 .remember{
     display: flex;

@@ -27,14 +27,16 @@ async function addTask() {
     allTasks.push({
         title: taskTitle,
         description: taskDescription,
-        assigned: assinedPersons,
+        assigned: assignedPerson,
         dueDate: taskDueDate,
         prio: taskPrio,
         category: taskCategory,
-        createdAt: new Date().getTime(),
+        subTasks: subTasks,
+        createdAt: new Date().getTime()
     });
-    await setItem('task', JSON.stringify(allTasks));
+    //await setItem('task', JSON.stringify(allTasks));
     console.log(allTasks);
+    //loadAllTask();
 }
 
 
@@ -63,7 +65,7 @@ function showContacts(){
         contactdiv.classList.remove('display-none');
         for (let i = 0; i < allContacts.length; i++) {
             const element = allContacts[i];
-            const firstLetter = element['name'].charAt(0).toUpperCase();
+            const firstLetter = getLetters(element['name']) // element['name'].charAt(0).toUpperCase();
             const checkChecked = checked(i);
             contactdiv.innerHTML +=`
             <div class="assigneContact">
@@ -108,13 +110,22 @@ function showAssignedPersons() {
     assDiv.innerHTML = ``;
     for (let i = 0; i < assignedPerson.length; i++) {
         const element = assignedPerson[i];
-        const firstLetter = element['firstname'].charAt(0).toUpperCase();
+        const firstLetter = getLetters(element['firstname']) //element['firstname'].charAt(0).toUpperCase()+element['firstname'].ch;
         assDiv.innerHTML += `
         <div>
         <div class="assigned-circle" style="background-color: ${element['color']};">${firstLetter}</div>
         </div>
         `;
     }
+}
+
+function getLetters(name){
+    let letter1 = name.charAt(0).toUpperCase();
+    let letter2Pos = name.indexOf(" ");
+    let letter2 = name.charAt(letter2Pos+1).toUpperCase();
+    let letters = letter1+letter2;
+    console.log(letters);
+    return letters;
 }
 
 function addSubtask(){
@@ -134,17 +145,43 @@ function generateSubTask(){
     for (let i = 0; i < subTasks.length; i++) {
         const element = subTasks[i];
         addedSubtask.innerHTML +=`
-        <div id=subTask${i} class="input-subtask">
-        <input onselect="editSubtask(${i})"  value="${i+1}   ${element}">
-        <img src="/assets/img/add-subtask.svg" id=subTaskEdit${i} onclick="addSubtask()" class="display-none" alt="" srcset="">
+        <div class="input-subtask" ondblclick="editSubtask(${i})">
+        <input id=subTask${i}  type="text" disabled   value="${element}">
+        <div class="subtaskIcons">
+        <img src="assets/img/edit-subtask.svg" onclick="editSubtask(${i})" id=subTaskEdit${i} alt="" srcset="">
+        <img src="assets/img/check-change.svg" class="display-none" onclick="confirmeditSubtask('${element}',${i})" id=checksubTaskEdit${i} alt="" srcset="">
+        <img src="assets/img/vector-subtask.svg" id=subTaskEdit${i} alt="" srcset="">
+        <img src="assets/img/delet.svg" onclick="deletSubtask('${element}')" id=deleteSubtask${element} alt="" srcset="">
+        </div>
         </div>
         `
         //document.getElementById('subTask'+i).addEventListener('focusin',editSubtask(i));
     }
 }
 
+function confirmeditSubtask(element,i){
+    const index = searchIndexOf(subTasks, element);
+    if (index !== 1){}
+    subTasks[index] = document.getElementById('subTask'+i).value;
+    generateSubTask();
+}
+
+function deletSubtask(element){
+    const index = searchIndexOf(subTasks, element);
+    if (index >-1){}
+    subTasks.splice(index,1);
+    generateSubTask();
+}
+
+function searchIndexOf(array, value){
+    let indexOf = array.indexOf(value);
+    return indexOf;
+}
+
 
 function editSubtask(index){
-    document.getElementById('subTask'+index).classList.add('subtasks-focus');
-    document.getElementById('subTaskEdit'+index).classList.remove('display-none');
+    document.getElementById('subTask'+index).disabled = false;
+    document.getElementById('subTaskEdit'+index).classList.add('display-none');
+    document.getElementById('checksubTaskEdit'+index).classList.remove('display-none');
+    console.log('Test')
 }
