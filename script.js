@@ -48,6 +48,7 @@ function includeHTML() {
   function initBorad(){
     actUser();
     loadUsers();
+    initBoardForm();
   }
 
   async function initContact(){
@@ -65,6 +66,7 @@ function includeHTML() {
         console.error('Loading error:', e);
     }
 }
+
 
 async function loadContacts() {
   try {

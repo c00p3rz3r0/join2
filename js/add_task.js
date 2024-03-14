@@ -19,6 +19,7 @@ function clearTaskForm(){
 }
 
 async function addTask() {
+    newTask = [];
     submitTask.disabled = true;
     let taskT = document.getElementById('taskTitle');
     let taskD = document.getElementById('taskDescription');
@@ -36,7 +37,7 @@ async function addTask() {
         createdAt: new Date().getTime(),
     });
     debugger;
-    await setItem('tasks', JSON.stringify(allTasks));
+    await setItem('tasks', JSON.stringify(addTask));
     debugger;
     loadAllTask();
 }
