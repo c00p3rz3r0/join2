@@ -60,7 +60,7 @@ function includeHTML() {
 
   async function loadAllTask() {
     try {
-        allTasks = JSON.parse(await getItem('task'));
+        allTasks = JSON.parse(await getItem('tasks'));
     } catch (e) {
         console.error('Loading error:', e);
     }

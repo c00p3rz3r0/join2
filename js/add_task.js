@@ -19,24 +19,26 @@ function clearTaskForm(){
 }
 
 async function addTask() {
-    let taskTitle = document.getElementById('taskTitle').value;
-    let taskDescription = document.getElementById('taskDescription').value;
-    let taskDueDate = document.getElementById('dueDate').value;
-    let taskCategory = document.getElementById('taskCategory').value;
-    let taskPrio = document.getElementById('priority-input').value;
+    submitTask.disabled = true;
+    let taskT = document.getElementById('taskTitle');
+    let taskD = document.getElementById('taskDescription');
+    let taskDueDate = document.getElementById('dueDate');
+    let taskC = document.getElementById('taskCategory');
+    let taskPrio = document.getElementById('priority-input');
     allTasks.push({
-        title: taskTitle,
-        description: taskDescription,
+        title: taskT.value,
+        description: taskD.value,
         assigned: assignedPerson,
-        dueDate: taskDueDate,
-        prio: taskPrio,
-        category: taskCategory,
+        dueDate: taskDueDate.value,
+        prio: taskPrio.value,
+        category: taskC.value,
         subTasks: subTasks,
-        createdAt: new Date().getTime()
+        createdAt: new Date().getTime(),
     });
-    //await setItem('task', JSON.stringify(allTasks));
-    console.log(allTasks);
-    //loadAllTask();
+    debugger;
+    await setItem('tasks', JSON.stringify(allTasks));
+    debugger;
+    loadAllTask();
 }
 
 
