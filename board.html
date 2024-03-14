@@ -7,10 +7,10 @@
     <title>Join</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-    <script src="/js/storage.js"></script>
-    <script src="/js/user.js"></script>
-    <script src="/js/board.js"></script>
-    <script src="/js/add_task.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/board.js"></script>
+    <script src="js/add_task.js"></script>
     <link rel="shortcut icon" href="/assets/img/logo-dark.svg" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,92 +39,28 @@
                     <span>To do</span>
                     <img class="add-btn-board" src="assets/img/plus-btn.svg" alt="">
                 </div>
-                <div id="boardToDo"  class="boarc-column">
-                    <div class="no-tasks">
-                        <div class=><span>No tasks To do</span></div>
-                    </div>
-                </div>
+                <div id="boardToDo" class="boarc-column"></div>
             </div>
             <div class="board-cat">
                 <div class="board-topic s20 fw700">
                     <span>In progress</span>
                     <img class="add-btn-board" src="assets/img/plus-btn.svg" alt="">
                 </div>
-                <div id="boardProgress" class="boarc-column">
-                    <div class="board-card">
-                        <div><span class="lable-board-card">User Story</span></div>
-                        <div>
-                            <h3>Kochwelt Page & Recipe Recommander</h3>
-                        </div>
-                        <div><span>Build start page with recipe recommendation...</span></div>
-                        <div class="progress">
-                            <progress id="progress" value="50" max="100"></progress>
-                            <span>1/2 Subtask</span>
-                        </div>
-                        <div class="card-bottom">
-                            <div class="icons">
-                                <div class="icon-board">SM</div>
-                                <div class="icon-board">GG</div>
-                            </div>
-                            <img src="assets/img/prio-alta.svg" alt="">
-                        </div>
-                    </div>
-                </div>
-
+                <div id="boardProgress" class="boarc-column"></div>
             </div>
             <div class="board-cat">
                 <div class="board-topic s20 fw700">
                     <span>Await feedback</span>
                     <img class="add-btn-board" src="assets/img/plus-btn.svg" alt="">
                 </div>
-                <div id="boardFeedback"  class="boarc-column">
-                    <div class="board-card">
-                        <div><span class="lable-board-card">User Story</span></div>
-                        <div>
-                            <h3>Kochwelt Page & Recipe Recommander</h3>
-                        </div>
-                        <div><span>Build start page with recipe recommendation...</span></div>
-                        <div class="progress">
-                            <progress id="progress" value="50" max="100"></progress>
-                            <span>1/2 Subtask</span>
-                        </div>
-                        <div class="card-bottom">
-                            <div class="icons">
-                                <div class="icon-board">SM</div>
-                                <div class="icon-board">GG</div>
-                            </div>
-                            <img src="assets/img/prio-baja.svg" alt="">
-                        </div>
-                    </div>
-                </div>
-
+                <div id="boardFeedback" class="boarc-column"></div>
             </div>
             <div class="board-cat">
                 <div class="board-topic s20 fw700">
                     <span>Done</span>
                     <img class="add-btn-board" src="assets/img/plus-btn.svg" alt="">
                 </div>
-                <div id="boardDone"  class="boarc-column">
-                    <div class="board-card">
-                        <div><span class="lable-board-card">User Story</span></div>
-                        <div>
-                            <h3>Kochwelt Page & Recipe Recommander</h3>
-                        </div>
-                        <div><span>Build start page with recipe recommendation...</span></div>
-                        <div class="progress">
-                            <progress id="progress" value="50" max="100"></progress>
-                            <span>1/2 Subtask</span>
-                        </div>
-                        <div class="card-bottom">
-                            <div class="icons">
-                                <div class="icon-board">SM</div>
-                                <div class="icon-board">GG</div>
-                            </div>
-                            <img src="assets/img/prio-media.svg" alt="">
-                        </div>
-                    </div>
-                </div>
-
+                <div id="boardDone" class="boarc-column"></div>
             </div>
         </div>
     </div>

@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
     <link rel="stylesheet" href="style.css">
-    <script src="/js/storage.js"></script>
-    <script src="/js/user.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/user.js"></script>
     <script src="script.js"></script>
-    <script src="/js/summary.js"></script>
-    <link rel="shortcut icon" href="/assets/img/logo-dark.svg" type="image/x-icon">
+    <script src="js/summary.js"></script>
+    <link rel="shortcut icon" href="assets/img/logo-dark.svg" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -18,21 +18,21 @@
     <div w3-include-html="assets/templates/desktop_template.html"></div>
     <div class="content-header">
         <h1>Join 360</h1>
-        <img src="/assets/img/v-line-summary.svg" alt="">
+        <img src="assets/img/v-line-summary.svg" alt="">
         <p style="font-size: 27px;">Key Metrics at Glance</p>
     </div>
     <div class="summary-page">
         <div  class="content">
             <div class="row"> 
                 <div onclick="window.location.href='board.html'" class="first-row-card card" onmouseover="changeImage(1)" onmouseout="restoreImage(1)">
-                    <img id="image1" src="/assets/img/pencil.svg" alt="">
+                    <img id="image1" src="assets/img/pencil.svg" alt="">
                     <div>
                         <p class="p-headline" id="totalToDo"></p>
                         <p class="p-summary">To-Do</p>
                     </div>
                 </div>
                 <div onclick="window.location.href='board.html'" class="first-row-card card"  onmouseover="changeImage(2)" onmouseout="restoreImage(2)">
-                    <img id="image2" src="/assets/img/check.svg" alt="">
+                    <img id="image2" src="assets/img/check.svg" alt="">
                     <div>
                         <p class="p-headline" id="totalDone"></p>
                         <p class="p-summary">Done</p>
@@ -41,12 +41,12 @@
             </div>
             <div class="row">
                 <div class="secon-row-card card" onclick="window.location.href='board.html'">
-                    <img src="/assets/img/urgent_arrow.svg" alt="">
+                    <img src="assets/img/urgent_arrow.svg" alt="">
                     <div>
                         <p class="p-headline" id="totalUrgent"></p>
                         <p class="p-summary">To-Do</p>
                     </div>
-                    <img src="/assets/img/vertical_line.svg" alt="">
+                    <img src="assets/img/vertical_line.svg" alt="">
                     <div>
                         <p class="s21 fw700" id="urgentDate"></p>
                         <p class="s16">Upcoming Deadline</p>

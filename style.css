@@ -724,7 +724,6 @@ nav{
 
 .card-bottom{
     display: flex;
-    justify-content: space-between;
 }
 .contacts{
     display: flex;

@@ -67,8 +67,8 @@ function changeImage(i) {
   function restoreImage(i) {
     var element =  document.getElementById('image'+i);
     if (i==1) {
-        element.src = '/assets/img/pencil.svg';
+        element.src = 'assets/img/pencil.svg';
     }else{
-        element.src = '/assets/img/check.svg';
+        element.src = 'assets/img/check.svg';
     }
   }

@@ -8,6 +8,8 @@ async function initBoardForm(){
     sortAllTask();
     loadCards(todoArray,'boardToDo');
     loadCards(inProgressArray,'boardProgress');
+    loadCards(awaitFeedbackArray,'boardFeedback');
+    loadCards(doneArray,'boardDone');
 }
 
 function sortAllTask(){
@@ -30,7 +32,16 @@ function sortAllTask(){
 
 function loadCards(array,boardCat){
     document.getElementById(boardCat). innerHTML = ``;
+    if (array.length === 0) {
+        document.getElementById(boardCat).innerHTML =
+        `
+        <div class="no-tasks">
+        <div class=><span>No tasks To do</span></div>
+        </div>
+        `
+    }else{
     for (let i = 0; i < array.length; i++) {
+
         const element = array[i];
         let subtaskAmount = element['subTasks'].length;
         document.getElementById(boardCat). innerHTML +=`
@@ -44,9 +55,9 @@ function loadCards(array,boardCat){
         <progress id="progress" value="50" max="100"></progress>
         <span>1/${subtaskAmount} Subtask</span>
         </div>
-        <div class="card-bottom" id="bottom${i}"></div>
+        <div class="card-bottom" id="bottom${boardCat}${i}"></div>
         `
-        let assignCard = document.getElementById('bottom'+i);
+        let assignCard = document.getElementById('bottom'+boardCat+i);
         for (let index = 0; index < element['assigned'].length; index++) {
             const element2 = element['assigned'][index];
             const firstLetter = getLetters(element2['firstname'])
@@ -55,6 +66,7 @@ function loadCards(array,boardCat){
             `
         };
     }
+}
 }
 
 function generateCard(category){
