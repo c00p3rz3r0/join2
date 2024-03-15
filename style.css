@@ -951,6 +951,10 @@ margin-bottom: 40px;
     display: flex;
     flex-direction: column;
 }
+.card-bottom-div{
+    display: flex;
+    justify-content: space-between;
+}
 
 @media only screen and (max-width: 1100px) {
     .p-hello{

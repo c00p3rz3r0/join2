@@ -45,6 +45,7 @@ function loadCards(array,boardCat){
 
 function generateCard(boardCat, element,i){
     let subtaskAmount = element['subTasks'].length;
+    let priority = getPriority(element);
     document.getElementById(boardCat). innerHTML +=`
     <div class="board-card">
     <div><span class="lable-board-card">User Story</span></div>
@@ -56,8 +57,21 @@ function generateCard(boardCat, element,i){
     <progress id="progress" value="50" max="100"></progress>
     <span>1/${subtaskAmount} Subtask</span>
     </div>
-    <div class="card-bottom" id="bottom${boardCat}${i}"></div>
+    <div class="card-bottom-div"><div class="card-bottom" id="bottom${boardCat}${i}"></div>
+    <img src="${priority}" alt=""></div>
     `
+}
+
+function getPriority(element){
+    let probtn;
+    if (element['prio']=='mediumBtn') {
+        probtn = 'assets/img/prio-media.svg';
+    }else if (element['prio']=='urgentBtn') {
+        probtn = 'assets/img/prio-alta.svg';
+    }else{
+        probtn = 'assets/img/prio-baja.svg';
+    }
+    return probtn;
 }
 
 function generateNoTask(boardCat){
