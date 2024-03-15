@@ -133,7 +133,10 @@ function addSubtask(){
     if (inputSubtask.value == "") {
         alert('Enter new Subtask')
     }else{
-    subTasks.push(inputSubtask.value);
+    subTasks.push({
+        task: inputSubtask.value,
+        taskStatus: 'open',
+    });
     inputSubtask.value = ``;
     generateSubTask();
     }
@@ -146,12 +149,12 @@ function generateSubTask(){
         const element = subTasks[i];
         addedSubtask.innerHTML +=`
         <div class="input-subtask" ondblclick="editSubtask(${i})">
-        <input id=subTask${i}  type="text" disabled   value="${element}">
+        <input id=subTask${i}  type="text" disabled   value="${element['task']}">
         <div class="subtaskIcons">
         <img src="assets/img/edit-subtask.svg" onclick="editSubtask(${i})" id=subTaskEdit${i} alt="" srcset="">
-        <img src="assets/img/check-change.svg" class="display-none" onclick="confirmeditSubtask('${element}',${i})" id=checksubTaskEdit${i} alt="" srcset="">
+        <img src="assets/img/check-change.svg" class="display-none" onclick="confirmeditSubtask('${element['task']}',${i})" id=checksubTaskEdit${i} alt="" srcset="">
         <img src="assets/img/vector-subtask.svg" id=subTaskEdit${i} alt="" srcset="">
-        <img src="assets/img/delet.svg" onclick="deletSubtask('${element}')" id=deleteSubtask${element} alt="" srcset="">
+        <img src="assets/img/delet.svg" onclick="deletSubtask('${element['task']}')" id=deleteSubtask${element['task']} alt="" srcset="">
         </div>
         </div>
         `

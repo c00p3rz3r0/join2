@@ -33,42 +33,49 @@ function sortAllTask(){
 function loadCards(array,boardCat){
     document.getElementById(boardCat). innerHTML = ``;
     if (array.length === 0) {
-        document.getElementById(boardCat).innerHTML =
-        `
-        <div class="no-tasks">
-        <div class=><span>No tasks To do</span></div>
-        </div>
-        `
+        generateNoTask(boardCat);
     }else{
     for (let i = 0; i < array.length; i++) {
-
         const element = array[i];
-        let subtaskAmount = element['subTasks'].length;
-        document.getElementById(boardCat). innerHTML +=`
-        <div class="board-card">
-        <div><span class="lable-board-card">User Story</span></div>
-        <div>
-        <h3>${element['title']}</h3>
-        </div>
-        <div><span>${element['description']}</span></div>
-        <div class="progress">
-        <progress id="progress" value="50" max="100"></progress>
-        <span>1/${subtaskAmount} Subtask</span>
-        </div>
-        <div class="card-bottom" id="bottom${boardCat}${i}"></div>
-        `
-        let assignCard = document.getElementById('bottom'+boardCat+i);
-        for (let index = 0; index < element['assigned'].length; index++) {
-            const element2 = element['assigned'][index];
-            const firstLetter = getLetters(element2['firstname'])
-            assignCard.innerHTML +=`
-            <div class="assigned-circle" style="background-color: ${element2['color']};">${firstLetter}</div>
-            `
-        };
+        generateCard(boardCat, element, i);
+        generateAssignUsers(boardCat,i, element);
     }
 }
 }
 
-function generateCard(category){
+function generateCard(boardCat, element,i){
+    let subtaskAmount = element['subTasks'].length;
+    document.getElementById(boardCat). innerHTML +=`
+    <div class="board-card">
+    <div><span class="lable-board-card">User Story</span></div>
+    <div>
+    <h3>${element['title']}</h3>
+    </div>
+    <div><span>${element['description']}</span></div>
+    <div class="progress">
+    <progress id="progress" value="50" max="100"></progress>
+    <span>1/${subtaskAmount} Subtask</span>
+    </div>
+    <div class="card-bottom" id="bottom${boardCat}${i}"></div>
+    `
+}
 
+function generateNoTask(boardCat){
+    document.getElementById(boardCat).innerHTML =
+    `
+    <div class="no-tasks">
+    <div class=><span>No tasks To do</span></div>
+    </div>
+    `
+}
+
+function generateAssignUsers(boardCat, i, element){
+    let assignCard = document.getElementById('bottom'+boardCat+i);
+    for (let index = 0; index < element['assigned'].length; index++) {
+        const element2 = element['assigned'][index];
+        const firstLetter = getLetters(element2['firstname'])
+        assignCard.innerHTML +=`
+        <div class="assigned-circle" style="background-color: ${element2['color']};">${firstLetter}</div>
+        `
+    };
 }
