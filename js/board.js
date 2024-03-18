@@ -7,6 +7,9 @@ let currentDraggedElement;
 async function initBoardForm(){
     await loadAllTask();
     updateHTML();
+    await loadContacts();
+    await loadAllContacts();
+    await sortContact();
 }
 
 function loadCards(array,boardCat){
@@ -101,8 +104,12 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function openAddTask(category){
+function openAddTask(){
     document.getElementById('addTaskBoard').classList.remove('display-none');
-    document.getElementById('addTaskBoard').classList.add('add-task-board');
-    document.body.classList.add('popup-background');
+    document.getElementById('bg-popup').classList.remove('display-none');
+    document.getElementById('addTaskBoard').classList.remove('add-task-page');
+}
+function closeAdd(){
+    document.getElementById('addTaskBoard').classList.add('display-none');
+    document.getElementById('bg-popup').classList.add('display-none');
 }

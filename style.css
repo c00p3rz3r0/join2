@@ -957,14 +957,49 @@ margin-bottom: 40px;
 }
 
 .add-task-board{
+    flex-direction: column;
     background-color: white;
+    border-radius: 20px;
+    height: 700px;
+    width: 1000px;
     padding: 40px;
-    border-radius: 40px;
-    height: 550px;
+    display: flex;
+    align-items: baseline;
     position: absolute;
-    top: 50px;
+    top: 80px;
+    left: 300px;
+    gap: 30px;
+    
+    #formTask{
+        .add-task-btns{
+            top: 700px;
+        }
+    }
+}
+.header-add-task-board{
+    display: flex;
+    justify-content: space-between;
+    width: 960px;
+    img{
+        cursor: pointer;
+    }
+}
+.header-popup{
+    display: flex;
+    justify-content: space-between;
+    width: 961px;
 }
 
+.bg-popup{
+    width: 100vw;
+    height: 100vh;
+    background-color: #2d2d2d5c;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
 @media only screen and (max-width: 1100px) {
     .p-hello{
