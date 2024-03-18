@@ -36,6 +36,7 @@ async function addTask() {
         createdAt: new Date().getTime(),
     });
     await setItem('tasks', JSON.stringify(allTasks));
+    document.getElementById('formTask').reset();
     loadAllTask();
 }
 
@@ -124,7 +125,6 @@ function getLetters(name){
     let letter2Pos = name.indexOf(" ");
     let letter2 = name.charAt(letter2Pos+1).toUpperCase();
     let letters = letter1+letter2;
-    console.log(letters);
     return letters;
 }
 
