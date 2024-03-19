@@ -73,7 +73,11 @@ function guestLogIn(){
 function actUser(){
     name = localStorage.getItem('user');
     uemail = localStorage.getItem('userEmail');
+    if (name === 'Guest') {
+        document.getElementById('actUser').innerHTML = name;
+    }else{
     document.getElementById('actUser').innerHTML = uemail.charAt(0).toUpperCase()+uemail.charAt(1).toUpperCase();
+    }
 }
 function restoreActUser() {
     localStorage.setItem('user', '');
