@@ -7,7 +7,8 @@
     <title>Join</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="addContact.css">
     <script src="js/storage.js"></script>
@@ -20,7 +21,12 @@
 
 <body onload="init()">
     <div class="login-page">
-        <div class="login-head">
+
+
+        <img src="assets/img/logo-dark.svg" alt="" style="height: 244px;" id="LogoStartTransit">
+
+
+        <div class="login-head" style="display: none;" id="LoginHead">
             <div class="logo-left">
                 <img src="assets/img/logo-dark.svg" alt="">
             </div>
@@ -29,7 +35,7 @@
                 <a href="signup.html"><button class="dark-btn btn-sign-up btn-wo-icon s16 fw700">Sign up</button></a>
             </div>
         </div>
-        <div class="login-frame">
+        <div class="login-frame" style="display: none;" id="LoginFrame">
             <div>
                 <h1>Log in</h1>
             </div>
@@ -38,10 +44,12 @@
             </div>
             <form class="login-form" onsubmit="loginUser(); return false;">
                 <div>
-                    <div class="input-login"><input id="userEmail" required class="s20" type="email" placeholder="Email"><img src="assets/img/letter.svg" alt=""></div>
+                    <div class="input-login"><input id="userEmail" required class="s20" type="email"
+                            placeholder="Email"><img src="assets/img/letter.svg" alt=""></div>
                 </div>
                 <div>
-                    <div class="input-login"><input id="userpassword" required class="s20" type="password" placeholder="Password"><img src="assets/img/key.svg" alt=""></div>
+                    <div class="input-login"><input id="userpassword" required class="s20" type="password"
+                            placeholder="Password"><img src="assets/img/key.svg" alt=""></div>
                 </div>
                 <div class="remember">
                     <input type="checkbox" name="remember" id="">
@@ -49,15 +57,42 @@
                 </div>
                 <div class="login-btn-area">
                     <input class="dark-btn login-btn s21 fw700" type="submit" value="Log in">
-                    <input class="btn-seconday-wo-icon login-gst-btn s21 fw700" type="button" onclick="guestLogIn()" value="Guest Log in">
+                    <input class="btn-seconday-wo-icon login-gst-btn s21 fw700" type="button" onclick="guestLogIn()"
+                        value="Guest Log in">
                 </div>
             </form>
         </div>
-        <div class="login-footer">
+        <div class="login-footer" style="display: none;" id="LogoFooter">
             <a class="a-footer s16 fw400" href="#">Privacy Policy</a>
             <a class="a-footer s16 fw400" href="#">Legal Notice</a>
         </div>
     </div>
+
+    <!-- Loading anmation script -->
+    <script>
+        setTimeout(function () {
+            var logo = document.getElementById('LogoStartTransit');
+            var login = document.getElementById('LoginHead');
+            var loginOverlay = document.getElementById('LoginFrame');
+            var loginfooter = document.getElementById('LogoFooter')
+            logo.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
+            logo.style.transform = 'translate(-200%, -200%) scale(0.5)';
+            
+            setTimeout(function () {
+                logo.style.display = 'none';
+                login.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
+                login.style.display = 'flex';
+                loginOverlay.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
+                loginOverlay.style.display = 'flex';
+                loginfooter.style.display = 'flex';
+                loginfooter.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
+                loginfooter.style.transform = 'opacity(1.0)';
+            }, 550)
+        }, 1500); // 2-second delay
+    </script>
+
+
+
 </body>
 
 </html>

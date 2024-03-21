@@ -53,8 +53,12 @@ h1{
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100vh;
+    justify-content: center;
 }
 .login-head{
+    position: absolute;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -132,9 +136,7 @@ h1{
     justify-content: center;
 }
 .login-footer{
-    margin-top: auto;
     padding-top: 50px;
-    padding-bottom: 50px;
     width: 246px;
     display: flex;
     justify-content: space-between;
