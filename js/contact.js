@@ -109,7 +109,7 @@ let allContacts = [];
 
 let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-let globalIndexVariable;  // Variable, um global auf den aktuellen Index zugreigen zu können. ie wird in der Funktion "loadDetail()" aktualisiert
+let globalIndexVariable;  // Variable, um global auf den aktuellen Index zugreigen zu können. Sie wird in der Funktion "loadDetail()" aktualisiert
 
 let colors = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B'];
 let currentColor;
@@ -178,26 +178,26 @@ async function addContact() {
     let firstName = document.getElementById('nameInputField');
     console.log(firstName);
     /*let lastName = document.getElementById('lastnameInputField');*/
-    let email = document.getElementById('mailInputField');
+    let mail = document.getElementById('mailInputField');
     let phone = document.getElementById('phoneInputField');
     allContacts.push({
         name: firstName.value,
         /*lastname: lastName.value,*/
-        mail: email.value,
+        email: mail.value,
         phone: phone.value,
-        color: currentColor,
+        bgcolor: currentColor,
     })
     await setItem('contact', JSON.stringify(allContacts));
     /*cancleNewContact();*/
     initContact();
-    deleteInputFields(firstName, email, phone);
+    deleteInputFields(firstName, mail, phone);
     console.log(allContacts);
 }
 
 
-function deleteInputFields(firstName, email, phone) {
+function deleteInputFields(firstName, mail, phone) {
     firstName.value = ``;
-    email.value = ``;
+    mail.value = ``;
     phone.value = ``;
 }
 
@@ -243,12 +243,12 @@ function getFirstLetters() {
 }
 
 function createLetterDivs() {
-    let contactsDiv = document.getElementById('contacts');
+    let contactsDiv = document.getElementById('contact-list');
     contactsDiv.innerHTML = ``;
     for (let letterIndex = 0; letterIndex < alphabet.length; letterIndex++) {
         const letter = alphabet[letterIndex];
 
-        document.getElementById('contacts').innerHTML += /*html*/`
+        document.getElementById('contact-list').innerHTML += /*html*/`
             <div id="div${letterIndex}" class="d-none">
             <div class="contact-letter-frame-119"> ${letter} </div>
             <img src="assed/svg/contact-imgs/Vector 10.svg" alt="" class="vector-10">
@@ -346,6 +346,7 @@ function loadDetail(index) {
 function getShortIcon(index) {
     element = allContacts[index];
     let firstName = element['firstname'];
+    console.log(firstName);
 
 
 
