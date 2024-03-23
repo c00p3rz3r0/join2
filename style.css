@@ -1430,6 +1430,23 @@ nav {
         padding: 8px;
     }
 
+    .contacts{
+        left: unset;
+    }
+
+    .contacts-right{
+        display: none;
+    }
+
+    .contact-list{
+        padding-bottom: 100px;
+        width: unset;
+    }
+
+    .contact-side{
+        padding-top: 80px;
+    }
+
 
 }
 
