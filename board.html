@@ -25,7 +25,8 @@
             <div class="board-head">
                 <div class="MobBoard">
                     <h1>Board</h1>
-                    <img class="add-btn-board-Mob MobileYes" src="assets\img\plus-btn-white.svg" alt="" onclick="openAddTask()">
+                    <img class="add-btn-board-Mob MobileYes" src="assets\img\plus-btn-white.svg" alt=""
+                        onclick="openAddTask()">
                 </div>
                 <div class="board-head gap16 search-area">
                     <div class="search">
@@ -70,19 +71,23 @@
                 </div>
             </div>
         </div>
-        <div class="bg-popup display-none" id="bg-popup">
-            <div class="add-task-board fliegen" id="addTaskBoard">
-                <div class="header-add-task-board">
-                    <h1>Add Task</h1>
-                    <img src="/assets/img/close.svg" alt="" onclick="closeAdd()">
-                </div>
-                <div id="addTaskBoard2" class="add-task-page" w3-include-html="assets/templates/task_form.html">
+
+        <div class="add-task-overflow display-none" id="bg-popup">
+            <div class="bg-popup">
+                <div class="add-task-board fliegen" id="addTaskBoard">
+                    <div class="header-add-task-board">
+                        <h1>Add Task</h1>
+                        <img src="/assets/img/close.svg" alt="" onclick="closeAdd()">
+                    </div>
+                    <div id="addTaskBoard2" class="add-task-page" w3-include-html="assets/templates/task_form.html">
+                    </div>
                 </div>
             </div>
         </div>
         <div id="taskDetail">
 
         </div>
+
     </div>
     <script>includeHTML();</script>
 </body>

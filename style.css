@@ -517,6 +517,10 @@ nav {
 .add-task {
     display: flex;
     gap: 40px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .add-task-page {
@@ -693,9 +697,7 @@ nav {
     display: flex;
     align-items: end;
     justify-content: space-between;
-    position: absolute;
-    top: 540px;
-    width: 950px;
+    margin-top: 128px;
 }
 
 .board {
@@ -1102,14 +1104,9 @@ nav {
     flex-direction: column;
     background-color: white;
     border-radius: 20px;
-    height: 700px;
-    width: 1000px;
     padding: 40px;
     display: flex;
     align-items: baseline;
-    position: absolute;
-    top: 80px;
-    left: 300px;
     gap: 30px;
 
     #formTask {
@@ -1117,6 +1114,20 @@ nav {
             top: 700px;
         }
     }
+}
+
+.d-flex{
+    display: flex;
+}
+
+.add-task-overflow{
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 2000;
 }
 
 .board-card-detail {
@@ -1147,7 +1158,7 @@ nav {
 .header-add-task-board {
     display: flex;
     justify-content: space-between;
-    width: 960px;
+    width: 100%;
 
     img {
         cursor: pointer;
@@ -1161,14 +1172,8 @@ nav {
 }
 
 .bg-popup {
-    width: 100vw;
-    height: 100vh;
     background-color: #2d2d2d5c;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
+    
 }
 
 .MobileYes {
@@ -1330,6 +1335,14 @@ nav {
         background-color: #091931;
         border-radius: 14px;
         
+    }
+
+    .add-task-overflow{
+        position: relative;
+    }
+
+    .v-line{
+        display: none;
     }
 
 
