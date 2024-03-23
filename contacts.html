@@ -10,7 +10,7 @@
     <script src="/js/storage.js"></script>
     <script src="/js/user.js"></script>
     <script src="/js/contact.js"></script>
-    <script src="js/edit-add-Contact-CSS-functions.js"></script>
+    <script src="/js/add_task.js"></script>
     <link rel="shortcut icon" href="/assets/img/logo-dark.svg" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,16 +21,12 @@
 <body onload="initContact()">
     <div w3-include-html="assets/templates/desktop_template.html"></div>
     <div w3-include-html="assets/templates/mobile_template.html"></div>
-    <div w3-include-html="addContact.html"></div>  <!-- Fügt die HTML-Datei des des addContact-Overlays ein -->
     <div class="contacts">
         <div class="contact-side">
-            <div onclick="displayNone('overlay-add-contact', 'remove')">
+            <div onclick="openForm('add')">
                 <input class="dark-btn add-contact" type="button">
             </div>
             <div id="contact-list" class="contact-list">
-                <div class="sign">
-                    <span class="s20">A</span>
-                </div>
                 <div  id="contactBlock">
 
                 </div>
@@ -44,14 +40,14 @@
                 <span class="contact-better">Better with a team</span>
             </div>
             <div>
-                <div class="contact-information">
+                <div class="contact-information display-none" id="contactinfo">
 
                     <div class="contact-information-top">
-                        <div  class="icon-contact s47">AM</div>
+                        <div  class="icon-contact s47" id="icon">AM</div>
                         <div>
-                            <div class="s47 fw500">Anton Mayer</div>
+                            <div class="s47 fw500" id="name">Anton Mayer</div>
                             <div class="contact-edit">
-                                <div class="edit-contact"></div>
+                                <div id="editContact" onclick="openForm('edit')" class="edit-contact"></div>
                                 <div class="delete-contact"></div>
                             </div>
                         </div>
@@ -59,13 +55,43 @@
                     <span class="s20">Contact Information</span>
            
                     <h4 style="margin-top: 50px;">Email</h4>
-                    <a class="s16 contact-mail" href="mailto:antonm@gmail.com">antonm@gmail.com</a>
+                    <a class="s16 contact-mail" href="mailto:antonm@gmail.com" id="email">antonm@gmail.com</a>
                     <h4>Phone</h4>
-                    <a class="s16 contact-mail" href="tel:+491111111111">+49 1111 111 11 1</a>
+                    <a class="s16 contact-mail" href="tel:+491111111111" id="phone">+49 1111 111 11 1</a>
                 </div>
             </div>
         </div>
     </div>
+    <form class="login-form" onsubmit="addContact(); return false;" id="formContact">
+    <div class="display-none" id="add-contact-form">
+        <div class="lodo-add-contact">
+            <img id="txtImg"  src="/assets/img/add-contact-site.svg" alt="">
+        </div>
+        <div class="add-contact-form-right">
+            <div>
+                <div class="icon-contact display-none s47" id="iconEdit">AM</div>
+                <img class="display-none" id="newContactImg" src="/assets/img/add-new-contact.svg" alt="">
+            </div>
+            <div class="contacts-right-fields">
+
+                    <div>
+                        <div class="input-login"><input id="cName" required class="s20" type="text" placeholder="Name"><img src="assets/img/avatar.svg" alt=""></div>
+                    </div>
+                    <div>
+                        <div class="input-login"><input id="cEmail" required class="s20" type="email" placeholder="Email"><img src="assets/img/letter.svg" alt=""></div>
+                    </div>
+                    <div>
+                        <div class="input-login"><input id="cPhone" required class="s20" type="tel" placeholder="Phone"><img src="assets/img/call.svg" alt=""></div>
+                    </div>
+                    <div class="gap16">
+                        <input onclick="closeForm();" class="btn-seconday-wo-icon clear-contact-btn s20 fw400" type="button" value="" />
+                        <input class="dark-btn creat-contact-btn s21 fw700" type="submit" id="submitContact" value="" />
+                      </div>
+
+            </div>
+        </div>
+    </div>
+    </form>
     <script>includeHTML();</script>
 </body>
 

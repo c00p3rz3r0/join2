@@ -54,9 +54,11 @@ function includeHTML() {
   async function initContact(){
     actUser();
     loadUsers();
-   // await loadAllContacts();
+    await loadAllContacts();
+    await sortContact();
     await loadContactPage();
-    sortNames();
+    loadDetail(0);
+    document.getElementById('contactinfo').classList.remove('display-none');
   }
 
   async function loadAllTask() {
