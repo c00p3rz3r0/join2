@@ -216,9 +216,9 @@ h1 {
     position: relative;
 }
 
-.add-task-input-grp{
+.add-task-input-grp {
     width: 400px;
-    
+
 }
 
 .input-subtask input {
@@ -428,18 +428,27 @@ nav {
     box-sizing: border-box;
     padding-top: 80px;
     padding-bottom: 80px;
-    
+
     gap: 30px;
     align-items: center;
 }
 
 .summary-page {
     position: absolute;
-    left: 320px;
-    top: 300px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 40px;
+    flex-direction: column;
+    padding-left: 300px;
+}
+
+.summary-page-content {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
 }
 
 .content {
@@ -1121,11 +1130,11 @@ nav {
     }
 }
 
-.d-flex{
+.d-flex {
     display: flex;
 }
 
-.add-task-overflow{
+.add-task-overflow {
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -1178,7 +1187,7 @@ nav {
 
 .bg-popup {
     background-color: #2d2d2d5c;
-    
+
 }
 
 .MobileYes {
@@ -1239,6 +1248,13 @@ nav {
     background: url("assets/img/add-new-contact-btn.svg") no-repeat 0;
     background-position: 18px 15px;
     background-color: #2A3647;
+}
+
+.Content-page{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 16px;
 }
 
 @media only screen and (max-width: 1100px) {
@@ -1323,7 +1339,7 @@ nav {
         text-align: left;
     }
 
-    .MobBoard{
+    .MobBoard {
         display: flex;
         flex-direction: row;
         align-content: center;
@@ -1332,44 +1348,87 @@ nav {
         justify-content: space-between;
         width: 100%;
     }
-  
 
-    .add-btn-board-Mob{
+
+    .add-btn-board-Mob {
         width: 40px;
         height: 40px;
         background-color: #091931;
         border-radius: 14px;
-        
+
     }
 
-    .add-task-overflow{
+    .add-task-overflow {
         position: relative;
     }
 
-    .v-line{
+    .v-line {
         display: none;
     }
 
-    .add-task-page{
+    .add-task-page {
         left: unset;
     }
 
-    .content-header{
+    .content-header {
         padding-bottom: 15px;
         justify-content: center;
     }
 
-    .add-task-btns{
+    .add-task-btns {
         margin-top: 12px;
         margin-bottom: 100px;
     }
 
-    .add-task-input-grp{
+    .add-task-input-grp {
         width: calc(100% - 16px);
         max-width: 440px;
     }
 
+    .summary-page-content {
+        padding-left: unset;
+    }
 
+    .summary-page {
+        width: 100%;
+        left: unset;
+        padding-left: unset;
+        align-items: center;
+    }
+
+    .row {
+        width: unset;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .secon-row-card {
+        width: unset;
+    }
+
+    .content {
+        margin-bottom: 100px;
+    }
+
+    .content-header {
+        flex-direction: column;
+        padding-top: 86px;
+    }
+
+    .card{
+        height: unset;
+    }
+
+    .Deadline-Mob {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        
+    }
+
+    .Deadline-mob-content{
+        padding: 8px;
+    }
 
 
 }
