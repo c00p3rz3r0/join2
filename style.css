@@ -788,6 +788,8 @@ nav {
     display: inline-flex;
     gap: 24px;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .no-tasks {
@@ -1270,6 +1272,7 @@ nav {
 
     .board {
         padding-left: unset;
+        margin-bottom: 100px;
     }
 
     .circle {
@@ -1308,6 +1311,25 @@ nav {
         font-weight: 400;
         line-height: 16.8px;
         text-align: left;
+    }
+
+    .MobBoard{
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+  
+
+    .add-btn-board-Mob{
+        width: 40px;
+        height: 40px;
+        background-color: #091931;
+        border-radius: 14px;
+        
     }
 
 
