@@ -119,11 +119,13 @@ function openAddTask() {
     document.getElementById('addTaskBoard').classList.remove('display-none');
     document.getElementById('bg-popup').classList.remove('display-none');
     document.getElementById('bg-popup').classList.add('d-flex');
+    document.getElementById('task-header-temp').classList.add('display-none');
     document.getElementById('addTaskBoard2').classList.remove('add-task-page');
 
 }
 function closeAdd() {
     document.getElementById('addTaskBoard').classList.add('display-none');
+    document.getElementById('task-header-temp').classList.remove('display-none');
     document.getElementById('bg-popup').classList.remove('d-flex');
     document.getElementById('bg-popup').classList.add('display-none');
 }
