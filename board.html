@@ -19,65 +19,70 @@
 </head>
 
 <body onload="initBorad()">
-    <div w3-include-html="assets/templates/desktop_template.html"></div>
-    <div class="board">
-        <div class="board-head">
-            <div>
-                <h1>Board</h1>
-            </div>
-            <div class="board-head gap16 search-area">
-                <div class="search">
-                    <input type="text">
-                    <img src="assets/img/seaarch.svg" alt="">
+    <div>
+        <div class="" w3-include-html="assets/templates/desktop_template.html"></div>
+        <!-- <div class="MobileYes" w3-include-html="assets/templates/mobile_template.html"></div> -->
+        <div class="board">
+            <div class="board-head">
+                <div>
+                    <h1>Board</h1>
                 </div>
-                <input class="dark-btn add-btn s20" type="button" value="" onclick="openAddTask()">
+                <div class="board-head gap16 search-area">
+                    <div class="search">
+                        <input type="text">
+                        <img src="assets/img/seaarch.svg" alt="">
+                    </div>
+                    <input class="dark-btn add-btn s20" type="button" value="" onclick="openAddTask()">
+                </div>
+            </div>
+            <div class="full-board">
+                <div class="board-cat">
+                    <div class="board-topic s20 fw700">
+                        <span>To do</span>
+                        <img class="add-btn-board" src="assets/img/plus-btn.svg" alt="" onclick="openAddTask()">
+                    </div>
+                    <div id="boardToDo" class="boarc-column" ondrop="moveTo('To Do')" ondragover="allowDrop(event)">
+                    </div>
+                </div>
+                <div class="board-cat">
+                    <div class="board-topic s20 fw700">
+                        <span>In progress</span>
+                        <img class="add-btn-board" src="assets/img/plus-btn.svg" alt="" onclick="openAddTask()">
+                    </div>
+                    <div id="boardProgress" class="boarc-column" ondrop="moveTo('In progress')"
+                        ondragover="allowDrop(event)"></div>
+                </div>
+                <div class="board-cat">
+                    <div class="board-topic s20 fw700">
+                        <span>Await feedback</span>
+                        <img class="add-btn-board" src="assets/img/plus-btn.svg" alt="" onclick="openAddTask()">
+                    </div>
+                    <div id="boardFeedback" class="boarc-column" ondrop="moveTo('Await feedback')"
+                        ondragover="allowDrop(event)"></div>
+                </div>
+                <div class="board-cat">
+                    <div class="board-topic s20 fw700">
+                        <span>Done</span>
+                        <img class="add-btn-board" src="assets/img/plus-btn.svg" alt="" onclick="openAddTask()">
+                    </div>
+                    <div id="boardDone" class="boarc-column" ondrop="moveTo('Done')" ondragover="allowDrop(event)">
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="full-board">
-            <div class="board-cat">
-                <div class="board-topic s20 fw700">
-                    <span>To do</span>
-                    <img class="add-btn-board" src="assets/img/plus-btn.svg" alt="" onclick="openAddTask()">
+        <div class="bg-popup display-none" id="bg-popup">
+            <div class="add-task-board fliegen" id="addTaskBoard">
+                <div class="header-add-task-board">
+                    <h1>Add Task</h1>
+                    <img src="/assets/img/close.svg" alt="" onclick="closeAdd()">
                 </div>
-                <div id="boardToDo" class="boarc-column" ondrop="moveTo('To Do')" ondragover="allowDrop(event)"></div>
-            </div>
-            <div class="board-cat">
-                <div class="board-topic s20 fw700">
-                    <span>In progress</span>
-                    <img class="add-btn-board" src="assets/img/plus-btn.svg" alt=""  onclick="openAddTask()">
+                <div id="addTaskBoard2" class="add-task-page" w3-include-html="assets/templates/task_form.html">
                 </div>
-                <div id="boardProgress" class="boarc-column" ondrop="moveTo('In progress')"
-                    ondragover="allowDrop(event)"></div>
-            </div>
-            <div class="board-cat">
-                <div class="board-topic s20 fw700">
-                    <span>Await feedback</span>
-                    <img class="add-btn-board" src="assets/img/plus-btn.svg" alt=""  onclick="openAddTask()">
-                </div>
-                <div id="boardFeedback" class="boarc-column" ondrop="moveTo('Await feedback')"
-                    ondragover="allowDrop(event)"></div>
-            </div>
-            <div class="board-cat">
-                <div class="board-topic s20 fw700">
-                    <span>Done</span>
-                    <img class="add-btn-board" src="assets/img/plus-btn.svg" alt=""  onclick="openAddTask()">
-                </div>
-                <div id="boardDone" class="boarc-column" ondrop="moveTo('Done')" ondragover="allowDrop(event)"></div>
             </div>
         </div>
-    </div>
-    <div class="bg-popup display-none" id="bg-popup">
-        <div class="add-task-board fliegen" id="addTaskBoard">
-        <div class="header-add-task-board">
-            <h1>Add Task</h1>
-            <img src="/assets/img/close.svg" alt="" onclick="closeAdd()">
-        </div>
-        <div id="addTaskBoard2" class="add-task-page" w3-include-html="assets/templates/task_form.html">
-        </div>
-    </div>
-    </div>
-    <div id="taskDetail">
+        <div id="taskDetail">
 
+        </div>
     </div>
     <script>includeHTML();</script>
 </body>
