@@ -8,9 +8,9 @@ a {
     text-decoration: none;
 }
 
-div {
+/*div {
     all: unset;
-}
+}*/
 
 .s21 {
     font-size: 21px;
@@ -978,7 +978,7 @@ nav {
 }
 
 .contact-block:hover {
-    background-color: #dcdcdc;
+    background-color: #dcdcdc !important;
 }
 
 .contact-block:hover .icon-board {

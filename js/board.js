@@ -137,11 +137,16 @@ function openDetail(id){
     let element = allTasks[currentDraggedElement];
     let priority = getPriority(element);
     let prioName = getPriorityName(element);
+    generateDetail(detailDiv,element,priority,prioName);
+    generateSubtaskDetail(element);
+}
+
+function generateDetail(detailDiv, element, priority,prioName){
     detailDiv.innerHTML = `
     <div class="board-card-detail ">
     <div class="detail-top">
         <span class="lable-board-card">User Story</span>
-        <img src="assets/img/close.svg" alt="">
+        <img src="assets/img/close.svg" onclick="closeDetail()" alt="">
     </div>
     <div>
     <h3>${element['title']}</h3>
@@ -149,11 +154,38 @@ function openDetail(id){
     <div><span>${element['description']}</span></div>
     <div><span>Due date:</span><span>${element['dueDate']}</span></div>
     <div><span>Priosity:</span><span>${prioName}</span><img src="${priority}" alt=""></div>
-    <div class="progress">
-    <progress id="progress" value="50" max="100"></progress>
-    <span>${element['subTasks']} Subtask</span>
+    <span>Assigned To:</span>
+    <div class="progress" id="assignedTo">
+    </div>
+    <span>Subtasks:</span>
+    <div class="progress" id="subTasks">
     </div>
     <div class="card-bottom-div"><div class="card-bottom" id=""></div>
     </div>
+    <div class="contact-edit">
+    <div id="editContact" onclick="openForm('edit')" class="edit-contact"></div>
+    <div class="delete-contact" onclick="deleteContact()"></div>
+    </div>
     `;
+}
+
+function generateSubtaskDetail(element){
+    let subtasks = document.getElementById('subTasks');
+    subtasks.innerHTML = '';
+    for (let i = 0; i < element['subTasks'].length; i++) {
+        const subtask = element['subTasks'][i];
+        subtasks.innerHTML +=`
+        <div class="input-subtask">
+        <div class="subtaskIcons">
+        <input type="checkbox" name="" id="${i}">
+        </div>
+        <input id=subTask${i}  type="text" disabled   value="${subtask['task']}">
+        </div>
+        `;
+    }
+}
+
+function closeDetail(){
+    let detailDiv = document.getElementById('taskDetail');
+    detailDiv.innerHTML = '';
 }

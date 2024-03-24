@@ -3,6 +3,7 @@ let globalIndexVariable;  // Variable, um global auf den aktuellen Index zugreig
 let colors = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B'];
 let currentLetter = null;
 let currentContact;
+let edit = false;
 
 
 function loadContactPage(){
@@ -54,7 +55,9 @@ function loadDetail(index){
     icon.style.backgroundColor = element['bgcolor'];
     name.innerHTML = element['name'];
     email.innerHTML = element['email'];
+    email.href = element['email'];
     phone.innerHTML = element['phone'];
+    phone.href = element['phone'];
     contactHighlight.style.backgroundColor = '#2A3647';
     contactHighlight.style.color = '#FFFFFF';
     currentContact = index;
@@ -84,14 +87,21 @@ async function addContact(){
     let cEmail = document.getElementById('cEmail');
     let cPhone = document.getElementById('cPhone');
     let bgcolor = getRandomColor();
+    if (edit === true) {
+        allContacts[currentContact].name = cName.value;
+        allContacts[currentContact].email = cEmail.value;
+        allContacts[currentContact].phone = cPhone.value;
+    } else {
     allContacts.push({
         name: cName.value,
         email: cEmail.value,
         phone: cPhone.value,
         bgcolor: bgcolor
-    })
+    })}
     await setItem('contact', JSON.stringify(allContacts));
+    edit = false;
     document.getElementById('formContact').reset();
+    document.getElementById('add-contact-form').classList.remove('add-contact-form');
     initContact();
 }
 
@@ -109,6 +119,8 @@ function addContactForm(){
     
 function editContactForm(){
     document.getElementById('add-contact-form').classList.add('add-contact-form');
+    document.getElementById('submitContact').style.backgroundImage = "url('assets/img/contact-save.svg')";
+    document.getElementById('submitContact').style.width = "120px";
     document.getElementById('txtImg').src='/assets/img/edit-contact-text.svg';
     let cName = document.getElementById('cName');
     let cEmail = document.getElementById('cEmail');
@@ -120,24 +132,26 @@ function editContactForm(){
     icon.classList.remove('display-none');
     icon.innerHTML = document.getElementById('icon').innerText;
     icon.style.backgroundColor = document.getElementById('icon').style.backgroundColor;
-    let editIndex = searchIndexOf(allContacts, cName);
 }
 
 function openForm(index){
     if (index === "add") {
         addContactForm();
     }else if (index === "edit") {
+        edit = true;
         editContactForm();
     }
 }
 
+async function deleteContact(){
+    allContacts.splice(currentContact,1);
+    await setItem('contact', JSON.stringify(allContacts));
+    document.getElementById('formContact').reset();
+    initContact();
+}
+
 function closeForm(){
-    let cName = document.getElementById('cName');
-    let cEmail = document.getElementById('cEmail');
-    let cPhone = document.getElementById('cPhone');
+    document.getElementById('formContact').reset();
     document.getElementById('newContactImg').classList.add('display-none');
-    cEmail.value= "";
-    cName.value = "";
-    cPhone.value = "";
     document.getElementById('add-contact-form').classList.remove('add-contact-form');
 }
