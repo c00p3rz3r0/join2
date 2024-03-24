@@ -1398,12 +1398,23 @@ nav {
 
     .row {
         width: unset;
-        flex-direction: column;
-        gap: 30px;
+        flex-direction: row;
+        gap: 25px;
+    }
+
+    .first-row-card{
+        width: 186px;
+        height: 110px;
     }
 
     .secon-row-card {
-        width: unset;
+        width: 396px;
+        height: 110px;
+    }
+
+    .thirs-row-card{
+        width: 116px;
+        height: 116px;
     }
 
     .content {
@@ -1415,9 +1426,7 @@ nav {
         padding-top: 86px;
     }
 
-    .card{
-        height: unset;
-    }
+   
 
     .Deadline-Mob {
         display: flex;
@@ -1447,6 +1456,17 @@ nav {
         padding-top: 80px;
     }
 
+    .p-headline{
+font-size: 47px;
+    }
+.p-summary{
+    font-size: 14px;
+}
+
+.img-summary-mob{
+    width: 40px;
+    height: 40px;
+}
 
 }
 
