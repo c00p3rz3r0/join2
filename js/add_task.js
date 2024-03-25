@@ -38,6 +38,7 @@ async function addTask() {
     await setItem('tasks', JSON.stringify(allTasks));
     document.getElementById('formTask').reset();
     loadAllTask();
+    location.reload();
 }
 
 

@@ -1,9 +1,4 @@
 <div>
-
-  <div class="content-header" id="task-header-temp">
-    <h1 id="h1Task">Add Task</h1>
-  </div>
-
   <form onsubmit="addTask(); return false;" id="formTask">
     <div class="add-task s20">
       <div class="add-task-input-grp">
@@ -27,7 +22,6 @@
         </div>
         <div id="assinedPersons" style="all: unset; display: flex;"></div>
       </div>
-      <div class="v-line" id="vLine"></div>
       <div class="add-task-input-grp">
         <div class="add-task-box">
           <label for="dueDate">Due date<span style="color: red">*</span></label>
@@ -76,14 +70,9 @@
         </div>
       </div>
     </div>
-    <div class="add-task-btns">
-      <div>
-        <span style="color: red">*</span><span>This field is required</span>
-      </div>
+    <div class="edit-task-btns">
       <div class="gap16">
-        <input onclick="clearTaskForm();" class="btn-seconday-wo-icon clear-task-btn s20 fw400" type="button"
-          value="" />
-        <input class="dark-btn creat-task-btn s21 fw700" type="submit" id="submitTask" value="" />
+        <input class="dark-btn save-edit-btn s21 fw700" type="submit" id="submitTask" value="" />
       </div>
     </div>
   </form>

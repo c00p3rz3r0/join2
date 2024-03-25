@@ -19,6 +19,12 @@ a {
 .s16 {
     font-size: 16px;
 }
+.s19{
+    font-size: 19px;
+}
+.s12{
+    font-size: 12px;
+}
 
 .s20 {
     font-size: 20px;
@@ -247,6 +253,7 @@ h1 {
 .subtaskIcons img {
     cursor: pointer;
 }
+
 
 #addSubtask {
     gap: 5px;
@@ -693,8 +700,15 @@ nav {
 
 .creat-task-btn {
     width: 183px;
-    height: 56px;
+    height: 56px;add-task-btns
     background: url("assets/img/creat-task.svg") no-repeat 0;
+    background-position: 20px 15px;
+    background-color: #2A3647;
+}
+.save-edit-btn{
+    width: 89px;
+    height: 56px;
+    background: url("assets/img/ok-btn.svg") no-repeat 0;
     background-position: 20px 15px;
     background-color: #2A3647;
 }
@@ -712,6 +726,13 @@ nav {
     align-items: end;
     justify-content: space-between;
     margin-top: 128px;
+}
+.edit-task-btns {
+    display: flex;
+    align-items: end;
+    justify-content: flex-end;
+    margin-right: 70px;
+    padding-bottom: 20px;
 }
 
 .board {
@@ -837,8 +858,34 @@ nav {
     gap: 10px;
 }
 
+.subtask-detail{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: left;
+
+}
+.assign-detail{
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 100px;
+    .v-line{
+        display: none !important;
+    }
+}
+
 #progress {
     width: 128px;
+}
+
+.edit-Task-Board{
+    position: absolute;
+    top: 65px;
+    border-radius: 30px;
+    background-color: white;
+    width: 460px;
 }
 
 .icon-board {
@@ -978,7 +1025,8 @@ nav {
 }
 
 .contact-block:hover {
-    background-color: #dcdcdc !important;
+    background-color: #2A3647 !important;
+    color: white !important;
 }
 
 .contact-block:hover .icon-board {
@@ -1039,6 +1087,12 @@ nav {
 .display-none {
     display: none;
 }
+.assigned-detail-block{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-left: 20px;
+}
 
 .circle-small {
     display: flex;
@@ -1058,6 +1112,18 @@ nav {
 .assigned-circle {
     width: 48px;
     height: 48px;
+    border: 1px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin-right: -7px;
+    /* Negative margin for overlap */
+}
+.assigned-circle-small {
+    width: 38px;
+    height: 38px;
     border: 1px solid white;
     border-radius: 50%;
     display: flex;
@@ -1149,12 +1215,14 @@ nav {
     top: 15%;
     left: 30%;
     background-color: white;
-    width: 525px;
-    height: 50vh;
+    width: 420px;
+    height: 630px;
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px #00000029;
     padding: 48px 40px 48px 40px;
     font-size: 20px;
+    gap: 15px;
+    display: grid;
 
     .detail-top {
         display: flex;
@@ -1164,6 +1232,7 @@ nav {
 
     h3 {
         font-size: 61px;
+        margin: 0;
     }
 
 }

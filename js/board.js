@@ -132,6 +132,7 @@ function closeAdd() {
 
 function openDetail(id){
     let detailDiv = document.getElementById('taskDetail');
+    document.getElementById('popUp').classList.remove('display-none');
     startDragging(id);
     detailDiv.innerHTML = ``;
     let element = allTasks[currentDraggedElement];
@@ -139,6 +140,21 @@ function openDetail(id){
     let prioName = getPriorityName(element);
     generateDetail(detailDiv,element,priority,prioName);
     generateSubtaskDetail(element);
+    generateAssignUsersDetail(element);
+}
+async function deleteTask(){
+        allTasks.splice(currentDraggedElement,1);
+        await setItem('tasks', JSON.stringify(allTasks));
+        initBorad();
+        location.reload();
+    }
+
+function openEditTask() {
+    closeDetail();
+    document.getElementById('popUp').classList.remove('display-none');
+    document.getElementById('editTask').classList.remove('display-none');
+    document.getElementById('vLine').classList.add('display-none');
+    document.getElementById('h1Task').innerHTML = '';
 }
 
 function generateDetail(detailDiv, element, priority,prioName){
@@ -153,18 +169,18 @@ function generateDetail(detailDiv, element, priority,prioName){
     </div>
     <div><span>${element['description']}</span></div>
     <div><span>Due date:</span><span>${element['dueDate']}</span></div>
-    <div><span>Priosity:</span><span>${prioName}</span><img src="${priority}" alt=""></div>
+    <div><span>Priority:</span><span>${prioName}</span><img src="${priority}" alt=""></div>
     <span>Assigned To:</span>
-    <div class="progress" id="assignedTo">
+    <div class="assign-detail" id="assignedTo">
     </div>
     <span>Subtasks:</span>
-    <div class="progress" id="subTasks">
+    <div class="assign-detail" id="subTasks">
     </div>
     <div class="card-bottom-div"><div class="card-bottom" id=""></div>
     </div>
     <div class="contact-edit">
-    <div id="editContact" onclick="openForm('edit')" class="edit-contact"></div>
-    <div class="delete-contact" onclick="deleteContact()"></div>
+    <div id="editContact" onclick="openEditTask()" class="edit-contact"></div>
+    <div class="delete-contact" onclick="deleteTask()"></div>
     </div>
     `;
 }
@@ -175,17 +191,32 @@ function generateSubtaskDetail(element){
     for (let i = 0; i < element['subTasks'].length; i++) {
         const subtask = element['subTasks'][i];
         subtasks.innerHTML +=`
-        <div class="input-subtask">
-        <div class="subtaskIcons">
+        <div class="subtask-detail s16">
+        <div class="">
         <input type="checkbox" name="" id="${i}">
         </div>
-        <input id=subTask${i}  type="text" disabled   value="${subtask['task']}">
+        <span>${subtask['task']}</span>
         </div>
         `;
     }
 }
+function generateAssignUsersDetail(element) {
+    let assignCard = document.getElementById('assignedTo');
+    for (let index = 0; index < element['assigned'].length; index++) {
+        const element2 = element['assigned'][index];
+        const firstLetter = getLetters(element2['firstname'])
+        assignCard.innerHTML += `
+        <div class="assigned-detail-block s19">
+        <div class="assigned-circle-small s12" style="background-color: ${element2['color']};">${firstLetter}</div>
+        <span>${element2['firstname']}</span>
+        </div>
+        `
+    };
+}
+
 
 function closeDetail(){
     let detailDiv = document.getElementById('taskDetail');
     detailDiv.innerHTML = '';
+    document.getElementById('popUp').classList.add('display-none');
 }
