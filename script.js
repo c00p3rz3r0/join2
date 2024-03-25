@@ -32,17 +32,17 @@ function includeHTML() {
     restoreActUser();
   }
 
-  function initsummary(){
-    actUser();
-    loadUsers();
+  async function initsummary(){
+    await actUser();
+    await loadUsers();
     document.getElementById('userName').innerHTML = name;
-    initSummaryForm();
+    await initSummaryForm();
   }
 
-  function initTask(){
-    actUser();
-    loadUsers();
-    initTaskform();
+  async function initTask(){
+    await actUser();
+    await loadUsers();
+    await initTaskform();
   }
 
   function initBorad(){
@@ -52,8 +52,8 @@ function includeHTML() {
   }
 
   async function initContact(){
-    actUser();
-    loadUsers();
+    await actUser();
+    await loadUsers();
     await loadAllContacts();
     await sortContact();
     await loadContactPage();
@@ -86,6 +86,14 @@ async function loadAllContacts() {
   }
 
 }
+function loadSubMenu(i){
+  let subMenu = document.getElementById('subMenu'+i);
+    if (subMenu.classList.contains('display-none')) {
+      document.getElementById('subMenu'+i).classList.remove('display-none');
+    }else
+    document.getElementById('subMenu'+i).classList.add('display-none');
+}
+
 
 function sortContact(){
   allContacts.sort(function(a, b){

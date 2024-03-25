@@ -115,13 +115,24 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function openAddTask() {
+function openAddTask(index) {
     document.getElementById('addTaskBoard').classList.remove('display-none');
     document.getElementById('bg-popup').classList.remove('display-none');
     document.getElementById('bg-popup').classList.add('d-flex');
     document.getElementById('task-header-temp').classList.add('display-none');
     document.getElementById('addTaskBoard2').classList.remove('add-task-page');
+    if (index === 1) {
+        openEditInformation();
+        window.alert('Edit dosen´t word :-)')
+    }
+}
 
+function openEditInformation(){
+    let element = allTasks[currentDraggedElement];
+    document.getElementById('taskTitle').value = element['title'];
+    document.getElementById('taskDescription').value = element['description'];
+    document.getElementById('taskTitle').value = element['title'];
+    document.getElementById('taskTitle').value = element['title'];
 }
 function closeAdd() {
     document.getElementById('addTaskBoard').classList.add('display-none');
@@ -149,13 +160,6 @@ async function deleteTask(){
         location.reload();
     }
 
-function openEditTask() {
-    closeDetail();
-    document.getElementById('popUp').classList.remove('display-none');
-    document.getElementById('editTask').classList.remove('display-none');
-    document.getElementById('vLine').classList.add('display-none');
-    document.getElementById('h1Task').innerHTML = '';
-}
 
 function generateDetail(detailDiv, element, priority,prioName){
     detailDiv.innerHTML = `
@@ -179,7 +183,7 @@ function generateDetail(detailDiv, element, priority,prioName){
     <div class="card-bottom-div"><div class="card-bottom" id=""></div>
     </div>
     <div class="contact-edit">
-    <div id="editContact" onclick="openEditTask()" class="edit-contact"></div>
+    <div id="editContact" onclick="openAddTask(1)" class="edit-contact"></div>
     <div class="delete-contact" onclick="deleteTask()"></div>
     </div>
     `;
@@ -213,7 +217,6 @@ function generateAssignUsersDetail(element) {
         `
     };
 }
-
 
 function closeDetail(){
     let detailDiv = document.getElementById('taskDetail');

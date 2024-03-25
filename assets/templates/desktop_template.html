@@ -8,11 +8,17 @@
         </div>
         <div class="header-right">
             <img src="assets/img/help.svg" alt="">
-            <div class="circle">
+            <div class="circle" onclick="loadSubMenu(1)">
                 <p id="actUser"></p>
             </div>
         </div>
-
+        <div id="subMenu1" class="display-none sub-menu">
+            <div>
+                <div class="sub-link"><a href="impressum.html">Legal Notice</a></div>
+                <div class="sub-link"><a href="datenschutzerkl.html">Privacy Policy</a></div>
+                <div class="sub-link"><a href="./index.html">Log Out</a></div>
+            </div>
+        </div>
     </header>
 
     <nav class="MobileNo">
@@ -40,8 +46,8 @@
 
 
         <div class="site-footer MobileNo">
-            <a href="">Privacy Policy</a>
-            <a href="">Legal notice</a>
+            <a href="../datenschutzerkl.html">Privacy Policy</a>
+            <a href="../impressum.html">Legal notice</a>
         </div>
 
     </nav>
