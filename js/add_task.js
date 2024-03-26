@@ -5,6 +5,7 @@ let allAssigned = [];
 const htmlfields = ['assinedPersons', 'task-list'];
 let taskIdCounter = 0;
 let subTasks = [];
+let defaultCategories =['To Do', 'In progress', 'Await feedback','Done'];
 
 async function initTaskform(){
     await loadContacts();

@@ -12,6 +12,17 @@ async function initBoardForm() {
     await sortContact();
 }
 
+function updateHTML() {
+    let todo = allTasks.filter(t => t['category'] == 'To Do');
+    loadCards(todo, 'boardToDo');
+    let inProgress = allTasks.filter(t => t['category'] == 'In progress');
+    loadCards(inProgress, 'boardProgress');
+    let awaitFeedback = allTasks.filter(t => t['category'] == 'Await feedback');
+    loadCards(awaitFeedback, 'boardFeedback');
+    let done = allTasks.filter(t => t['category'] == 'Done');
+    loadCards(done, 'boardDone');
+}
+
 function loadCards(array, boardCat) {
     document.getElementById(boardCat).innerHTML = ``;
     if (array.length === 0) {
@@ -42,17 +53,6 @@ function generateCard(boardCat, element, i) {
     <div class="card-bottom-div"><div class="card-bottom" id="bottom${boardCat}${i}"></div>
     <img src="${priority}" alt=""></div>
     `
-}
-
-function updateHTML() {
-    let todo = allTasks.filter(t => t['category'] == 'To Do');
-    loadCards(todo, 'boardToDo');
-    let inProgress = allTasks.filter(t => t['category'] == 'In progress');
-    loadCards(inProgress, 'boardProgress');
-    let awaitFeedback = allTasks.filter(t => t['category'] == 'Await feedback');
-    loadCards(awaitFeedback, 'boardFeedback');
-    let done = allTasks.filter(t => t['category'] == 'Done');
-    loadCards(done, 'boardDone');
 }
 
 function getPriority(element) {
@@ -123,17 +123,46 @@ function openAddTask(index) {
     document.getElementById('addTaskBoard2').classList.remove('add-task-page');
     if (index === 1) {
         openEditInformation();
-        window.alert('Edit dosen´t word :-)')
     }
 }
 
-function openEditInformation(){
+function openEditInformation() {
     let element = allTasks[currentDraggedElement];
     document.getElementById('taskTitle').value = element['title'];
     document.getElementById('taskDescription').value = element['description'];
     document.getElementById('taskTitle').value = element['title'];
     document.getElementById('taskTitle').value = element['title'];
+    document.getElementById('dueDate').value = element['dueDate'];
+    showActualAssignedPersons(element);
+    selectPriority(element['prio']); 
+    selectCategory(element);
 }
+
+function showActualAssignedPersons(element) {
+    let assDiv = document.getElementById('assinedPersons');
+    assignedPerson = element['assigned'];
+    assDiv.innerHTML = ``;
+    for (let i = 0; i < assignedPerson.length; i++) {
+        const element = assignedPerson[i];
+        const firstLetter = getLetters(element['firstname']) //element['firstname'].charAt(0).toUpperCase()+element['firstname'].ch;
+        assDiv.innerHTML += `
+        <div>
+        <div class="assigned-circle" style="background-color: ${element['color']};">${firstLetter}</div>
+        </div>
+        `;
+    }
+}
+
+function selectCategory(element) {
+    let selectElement = document.getElementById("taskCategory");
+    defaultCategories.forEach(function(category) {
+        let option = selectElement.querySelector("option[value='" + category + "']");
+        if (option['value'] === element['category']) {
+            option.selected = true;
+        }
+    });
+}
+
 function closeAdd() {
     document.getElementById('addTaskBoard').classList.add('display-none');
     document.getElementById('task-header-temp').classList.remove('display-none');
@@ -141,7 +170,7 @@ function closeAdd() {
     document.getElementById('bg-popup').classList.add('display-none');
 }
 
-function openDetail(id){
+function openDetail(id) {
     let detailDiv = document.getElementById('taskDetail');
     document.getElementById('popUp').classList.remove('display-none');
     startDragging(id);
@@ -149,19 +178,22 @@ function openDetail(id){
     let element = allTasks[currentDraggedElement];
     let priority = getPriority(element);
     let prioName = getPriorityName(element);
-    generateDetail(detailDiv,element,priority,prioName);
+    generateDetail(detailDiv, element, priority, prioName);
     generateSubtaskDetail(element);
     generateAssignUsersDetail(element);
 }
-async function deleteTask(){
-        allTasks.splice(currentDraggedElement,1);
-        await setItem('tasks', JSON.stringify(allTasks));
-        initBorad();
-        location.reload();
-    }
-
-
-function generateDetail(detailDiv, element, priority,prioName){
+function closeDetail() {
+    let detailDiv = document.getElementById('taskDetail');
+    detailDiv.innerHTML = '';
+    document.getElementById('popUp').classList.add('display-none');
+}
+async function deleteTask() {
+    allTasks.splice(currentDraggedElement, 1);
+    await setItem('tasks', JSON.stringify(allTasks));
+    initBorad();
+    location.reload();
+}
+function generateDetail(detailDiv, element, priority, prioName) {
     detailDiv.innerHTML = `
     <div class="board-card-detail ">
     <div class="detail-top">
@@ -188,13 +220,12 @@ function generateDetail(detailDiv, element, priority,prioName){
     </div>
     `;
 }
-
-function generateSubtaskDetail(element){
+function generateSubtaskDetail(element) {
     let subtasks = document.getElementById('subTasks');
     subtasks.innerHTML = '';
     for (let i = 0; i < element['subTasks'].length; i++) {
         const subtask = element['subTasks'][i];
-        subtasks.innerHTML +=`
+        subtasks.innerHTML += `
         <div class="subtask-detail s16">
         <div class="">
         <input type="checkbox" name="" id="${i}">
@@ -218,8 +249,3 @@ function generateAssignUsersDetail(element) {
     };
 }
 
-function closeDetail(){
-    let detailDiv = document.getElementById('taskDetail');
-    detailDiv.innerHTML = '';
-    document.getElementById('popUp').classList.add('display-none');
-}
