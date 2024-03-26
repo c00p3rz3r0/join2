@@ -4,8 +4,8 @@
     <h1 id="h1Task">Add Task</h1>
   </div>
 
-  <form onsubmit="addTask(); return false;" id="formTask">
-    <div class="add-task s20">
+  <form onsubmit="sendForm(); return false;" id="formTask">
+    <div class="add-task s20" id="formElements">
       <div class="add-task-input-grp">
         <div class="add-task-box">
           <label for="taskTitle">Title<span style="color: red">*</span></label>
@@ -62,6 +62,7 @@
             <option value="To Do">To Do</option>
             <option value="In progress">In progress</option>
             <option value="Await feedback">Await feedback</option>
+            <option class="display-none" id="doneSelect" value="Done">Done</option>
           </select>
         </div>
         <div class="add-task-box">
@@ -81,9 +82,10 @@
         <span style="color: red">*</span><span>This field is required</span>
       </div>
       <div class="gap16">
-        <input onclick="clearTaskForm();" class="btn-seconday-wo-icon clear-task-btn s20 fw400" type="button"
+        <input onclick="clearTaskForm();" id="claer" class="btn-seconday-wo-icon clear-task-btn s20 fw400" type="button"
           value="" />
         <input class="dark-btn creat-task-btn s21 fw700" type="submit" id="submitTask" value="" />
+        <input class="dark-btn save-edit-btn display-none s21 fw700" type="submit" id="submitEditTask" value="" />
       </div>
     </div>
   </form>

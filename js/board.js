@@ -117,25 +117,39 @@ function allowDrop(ev) {
 
 function openAddTask(index) {
     document.getElementById('addTaskBoard').classList.remove('display-none');
+    document.getElementById('popUp').classList.remove('display-none');
+
+    document.getElementById('doneSelect').classList.remove('display-none');
     document.getElementById('bg-popup').classList.remove('display-none');
     document.getElementById('bg-popup').classList.add('d-flex');
     document.getElementById('task-header-temp').classList.add('display-none');
     document.getElementById('addTaskBoard2').classList.remove('add-task-page');
     if (index === 1) {
         openEditInformation();
+        let detailDiv = document.getElementById('taskDetail');
+        detailDiv.innerHTML = '';
     }
 }
 
 function openEditInformation() {
+    edit = true;
     let element = allTasks[currentDraggedElement];
+    document.getElementById('addTaskBoard').classList.remove('add-task-board');
+    document.getElementById('addTaskBoard').classList.add('edit-task-board');
+    document.getElementById('submitEditTask').classList.remove('display-none');
+    document.getElementById('formElements').classList.remove('add-task');
+    document.getElementById('submitTask').classList.add('display-none');
+    document.getElementById('claer').classList.add('display-none');
     document.getElementById('taskTitle').value = element['title'];
     document.getElementById('taskDescription').value = element['description'];
     document.getElementById('taskTitle').value = element['title'];
     document.getElementById('taskTitle').value = element['title'];
     document.getElementById('dueDate').value = element['dueDate'];
     showActualAssignedPersons(element);
+    subTasks = element['subTasks'];
     selectPriority(element['prio']); 
     selectCategory(element);
+    generateSubTask();
 }
 
 function showActualAssignedPersons(element) {
@@ -155,12 +169,23 @@ function showActualAssignedPersons(element) {
 
 function selectCategory(element) {
     let selectElement = document.getElementById("taskCategory");
-    defaultCategories.forEach(function(category) {
-        let option = selectElement.querySelector("option[value='" + category + "']");
-        if (option['value'] === element['category']) {
+    let categoryValue = element['category']; // Wert, der ausgewählt werden soll
+
+    // Iteriere über alle Optionen im <select>-Element
+    for (let i = 0; i < selectElement.options.length; i++) {
+        let option = selectElement.options[i];
+        // Überprüfe, ob der Wert der Option mit dem Wert übereinstimmt, der ausgewählt werden soll
+        if (option.value === categoryValue) {
+            // Wenn ja, setze die Option als ausgewählt und beende die Schleife
             option.selected = true;
+            break;
         }
-    });
+    }
+}
+
+async function saveTask() {
+    allTasks.splice(currentDraggedElement, 1);
+    await addTask();
 }
 
 function closeAdd() {
@@ -168,6 +193,7 @@ function closeAdd() {
     document.getElementById('task-header-temp').classList.remove('display-none');
     document.getElementById('bg-popup').classList.remove('d-flex');
     document.getElementById('bg-popup').classList.add('display-none');
+    document.getElementById('popUp').classList.add('display-none');
 }
 
 function openDetail(id) {

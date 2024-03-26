@@ -6,6 +6,7 @@ const htmlfields = ['assinedPersons', 'task-list'];
 let taskIdCounter = 0;
 let subTasks = [];
 let defaultCategories =['To Do', 'In progress', 'Await feedback','Done'];
+let edit = false;
 
 async function initTaskform(){
     await loadContacts();
@@ -17,6 +18,14 @@ async function initTaskform(){
 
 function clearTaskForm(){
     location.reload();
+}
+
+function sendForm(){
+    if (edit === false) {
+        addTask();
+    }else{
+        saveTask();
+    }
 }
 
 async function addTask() {
