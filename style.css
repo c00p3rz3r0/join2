@@ -8,9 +8,9 @@ a {
     text-decoration: none;
 }
 
-div {
+/*div {
     all: unset;
-}
+}*/
 
 .s21 {
     font-size: 21px;
@@ -18,6 +18,12 @@ div {
 
 .s16 {
     font-size: 16px;
+}
+.s19{
+    font-size: 19px;
+}
+.s12{
+    font-size: 12px;
 }
 
 .s20 {
@@ -248,6 +254,7 @@ h1 {
     cursor: pointer;
 }
 
+
 #addSubtask {
     gap: 5px;
     display: flex;
@@ -427,8 +434,6 @@ nav {
     display: flex;
     box-sizing: border-box;
     padding-top: 80px;
-    padding-bottom: 80px;
-
     gap: 30px;
     align-items: center;
 }
@@ -532,10 +537,7 @@ nav {
 .add-task {
     display: flex;
     gap: 40px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+
 }
 
 .add-task-page {
@@ -698,6 +700,13 @@ nav {
     background-position: 20px 15px;
     background-color: #2A3647;
 }
+.save-edit-btn{
+    width: 89px;
+    height: 56px;
+    background: url("assets/img/ok-btn.svg") no-repeat 0;
+    background-position: 20px 15px;
+    background-color: #2A3647;
+}
 
 .clear-task-btn {
     outline: none;
@@ -711,7 +720,13 @@ nav {
     display: flex;
     align-items: end;
     justify-content: space-between;
-    margin-top: 128px;
+}
+.edit-task-btns {
+    display: flex;
+    align-items: end;
+    justify-content: flex-end;
+    margin-right: 70px;
+    padding-bottom: 20px;
 }
 
 .board {
@@ -719,7 +734,9 @@ nav {
     flex-direction: column;
     padding-left: 240px;
     gap: 60px;
-    margin: 80px;
+    margin-top: 80px;
+    margin-left: 80px;
+    margin-right: 80px;
     max-width: 1300px;
 }
 
@@ -755,6 +772,7 @@ nav {
     width: 312px;
     height: 48px;
     position: relative;
+
 }
 
 .search input {
@@ -837,8 +855,36 @@ nav {
     gap: 10px;
 }
 
+.subtask-detail{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: left;
+
+}
+.assign-detail{
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 100px;
+    .v-line{
+        display: none !important;
+    }
+}
+
 #progress {
     width: 128px;
+}
+
+.edit-Task-Board{
+    position: absolute;
+    top: 65px;
+    border-radius: 30px;
+    background-color: white;
+    width: 460px;
+    overflow-y: scroll;
+    height: 600px;
 }
 
 .icon-board {
@@ -978,7 +1024,8 @@ nav {
 }
 
 .contact-block:hover {
-    background-color: #dcdcdc;
+    background-color: #2A3647 !important;
+    color: white !important;
 }
 
 .contact-block:hover .icon-board {
@@ -1036,8 +1083,12 @@ nav {
     color: white;
 }
 
-.display-none {
-    display: none;
+
+.assigned-detail-block{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-left: 20px;
 }
 
 .circle-small {
@@ -1058,6 +1109,18 @@ nav {
 .assigned-circle {
     width: 48px;
     height: 48px;
+    border: 1px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin-right: -7px;
+    /* Negative margin for overlap */
+}
+.assigned-circle-small {
+    width: 38px;
+    height: 38px;
     border: 1px solid white;
     border-radius: 50%;
     display: flex;
@@ -1129,6 +1192,33 @@ nav {
         }
     }
 }
+.edit-task-board {
+    flex-direction: row;
+    background-color: white;
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    align-items: baseline;
+    gap: 30px;
+    overflow-y: scroll;
+    height: 600px;
+
+    #formTask {
+        .add-task-btns {
+            top: 700px;
+        }
+        #vLine{
+            display: none;
+        }
+        #formElements{
+
+        }
+    }
+    .header-add-task-board{
+        display: none;
+    }
+
+}
 
 .d-flex {
     display: flex;
@@ -1149,12 +1239,14 @@ nav {
     top: 15%;
     left: 30%;
     background-color: white;
-    width: 525px;
-    height: 50vh;
+    width: 420px;
+    height: 630px;
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px #00000029;
     padding: 48px 40px 48px 40px;
     font-size: 20px;
+    gap: 15px;
+    display: grid;
 
     .detail-top {
         display: flex;
@@ -1164,10 +1256,18 @@ nav {
 
     h3 {
         font-size: 61px;
+        margin: 0;
     }
 
 }
-
+.edit-task {
+    display: flex;
+    padding-top: 30px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
 
 .header-add-task-board {
     display: flex;
@@ -1186,15 +1286,26 @@ nav {
 }
 
 .bg-popup {
-    background-color: #2d2d2d5c;
-
+    position: absolute; /* Positionierung absolut, um über der anderen Div zu liegen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Leicht graue Hintergrundfarbe mit Transparenz */
+    z-index: 0;
 }
+.bg-popup2 {
+    background-color: #2d2d2d5c;
+    width: 100vw;
+    height: 100vh;
+}
+
 
 .MobileYes {
     display: none;
 }
 
-.add-contact-form {
+.add-contact-form{
     display: flex;
     z-index: 9999;
     position: absolute;
@@ -1205,44 +1316,40 @@ nav {
     height: 592px;
     width: 1212px;
     align-items: center;
-
-    .lodo-add-contact {
+    .lodo-add-contact{
         border-top-left-radius: 27px;
         border-bottom-left-radius: 27px;
         width: 467px;
         background-color: #2A3647;
         height: 592px;
-
-        img {
+        img{
             padding-top: 150px;
-            padding-left: 40px;
-        }
+            padding-left: 40px;        }
     }
 }
 
-.add-contact-form-right {
+.add-contact-form-right{
     width: 745px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 
-    .contacts-right-fields {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        align-items: center;
+    .contacts-right-fields{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
     }
 }
 
-.clear-contact-btn {
+.clear-contact-btn{
     outline: none;
     width: 126px;
     height: 56px;
     background: url("assets/img/cancle-new-contact.svg") no-repeat 0;
     background-position: 18px 15px;
 }
-
-.creat-contact-btn {
+.creat-contact-btn{
     width: 215px;
     height: 56px;
     background: url("assets/img/add-new-contact-btn.svg") no-repeat 0;
@@ -1250,13 +1357,47 @@ nav {
     background-color: #2A3647;
 }
 
-.Content-page {
+.Content-page{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     gap: 16px;
 }
+.sub-menu {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 130px;
+    color: white;
+    display: flex;
+    background-color: #2a3647;
+    position: fixed;
+    top: 118px;
+    right: 0px;
+    border-radius: 20px 0px 20px 20px;
+    -webkit-border-radius: 20px 0px 20px 20px;
+    -moz-border-radius: 20px 0px 20px 20px;
+    z-index: 3000;
+}
+.display-none {
+    display: none;
+}
 
+
+a {
+    text-decoration: none !important;
+    color: #CDCDCD !important;
+    font-weight: normal;
+    font-size: 16px !important;
+}
+
+.sub-link {
+    width: 130px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+}
 @media only screen and (max-width: 1100px) {
     .p-hello {
         display: none;

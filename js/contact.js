@@ -3,7 +3,7 @@ let globalIndexVariable;  // Variable, um global auf den aktuellen Index zugreig
 let colors = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B'];
 let currentLetter = null;
 let currentContact;
-let edit = false;
+let editContactDetails = false;
 
 
 function loadContactPage(){
@@ -87,7 +87,7 @@ async function addContact(){
     let cEmail = document.getElementById('cEmail');
     let cPhone = document.getElementById('cPhone');
     let bgcolor = getRandomColor();
-    if (edit === true) {
+    if (editContactDetails === true) {
         allContacts[currentContact].name = cName.value;
         allContacts[currentContact].email = cEmail.value;
         allContacts[currentContact].phone = cPhone.value;
@@ -99,7 +99,7 @@ async function addContact(){
         bgcolor: bgcolor
     })}
     await setItem('contact', JSON.stringify(allContacts));
-    edit = false;
+    editContactDetails = false;
     document.getElementById('formContact').reset();
     document.getElementById('add-contact-form').classList.remove('add-contact-form');
     initContact();
@@ -111,14 +111,14 @@ function getRandomColor(){
 }
 
 function addContactForm(){
-    document.getElementById('add-contact-form').classList.add('add-contact-form');
+    document.getElementById('add-contact-form').classList.remove('display-none');
     document.getElementById('txtImg').src='/assets/img/add-contact-site.svg';
     document.getElementById('newContactImg').classList.remove('display-none');
     
 }
     
 function editContactForm(){
-    document.getElementById('add-contact-form').classList.add('add-contact-form');
+    document.getElementById('add-contact-form').classList.remove('add-contact-form');
     document.getElementById('submitContact').style.backgroundImage = "url('assets/img/contact-save.svg')";
     document.getElementById('submitContact').style.width = "120px";
     document.getElementById('txtImg').src='/assets/img/edit-contact-text.svg';
@@ -138,7 +138,7 @@ function openForm(index){
     if (index === "add") {
         addContactForm();
     }else if (index === "edit") {
-        edit = true;
+        editContactDetails = true;
         editContactForm();
     }
 }
