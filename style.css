@@ -8,9 +8,9 @@ a {
     text-decoration: none;
 }
 
-/*div {
+div {
     all: unset;
-}*/
+}
 
 .s21 {
     font-size: 21px;
@@ -18,12 +18,6 @@ a {
 
 .s16 {
     font-size: 16px;
-}
-.s19{
-    font-size: 19px;
-}
-.s12{
-    font-size: 12px;
 }
 
 .s20 {
@@ -253,7 +247,6 @@ h1 {
 .subtaskIcons img {
     cursor: pointer;
 }
-
 
 #addSubtask {
     gap: 5px;
@@ -539,7 +532,10 @@ nav {
 .add-task {
     display: flex;
     gap: 40px;
-
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .add-task-page {
@@ -702,13 +698,6 @@ nav {
     background-position: 20px 15px;
     background-color: #2A3647;
 }
-.save-edit-btn{
-    width: 89px;
-    height: 56px;
-    background: url("assets/img/ok-btn.svg") no-repeat 0;
-    background-position: 20px 15px;
-    background-color: #2A3647;
-}
 
 .clear-task-btn {
     outline: none;
@@ -722,13 +711,7 @@ nav {
     display: flex;
     align-items: end;
     justify-content: space-between;
-}
-.edit-task-btns {
-    display: flex;
-    align-items: end;
-    justify-content: flex-end;
-    margin-right: 70px;
-    padding-bottom: 20px;
+    margin-top: 128px;
 }
 
 .board {
@@ -772,7 +755,6 @@ nav {
     width: 312px;
     height: 48px;
     position: relative;
-
 }
 
 .search input {
@@ -855,34 +837,8 @@ nav {
     gap: 10px;
 }
 
-.subtask-detail{
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    justify-content: left;
-
-}
-.assign-detail{
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-    overflow-y: auto;
-    max-height: 100px;
-    .v-line{
-        display: none !important;
-    }
-}
-
 #progress {
     width: 128px;
-}
-
-.edit-Task-Board{
-    position: absolute;
-    top: 65px;
-    border-radius: 30px;
-    background-color: white;
-    width: 460px;
 }
 
 .icon-board {
@@ -1022,8 +978,7 @@ nav {
 }
 
 .contact-block:hover {
-    background-color: #2A3647 !important;
-    color: white !important;
+    background-color: #dcdcdc;
 }
 
 .contact-block:hover .icon-board {
@@ -1081,12 +1036,8 @@ nav {
     color: white;
 }
 
-
-.assigned-detail-block{
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding-left: 20px;
+.display-none {
+    display: none;
 }
 
 .circle-small {
@@ -1107,18 +1058,6 @@ nav {
 .assigned-circle {
     width: 48px;
     height: 48px;
-    border: 1px solid white;
-    border-radius: 50%;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    margin-right: -7px;
-    /* Negative margin for overlap */
-}
-.assigned-circle-small {
-    width: 38px;
-    height: 38px;
     border: 1px solid white;
     border-radius: 50%;
     display: flex;
@@ -1190,31 +1129,6 @@ nav {
         }
     }
 }
-.edit-task-board {
-    flex-direction: row;
-    background-color: white;
-    border-radius: 20px;
-    padding: 40px;
-    display: flex;
-    align-items: baseline;
-    gap: 30px;
-
-    #formTask {
-        .add-task-btns {
-            top: 700px;
-        }
-        #vLine{
-            display: none;
-        }
-        #formElements{
-
-        }
-    }
-    .header-add-task-board{
-        display: none;
-    }
-
-}
 
 .d-flex {
     display: flex;
@@ -1235,14 +1149,12 @@ nav {
     top: 15%;
     left: 30%;
     background-color: white;
-    width: 420px;
-    height: 630px;
+    width: 525px;
+    height: 50vh;
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px #00000029;
     padding: 48px 40px 48px 40px;
     font-size: 20px;
-    gap: 15px;
-    display: grid;
 
     .detail-top {
         display: flex;
@@ -1252,18 +1164,10 @@ nav {
 
     h3 {
         font-size: 61px;
-        margin: 0;
     }
 
 }
-.edit-task {
-    display: flex;
-    padding-top: 30px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .header-add-task-board {
     display: flex;
@@ -1282,20 +1186,9 @@ nav {
 }
 
 .bg-popup {
-    position: absolute; /* Positionierung absolut, um über der anderen Div zu liegen */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Leicht graue Hintergrundfarbe mit Transparenz */
-    z-index: 0;
-}
-.bg-popup2 {
     background-color: #2d2d2d5c;
-    width: 100vw;
-    height: 100vh;
-}
 
+}
 
 .MobileYes {
     display: none;
@@ -1357,47 +1250,13 @@ nav {
     background-color: #2A3647;
 }
 
-.Content-page{
+.Content-page {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     gap: 16px;
 }
-.sub-menu {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 150px;
-    height: 130px;
-    color: white;
-    display: flex;
-    background-color: #2a3647;
-    position: fixed;
-    top: 118px;
-    right: 0px;
-    border-radius: 20px 0px 20px 20px;
-    -webkit-border-radius: 20px 0px 20px 20px;
-    -moz-border-radius: 20px 0px 20px 20px;
-    z-index: 3000;
-}
-.display-none {
-    display: none;
-}
 
-
-a {
-    text-decoration: none !important;
-    color: #CDCDCD !important;
-    font-weight: normal;
-    font-size: 16px !important;
-}
-
-.sub-link {
-    width: 130px;
-    height: 46px;
-    display: flex;
-    align-items: center;
-}
 @media only screen and (max-width: 1100px) {
     .p-hello {
         display: none;
@@ -1499,6 +1358,14 @@ a {
 
     }
 
+    .btn-grp {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+    }
+
     .add-task-overflow {
         position: relative;
     }
@@ -1519,10 +1386,12 @@ a {
     .add-task-btns {
         margin-top: 12px;
         margin-bottom: 100px;
+        flex-direction: column;
+        align-items: center;
     }
 
     .add-task-input-grp {
-        width: calc(100% - 16px);
+        width: 95%;
         max-width: 440px;
     }
 
@@ -1540,20 +1409,20 @@ a {
     .row {
         width: unset;
         flex-direction: row;
-        gap: 25px;
+        gap: 8px;
     }
 
-    .first-row-card{
-        width: 186px;
+    .first-row-card {
+        width: 175px;
         height: 110px;
     }
 
     .secon-row-card {
-        width: 396px;
+        width: 350px;
         height: 110px;
     }
 
-    .thirs-row-card{
+    .thirs-row-card {
         width: 116px;
         height: 116px;
     }
@@ -1567,47 +1436,123 @@ a {
         padding-top: 86px;
     }
 
-   
+    .Content-page {
+        gap: unset;
+    }
+
+    .board-card-detail {
+        left: unset;
+        height: unset;
+        width: unset;
+        margin: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .detail-top{
+        width: 100%;
+    }
+
+    .add-contact{
+        width: 300px;
+        background-position: center;
+    }
+
+    .contact-side{
+        width: unset;
+    }
+
+    .lodo-add-contact{
+        display: none;
+    }
+
+    .input-login input{
+        width:280px;
+    }
+    .creat-contact-btn{
+        width: 180px;
+    }
+
+    .login-form{
+        width: unset;
+    }
+
+    .add-contact-form-right {
+        width: unset;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+    }
+
+    .login-frame{
+        width: unset;
+        padding:8px;
+    }
+
+    .login-btn-area{
+        gap: 2px;
+    }
+
+    .logo-mob-index{
+        height: 50px;
+    }
+
+    .add-contact-form{
+        width: unset;
+        left: unset;
+        top: 100px;
+        margin: 8px;
+    }
+
+    h3 {
+        margin: 16px 0px;
+    }
+
+
 
     .Deadline-Mob {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        
+
     }
 
-    .Deadline-mob-content{
+    .Deadline-mob-content {
         padding: 8px;
     }
 
-    .contacts{
+    .contacts {
         left: unset;
     }
 
-    .contacts-right{
+    .contacts-right {
         display: none;
     }
 
-    .contact-list{
+    .contact-list {
         padding-bottom: 100px;
         width: unset;
     }
 
-    .contact-side{
+    .contact-side {
         padding-top: 80px;
     }
 
-    .p-headline{
-font-size: 47px;
+    .p-headline {
+        font-size: 47px;
     }
-.p-summary{
-    font-size: 14px;
-}
 
-.img-summary-mob{
-    width: 40px;
-    height: 40px;
-}
+    .p-summary {
+        font-size: 14px;
+    }
+
+    .img-summary-mob {
+        width: 40px;
+        height: 40px;
+    }
 
 }
 

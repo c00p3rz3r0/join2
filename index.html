@@ -24,7 +24,7 @@
         <img src="assets/img/logo-dark.svg" alt="" style="height: 244px;" id="LogoStartTransit">
         <div class="login-head" style="display: none;" id="LoginHead">
             <div class="logo-left">
-                <img src="assets/img/logo-dark.svg" alt="">
+                <img class="logo-mob-index" src="assets/img/logo-dark.svg" alt="">
             </div>
             <div class="sing-up">
                 <div style="font-size: 20px;">Not a Join User?</div>
@@ -70,12 +70,22 @@
             var logo = document.getElementById('LogoStartTransit');
             var login = document.getElementById('LoginHead');
             var loginOverlay = document.getElementById('LoginFrame');
-            var loginfooter = document.getElementById('LogoFooter')
-            logo.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
-            logo.style.transform = 'translate(-200%, -200%) scale(0.5)';
-            
+            var loginfooter = document.getElementById('LogoFooter');
+    
+            // Check viewport width
+            var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+            if (viewportWidth >= 1100) {
+                // Apply transition and transformation for larger viewport
+                logo.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
+                logo.style.transform = 'translate(-200%, -200%) scale(0.5)';
+            } else {
+                // If viewport is smaller than 1100px, fade out the logo
+                logo.style.transition = 'opacity 1s ease-in-out';
+                logo.style.opacity = '0';
+            }
+    
             setTimeout(function () {
-                logo.style.display = 'none';
+                // Show login elements after a delay
                 login.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
                 login.style.display = 'flex';
                 loginOverlay.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
@@ -83,9 +93,11 @@
                 loginfooter.style.display = 'flex';
                 loginfooter.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
                 loginfooter.style.transform = 'opacity(1.0)';
-            }, 550)
+                logo.style.display = 'none';
+            }, 550);
         }, 1500); // 2-second delay
     </script>
+    
 
 
 
