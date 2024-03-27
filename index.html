@@ -26,7 +26,7 @@
             <div class="logo-left">
                 <img class="logo-mob-index" src="assets/img/logo-dark.svg" alt="">
             </div>
-            <div class="sing-up">
+            <div class="sing-up desktop MobileNo">
                 <div style="font-size: 20px;">Not a Join User?</div>
                 <a href="signup.html"><button class="dark-btn btn-sign-up btn-wo-icon s16 fw700">Sign up</button></a>
             </div>
@@ -58,9 +58,13 @@
                 </div>
             </form>
         </div>
+        <div class="sing-up display-none" id="footerUser">
+            <div style="font-size: 20px;">Not a Join User?</div>
+            <a href="signup.html"><button class="dark-btn btn-sign-up btn-wo-icon s16 fw700">Sign up</button></a>
+        </div>
         <div class="login-footer" style="display: none;" id="LogoFooter">
-            <a class="a-footer s16 fw400" href="#">Privacy Policy</a>
-            <a class="a-footer s16 fw400" href="#">Legal Notice</a>
+            <a class="a-footer s16 fw400" href="datenschutzerkl.html">Privacy Policy</a>
+            <a class="a-footer s16 fw400" href="impressum.html">Legal Notice</a>
         </div>
     </div>
 
@@ -71,6 +75,7 @@
             var login = document.getElementById('LoginHead');
             var loginOverlay = document.getElementById('LoginFrame');
             var loginfooter = document.getElementById('LogoFooter');
+            var footerUser = document.getElementById('footerUser');
     
             // Check viewport width
             var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
@@ -93,6 +98,9 @@
                 loginfooter.style.display = 'flex';
                 loginfooter.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
                 loginfooter.style.transform = 'opacity(1.0)';
+                footerUser.style.display = 'flex';
+                footerUser.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
+                footerUser.style.transform = 'opacity(1.0)';
                 logo.style.display = 'none';
             }, 550);
         }, 1500); // 2-second delay

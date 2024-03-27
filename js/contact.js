@@ -101,8 +101,9 @@ async function addContact(){
     await setItem('contact', JSON.stringify(allContacts));
     editContactDetails = false;
     document.getElementById('formContact').reset();
-    document.getElementById('add-contact-form').classList.remove('add-contact-form');
+    document.getElementById('add-contact-form').classList.add('display-none');
     initContact();
+    location.reload();
 }
 
 function getRandomColor(){
@@ -118,7 +119,7 @@ function addContactForm(){
 }
     
 function editContactForm(){
-    document.getElementById('add-contact-form').classList.remove('add-contact-form');
+    document.getElementById('add-contact-form').classList.remove('display-none');
     document.getElementById('submitContact').style.backgroundImage = "url('assets/img/contact-save.svg')";
     document.getElementById('submitContact').style.width = "120px";
     document.getElementById('txtImg').src='/assets/img/edit-contact-text.svg';
@@ -153,5 +154,5 @@ async function deleteContact(){
 function closeForm(){
     document.getElementById('formContact').reset();
     document.getElementById('newContactImg').classList.add('display-none');
-    document.getElementById('add-contact-form').classList.remove('add-contact-form');
+    document.getElementById('add-contact-form').classList.add('display-none');
 }

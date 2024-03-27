@@ -6,6 +6,7 @@ body {
 
 a {
     text-decoration: none;
+    color: white;
 }
 
 /*div {
@@ -999,7 +1000,7 @@ nav {
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    height: 93vh;
+    height: 88vh;
     overflow-y: scroll;
 }
 
@@ -1033,8 +1034,8 @@ nav {
 }
 
 .contact-mail {
-    text-decoration: none;
-    color: #007cee;
+    text-decoration: none !important;
+    color: #007cee !important;
 }
 
 .mobile {
@@ -1385,13 +1386,6 @@ nav {
 }
 
 
-a {
-    text-decoration: none !important;
-    color: #CDCDCD !important;
-    font-weight: normal;
-    font-size: 16px !important;
-}
-
 .sub-link {
     width: 130px;
     height: 46px;
@@ -1399,6 +1393,9 @@ a {
     align-items: center;
 }
 @media only screen and (max-width: 1100px) {
+    .sub-menu{
+        top: 75px;
+    }
     .p-hello {
         display: none;
     }
@@ -1436,7 +1433,9 @@ a {
         bottom: 0;
         z-index: 10000;
     }
-
+    .login-page{
+        width: 100vw;
+    }
     .board {
         padding-left: unset;
         margin-bottom: 100px;
@@ -1466,19 +1465,21 @@ a {
         padding: 15px 0 15px 0;
         flex-direction: column;
         gap: 6px;
-        border: 1px double #29ABE2;
         border-radius: 4px;
         border-color: #E7E7E7;
+    }
+    .activeLink{
+        background-color: #091931;
     }
 
     .FooTextMob {
         margin: unset;
-        font-family: Open Sans;
         font-size: 14px;
         font-weight: 400;
         line-height: 16.8px;
         text-align: left;
     }
+    
 
     .MobBoard {
         display: flex;
@@ -1502,21 +1503,49 @@ a {
     .btn-grp {
         display: flex;
         justify-content: center;
-        flex-direction: column;
+        flex-direction: row;
         gap: 8px;
         align-items: center;
     }
 
     .add-task-overflow {
-        position: relative;
+        z-index: 0;
+        overflow-y: scroll;
     }
 
     .v-line {
         display: none;
     }
+    .add-task-board{
+        position: relative;
+        left: unset;
+        display: block;
+        overflow-y: scroll;
+        padding: 0;
+        padding-left: 10px;
+        top: 160px;
+        #formTask{
+            width: 430px;
+            display: flex;
+            flex-direction: column;
+            .add-task{
+                display: block;
+            }
+        }
+    }
 
     .add-task-page {
+        position: relative;
         left: unset;
+        display: block;
+        #formTask{
+            width: 430px;
+            display: flex;
+            flex-direction: column;
+            .add-task{
+                display: block;
+            }
+        }
     }
 
     .content-header {
@@ -1597,8 +1626,10 @@ a {
     }
 
     .add-contact{
-        width: 300px;
-        background-position: center;
+        background: url('assets/img/add-contact-small.svg') no-repeat;
+        position: fixed;
+        bottom: 100px;
+        left: 340px;
     }
 
     .contact-side{
@@ -1610,7 +1641,7 @@ a {
     }
 
     .input-login input{
-        width:280px;
+        width:330px;
     }
     .creat-contact-btn{
         width: 180px;
@@ -1618,6 +1649,19 @@ a {
 
     .login-form{
         width: unset;
+    }
+    .login-btn{
+        width: 177px;
+    }
+    .sing-up{
+        padding-top: 60px;
+    }
+    .logo-left img{
+        width: 70px;
+        height: 70px;
+    }
+    .sign-up-head img{
+        left: -30px;
     }
 
     .add-contact-form-right {
@@ -1629,16 +1673,20 @@ a {
     }
 
     .login-frame{
-        width: unset;
-        padding:8px;
+        width: 80vw;
     }
 
     .login-btn-area{
-        gap: 2px;
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
     }
 
     .logo-mob-index{
         height: 50px;
+    }
+    .sign-in-frame{
+        width: 400px;
     }
 
     .add-contact-form{
@@ -1675,7 +1723,6 @@ a {
 
     .contact-list {
         padding-bottom: 100px;
-        width: unset;
     }
 
     .contact-side {
