@@ -23,6 +23,20 @@ function updateHTML() {
     loadCards(done, 'boardDone');
 }
 
+function searchTask() {
+    let searchValue = document.getElementById('searchInput').value;
+    for (let i = 0; i < allTasks.length; i++) {
+        const title = allTasks[i]['title'];
+        const description = allTasks[i]['description'];
+        let searchElement = allTasks[i]['createdAt'];
+        if (!(title.toLowerCase().includes(searchValue.toLowerCase())||description.toLowerCase().includes(searchValue.toLowerCase())) ) {//&& description.includes(searchValue) 
+            document.getElementById(searchElement).style.display = 'none';
+        }else{
+        document.getElementById(searchElement).style.display = 'block';
+    }
+    }
+}
+
 function loadCards(array, boardCat) {
     document.getElementById(boardCat).innerHTML = ``;
     if (array.length === 0) {
@@ -40,7 +54,7 @@ function generateCard(boardCat, element, i) {
     let subtaskAmount = element['subTasks'].length;
     let priority = getPriority(element);
     document.getElementById(boardCat).innerHTML += `
-    <div class="board-card" draggable="true" onclick="openDetail('${element['createdAt']}')" ondragstart="startDragging('${element['createdAt']}')">
+    <div class="board-card" id="${element['createdAt']}" draggable="true" onclick="openDetail('${element['createdAt']}')" ondragstart="startDragging('${element['createdAt']}')">
     <div><span class="lable-board-card">User Story</span></div>
     <div>
     <h3>${element['title']}</h3>
