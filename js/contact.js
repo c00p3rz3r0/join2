@@ -122,7 +122,7 @@ function getRandomColor(){
 
 function addContactForm(){
     document.getElementById('add-contact-form').classList.remove('display-none');
-    document.getElementById('txtImg').src='/assets/img/add-contact-site.svg';
+    document.getElementById('txtImg').src='assets/img/add-contact-site.svg';
     document.getElementById('newContactImg').classList.remove('display-none');
     if (window.innerWidth < 650) {
         document.getElementById('txtImg').src = 'assets/img/add-contact-site-resp.svg';
@@ -134,7 +134,7 @@ function editContactForm(){
     document.getElementById('add-contact-form').classList.remove('display-none');
     document.getElementById('submitContact').style.backgroundImage = "url('assets/img/contact-save.svg')";
     document.getElementById('submitContact').style.width = "120px";
-    document.getElementById('txtImg').src='/assets/img/edit-contact-text.svg';
+    document.getElementById('txtImg').src='assets/img/edit-contact-text.svg';
     let cName = document.getElementById('cName');
     let cEmail = document.getElementById('cEmail');
     let cPhone = document.getElementById('cPhone');
