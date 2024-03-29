@@ -63,6 +63,7 @@ async function initContact() {
   activeLink(4);
   loadDetail(0);
   document.getElementById('contactinfo').classList.remove('display-none');
+
 }
 
 async function loadAllTask() {

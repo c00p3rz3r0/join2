@@ -75,8 +75,10 @@
             var login = document.getElementById('LoginHead');
             var loginOverlay = document.getElementById('LoginFrame');
             var loginfooter = document.getElementById('LogoFooter');
-            var footerUser = document.getElementById('footerUser');
-    
+            if (window.innerWidth < 650) {
+                var loginfooterUser = document.getElementById('footerUser');
+            }
+
             // Check viewport width
             var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
             if (viewportWidth >= 1100) {
@@ -98,9 +100,12 @@
                 loginfooter.style.display = 'flex';
                 loginfooter.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
                 loginfooter.style.transform = 'opacity(1.0)';
-                footerUser.style.display = 'flex';
-                footerUser.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
-                footerUser.style.transform = 'opacity(1.0)';
+                if (window.innerWidth < 650) {
+                loginfooterUser.style.display = 'flex';
+                loginfooterUser.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
+                loginfooterUser.style.transform = 'opacity(1.0)';
+                }
+
                 logo.style.display = 'none';
             }, 550);
         }, 1500); // 2-second delay

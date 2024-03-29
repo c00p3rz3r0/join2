@@ -10,7 +10,10 @@ async function initBoardForm() {
     await loadContacts();
     await loadAllContacts();
     await sortContact();
+
 }
+
+
 
 function updateHTML() {
     let todo = allTasks.filter(t => t['category'] == 'To Do');
@@ -130,19 +133,25 @@ function allowDrop(ev) {
 }
 
 function openAddTask(index) {
-    document.getElementById('addTaskBoard').classList.remove('display-none');
-    document.getElementById('popUp').classList.remove('display-none');
-
-    document.getElementById('doneSelect').classList.remove('display-none');
-    document.getElementById('bg-popup').classList.remove('display-none');
-    document.getElementById('bg-popup').classList.add('d-flex');
-    document.getElementById('task-header-temp').classList.add('display-none');
-    document.getElementById('addTaskBoard2').classList.remove('add-task-page');
-    if (index === 1) {
-        openEditInformation();
-        let detailDiv = document.getElementById('taskDetail');
-        detailDiv.innerHTML = '';
+    if (window.innerWidth < 650) {
+        window.location.href = "add_task.html";
+    }else{
+        document.getElementById('addTaskBoard').classList.remove('display-none');
+        document.getElementById('popUp').classList.remove('display-none');
+    
+        document.getElementById('doneSelect').classList.remove('display-none');
+        document.getElementById('bg-popup').classList.remove('display-none');
+        document.getElementById('bg-popup').classList.add('d-flex');
+        document.getElementById('task-header-temp').classList.add('display-none');
+        document.getElementById('addTaskBoard2').classList.remove('add-task-page');
+        if (index === 1) {
+            openEditInformation();
+            let detailDiv = document.getElementById('taskDetail');
+            detailDiv.innerHTML = '';
+        }
     }
+
+
 }
 
 function openEditInformation() {
@@ -211,6 +220,10 @@ function closeAdd() {
 }
 
 function openDetail(id) {
+    if (window.innerWidth < 650) {
+    
+        document.body.classList.add('overlay-scroll-lock')
+    }
     let detailDiv = document.getElementById('taskDetail');
     document.getElementById('popUp').classList.remove('display-none');
     startDragging(id);
@@ -226,6 +239,10 @@ function closeDetail() {
     let detailDiv = document.getElementById('taskDetail');
     detailDiv.innerHTML = '';
     document.getElementById('popUp').classList.add('display-none');
+    if (window.innerWidth < 650) {
+    
+        document.body.classList.remove('overlay-scroll-lock')
+    }
 }
 async function deleteTask() {
     allTasks.splice(currentDraggedElement, 1);
@@ -244,8 +261,22 @@ function generateDetail(detailDiv, element, priority, prioName) {
     <h3>${element['title']}</h3>
     </div>
     <div><span>${element['description']}</span></div>
-    <div><span>Due date:</span><span>${element['dueDate']}</span></div>
-    <div><span>Priority:</span><span>${prioName}</span><img src="${priority}" alt=""></div>
+    <div class="detail-style">
+    <table>
+
+    <tbody>
+        <tr>
+            <td>Due date:</td>
+            <td>${element['dueDate']}</td>
+
+        </tr>
+        <tr>
+            <td>Priority:</td>
+            <td>${prioName}  <img src="${priority}" alt=""></td>
+        </tr>            
+    </tbody>
+    </table>
+
     <span>Assigned To:</span>
     <div class="assign-detail" id="assignedTo">
     </div>
@@ -256,6 +287,7 @@ function generateDetail(detailDiv, element, priority, prioName) {
     </div>
     <div class="contact-edit">
     <div id="editContact" onclick="openAddTask(1)" class="edit-contact"></div>
+    <img class="MobileYes" src="assets/img/v-vectos-edit.svg" alt="">
     <div class="delete-contact" onclick="deleteTask()"></div>
     </div>
     `;

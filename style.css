@@ -89,8 +89,8 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 90vw;
     padding-top: 30px;
+    width: 80%;
 }
 
 .sing-up {
@@ -163,13 +163,13 @@ h1 {
 
 .login-frame {
     top: 180px;
+    display: flex;
     width: 652px;
     height: 493px;
     overflow: hidden;
     background-color: white;
     border-radius: 30px;
     box-shadow: 0px 0px 14px 3px #0000000A;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -868,7 +868,7 @@ nav {
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;
-    max-height: 100px;
+
     .v-line{
         display: none !important;
     }
@@ -1220,6 +1220,11 @@ nav {
     }
 
 }
+.detail-style{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
 
 .d-flex {
     display: flex;
@@ -1240,13 +1245,12 @@ nav {
     top: 15%;
     left: 30%;
     background-color: white;
-    width: 420px;
-    height: 630px;
+
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px #00000029;
     padding: 48px 40px 48px 40px;
     font-size: 20px;
-    gap: 15px;
+    gap: 30px;
     display: grid;
 
     .detail-top {
@@ -1317,17 +1321,19 @@ nav {
     height: 592px;
     width: 1212px;
     align-items: center;
-    .lodo-add-contact{
-        border-top-left-radius: 27px;
-        border-bottom-left-radius: 27px;
-        width: 467px;
-        background-color: #2A3647;
-        height: 592px;
-        img{
-            padding-top: 150px;
-            padding-left: 40px;        }
-    }
+
 }
+.lodo-add-contact{
+    border-top-left-radius: 27px;
+    border-bottom-left-radius: 27px;
+    width: 467px;
+    background-color: #2A3647;
+    height: 592px;
+    img{
+        padding-top: 150px;
+        padding-left: 40px;        }
+}
+
 
 .add-contact-form-right{
     width: 745px;
@@ -1392,7 +1398,10 @@ nav {
     display: flex;
     align-items: center;
 }
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 650px) {
+    .overlay-scroll-lock{
+        overflow: hidden;
+    }
     .sub-menu{
         top: 75px;
     }
@@ -1422,8 +1431,9 @@ nav {
 
     .MobiHead {
         position: fixed;
+        left: 0;
         top: 0;
-        width: 100vw;
+        width: 100%;
         z-index: 10000;
 
     }
@@ -1435,10 +1445,20 @@ nav {
     }
     .login-page{
         width: 100vw;
+        height: 100vh;
+        background-color: white;
     }
     .board {
-        padding-left: unset;
-        margin-bottom: 100px;
+        padding-left: 5px;
+        margin-left: unset;
+        width: 98%;
+        gap: 20px;
+        h1{
+            font-size: 47px;
+        }
+    }
+    .detail-style{
+        gap: 8px;
     }
 
     .circle {
@@ -1448,7 +1468,7 @@ nav {
     }
 
     .header-right {
-        padding-right: 20px;
+        padding-right: 15px;
     }
 
     header {
@@ -1471,6 +1491,24 @@ nav {
     .activeLink{
         background-color: #091931;
     }
+    .full-board{
+        padding-bottom: 90px;
+        .board-cat{
+            width: 100%;
+
+        }
+        
+    }
+    .board-topic{
+
+        padding-inline-end: 15px;
+    }
+    .boarc-column{
+        flex-direction: row;
+        overflow: scroll;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
 
     .FooTextMob {
         margin: unset;
@@ -1479,7 +1517,15 @@ nav {
         line-height: 16.8px;
         text-align: left;
     }
-    
+    .search-area{
+        width: 100%;
+        justify-content: space-evenly;
+        padding-top: 15px;
+        width: 90%;
+        .search{
+            width: 100%;
+        }
+    }
 
     .MobBoard {
         display: flex;
@@ -1488,7 +1534,7 @@ nav {
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
-        width: 100%;
+        width: 90%;
     }
 
 
@@ -1535,34 +1581,90 @@ nav {
     }
 
     .add-task-page {
-        position: relative;
-        left: unset;
+        position: unset;
         display: block;
         #formTask{
-            width: 430px;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            width:  100%;
+            padding-bottom: 150px;
             .add-task{
-                display: block;
+                display: flex;
+                flex-direction: column;
+                width: 90%;
+
+            }
+            label{
+                font-size: 16px;
+            }
+            input{
+                font-size: 16px;
+            
             }
         }
     }
 
+.assign-detail{
+    width: 90%;
+    max-height: none;
+}
+.add-task-box-field{
+    font-size: 16px;
+}
+.priority-btn{
+    a{
+        font-size: 16px;
+    }
+}
+.assigneContact{
+    width: unset;
+}
+.contact-edit{
+    gap: 5px;
+    display: flex;
+   position: relative;
+   left: 48%;
+    div{
+        margin-right: 0;
+        margin-left: 0;
+        
+    }
+}
+
     .content-header {
-        padding-bottom: 15px;
-        justify-content: center;
+        flex-direction: column;
+        padding-top: 86px;
+        justify-content: left;
+        align-items: flex-start;
+        width: 80%;
+        padding-left: 20px;
+        gap: 15px;
+        p{
+            font-size: 18px;
+        }
+        h1{
+            font-size: 35px;
+        }
+
+    }
+    .clear-task-btn {
+        display: none;
     }
 
     .add-task-btns {
-        margin-top: 12px;
-        margin-bottom: 100px;
-        flex-direction: column;
         align-items: center;
+        position: fixed;
+        bottom: 80px;
+        width: 100%;
+        justify-content: space-evenly;
+        background-color: #F6F7F8;
+        padding-bottom: 15px;
+        padding-top: 5px;
     }
 
     .add-task-input-grp {
-        width: 95%;
-        max-width: 440px;
+        width: 100%;
     }
 
     .summary-page-content {
@@ -1599,11 +1701,7 @@ nav {
 
     .content {
         margin-bottom: 100px;
-    }
-
-    .content-header {
-        flex-direction: column;
-        padding-top: 86px;
+        gap: 5px;
     }
 
     .Content-page {
@@ -1611,15 +1709,29 @@ nav {
     }
 
     .board-card-detail {
-        left: unset;
-        height: unset;
-        width: unset;
-        margin: 8px;
+        position: fixed;
+        left: 15px;
+        height: auto;
+        width: 83%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
+        padding-left: 18px;
+        padding-right: 18px;
+        padding-top: 18px;
+        padding-bottom: 8px;
+        font-size: 16px;
+        max-height: 63%;
+        overflow-y: scroll;
+        h3{
+            font-size: 36px;
+        }
     }
+    .lable-board-card{
+        font-size: 16px;
+    }
+
 
     .detail-top{
         width: 100%;
@@ -1629,7 +1741,7 @@ nav {
         background: url('assets/img/add-contact-small.svg') no-repeat;
         position: fixed;
         bottom: 100px;
-        left: 340px;
+        left: 80%;
     }
 
     .contact-side{
@@ -1637,11 +1749,53 @@ nav {
     }
 
     .lodo-add-contact{
-        display: none;
+        width: 90%;
+        display: flex;
+        flex-direction: inherit;
+        align-items: end;
+        border-bottom-left-radius: unset;
+        border-top-right-radius: 27px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        #txtImg{
+            width: 200px;
+            height: 75px;
+            padding-right: 35%;
+        }
+        img{
+            padding: unset;
+            width: 30px;
+        }
+    }
+    .add-contact-form-right{
+        flex-direction: column;
+        background-color: white;
+        width: 90%;
+        height: 79%;
+        border-radius: 20px;
+        font-size: 16px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        margin-top: -30px;
+        padding-bottom: 30px;
+    }
+    .contacts-right-fields{
+        div{
+            div{
+                input{
+                    height: 36px;
+                }
+                img{
+                    top: 10px;
+                }
+            }
+        }
     }
 
     .input-login input{
-        width:330px;
+        width: 80vw;
     }
     .creat-contact-btn{
         width: 180px;
@@ -1654,30 +1808,38 @@ nav {
         width: 177px;
     }
     .sing-up{
-        padding-top: 60px;
+        padding-top: 40px;
     }
     .logo-left img{
-        width: 70px;
-        height: 70px;
+        width: 35px;
+        height: 35px;
     }
     .sign-up-head img{
         left: -30px;
     }
-
-    .add-contact-form-right {
-        width: unset;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        flex-direction: column;
+    .clear-contact-btn{
+        display: none;
     }
+    
 
     .login-frame{
-        width: 80vw;
+        width: 100%;
+        border-radius: 0;
+        padding-top: 48px;
+        box-shadow: none;
+        height: auto;
+        h1{
+            font-size: 35px;
+        }
+    }
+    #newContactImg{
+        width: 90px;
+        position: relative;
+        margin-top: -45px;
     }
 
     .login-btn-area{
-        gap: 20px;
+        gap: 8px;
         flex-direction: column;
         align-items: center;
     }
@@ -1686,14 +1848,24 @@ nav {
         height: 50px;
     }
     .sign-in-frame{
-        width: 400px;
+        border-radius: 0;
+        box-shadow: none;
+        width: 100%;
+        height: auto;
+        padding-top: 48px;
+        h1{
+            font-size: 35px;
+        }
     }
 
     .add-contact-form{
-        width: unset;
+        flex-direction: column;
+        position: fixed;
+        top: 80px;
         left: unset;
-        top: 100px;
-        margin: 8px;
+        width: 100%;
+        height: 70%;
+        background-color: transparent;
     }
 
     h3 {
@@ -1714,7 +1886,9 @@ nav {
     }
 
     .contacts {
+        width: 100%;
         left: unset;
+        position: relative;
     }
 
     .contacts-right {
@@ -1722,11 +1896,12 @@ nav {
     }
 
     .contact-list {
-        padding-bottom: 100px;
+        padding-left: 0;
     }
 
     .contact-side {
         padding-top: 80px;
+        width: 100%;
     }
 
     .p-headline {

@@ -21,6 +21,15 @@ function loadContactPage(){
         };
         crateCard(contactsDiv, i, color, inital, name, mail);
     }
+    addStopMail();
+}
+
+function addStopMail(){
+    document.querySelectorAll('a.contact-mail').forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Verhindert das Standardverhalten des Links
+        });
+    });
 }
 
 function createLetter(contactsDiv, firstLetter) {
@@ -115,6 +124,9 @@ function addContactForm(){
     document.getElementById('add-contact-form').classList.remove('display-none');
     document.getElementById('txtImg').src='/assets/img/add-contact-site.svg';
     document.getElementById('newContactImg').classList.remove('display-none');
+    if (window.innerWidth < 650) {
+        document.getElementById('txtImg').src = 'assets/img/add-contact-site-resp.svg';
+    }
     
 }
     
@@ -156,3 +168,4 @@ function closeForm(){
     document.getElementById('newContactImg').classList.add('display-none');
     document.getElementById('add-contact-form').classList.add('display-none');
 }
+
