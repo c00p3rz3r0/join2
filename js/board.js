@@ -27,18 +27,31 @@ function updateHTML() {
 }
 
 function searchTask() {
-    let searchValue = document.getElementById('searchInput').value;
+    let searchValue = document.getElementById('searchInput').value.toLowerCase();
+
+    // Loop through each task
     for (let i = 0; i < allTasks.length; i++) {
-        const title = allTasks[i]['title'];
-        const description = allTasks[i]['description'];
-        let searchElement = allTasks[i]['createdAt'];
-        if (!(title.toLowerCase().includes(searchValue.toLowerCase())||description.toLowerCase().includes(searchValue.toLowerCase())) ) {//&& description.includes(searchValue) 
-            document.getElementById(searchElement).style.display = 'none';
-        }else{
-        document.getElementById(searchElement).style.display = 'block';
-    }
+        const title = allTasks[i]['title'].toLowerCase();
+        const description = allTasks[i]['description'].toLowerCase();
+        const searchElement = allTasks[i]['createdAt'];
+        const taskElement = document.getElementById(searchElement);
+
+        // Check if the task element exists
+        if (taskElement) {
+            // Check if the title or description contains the search value
+            if (title.includes(searchValue) || description.includes(searchValue)) {
+                taskElement.style.display = 'block'; // Show the task
+            } else {
+                taskElement.style.display = 'none'; // Hide the task
+            }
+        } else {
+            console.error(`Task element with ID '${searchElement}' not found.`);
+            // // If task element not found, remove the corresponding task from allTasks array           
+        }
     }
 }
+
+
 
 function loadCards(array, boardCat) {
     document.getElementById(boardCat).innerHTML = ``;
@@ -133,17 +146,17 @@ function allowDrop(ev) {
 }
 
 function openAddTask(index) {
-    if (window.innerWidth < 650) {
+    if (window.innerWidth < 1100 && index !== 1) {
         window.location.href = "add_task.html";
-    }else{
+    } else {
         document.getElementById('addTaskBoard').classList.remove('display-none');
         document.getElementById('popUp').classList.remove('display-none');
-    
+
         document.getElementById('doneSelect').classList.remove('display-none');
         document.getElementById('bg-popup').classList.remove('display-none');
         document.getElementById('bg-popup').classList.add('d-flex');
         document.getElementById('task-header-temp').classList.add('display-none');
-        document.getElementById('addTaskBoard2').classList.remove('add-task-page');
+        document.getElementById('addTaskBoard2').classList.add('noPadding')
         if (index === 1) {
             openEditInformation();
             let detailDiv = document.getElementById('taskDetail');
@@ -170,7 +183,7 @@ function openEditInformation() {
     document.getElementById('dueDate').value = element['dueDate'];
     showActualAssignedPersons(element);
     subTasks = element['subTasks'];
-    selectPriority(element['prio']); 
+    selectPriority(element['prio']);
     selectCategory(element);
     generateSubTask();
 }
@@ -221,7 +234,7 @@ function closeAdd() {
 
 function openDetail(id) {
     if (window.innerWidth < 650) {
-    
+
         document.body.classList.add('overlay-scroll-lock')
     }
     let detailDiv = document.getElementById('taskDetail');
@@ -240,7 +253,7 @@ function closeDetail() {
     detailDiv.innerHTML = '';
     document.getElementById('popUp').classList.add('display-none');
     if (window.innerWidth < 650) {
-    
+
         document.body.classList.remove('overlay-scroll-lock')
     }
 }

@@ -1,7 +1,7 @@
 // register.js
 
 let users = [];
-let loggedInUserName; // Changed variable name from 'name' to 'loggedInUserName'
+let name; 
 let uemail;
 
 async function loadUsers(){
@@ -11,6 +11,7 @@ async function loadUsers(){
         console.error('Loading error:', e);
     }
 }
+
 
 function getRandomColor() {
     const letters = '0123456789ABCDEF';
@@ -40,6 +41,7 @@ async function register() {
         alert('Passwörte stimmen nicht überein');
         resetForm();
     }
+
 }
 
 function resetForm() {
@@ -69,15 +71,14 @@ function guestLogIn(){
 }
 
 function actUser(){
-    loggedInUserName = localStorage.getItem('user');
+    name = localStorage.getItem('user');
     uemail = localStorage.getItem('userEmail');
-    if (loggedInUserName === 'Guest') {
-        document.getElementById('actUser').innerHTML = loggedInUserName;
+    if (name === 'Guest') {
+        document.getElementById('actUser').innerHTML = name;
     }else{
-        document.getElementById('actUser').innerHTML = uemail.charAt(0).toUpperCase() + uemail.charAt(1).toUpperCase();
+    document.getElementById('actUser').innerHTML = uemail.charAt(0).toUpperCase()+uemail.charAt(1).toUpperCase();
     }
 }
-
 function restoreActUser() {
     localStorage.setItem('user', '');
 }
