@@ -33,12 +33,20 @@
             </div>
         </div>
 
-        <div class="contacts-right">
-            <div class="contacts-head">
+        <div class="contacts-right" id="contactsRight">
+            <div class="header-contacts contact-Detail-Yes">
+                <div class="contacts-head">
                 <h1>Contacts</h1>
-                <img src="assets/img/v-line-contact.svg" alt="">
+                <img src="assets/img/v-line-contact.svg" class="contact-Detail-No" alt="">
                 <span class="contact-better">Better with a team</span>
+                <img src="assets/img/h-line-mobile.svg" class="contact-Detail-Yes"  alt="">
+                
+                </div>
+                <div>
+                    <img src="assets/img/arrow-left.svg" alt="" class="contact-Detail-Yes" onclick="closeFormDetail();">
+                </div>
             </div>
+
             <div>
                 <div class="contact-information display-none" id="contactinfo">
 
@@ -54,10 +62,10 @@
                     </div>
                     <span class="s20">Contact Information</span>
 
-                    <h4 style="margin-top: 50px;">Email</h4>
-                    <a class="s16 contact-mail" href="mailto:antonm@gmail.com" id="email">antonm@gmail.com</a>
+                    <h4>Email</h4>
+                    <a class="s16 contact-mail" type="email" href="mailto:antonm@gmail.com" id="email">antonm@gmail.com</a>
                     <h4>Phone</h4>
-                    <a class="s16 contact-mail" href="tel:+491111111111" id="phone">+49 1111 111 11 1</a>
+                    <a class="s16 contact-mail" type="tel" href="tel:+491111111111" id="phone">+49 1111 111 11 1</a>
                 </div>
             </div>
         </div>

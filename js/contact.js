@@ -21,7 +21,10 @@ function loadContactPage(){
         };
         crateCard(contactsDiv, i, color, inital, name, mail);
     }
-    addStopMail();
+    if (window.innerWidth < 690) {
+        addStopMail();
+    }
+
 }
 
 function addStopMail(){
@@ -53,6 +56,9 @@ function crateCard(contactsDiv, i, color, inital, name, mail){
 }
 
 function loadDetail(index){
+    if (window.innerWidth < 1070) {
+        document.getElementById('contactsRight').style.display = "flex";
+    }
     resetHighlight();
     let element = allContacts[index];
     let icon = document.getElementById('icon');
@@ -124,7 +130,8 @@ function addContactForm(){
     document.getElementById('add-contact-form').classList.remove('display-none');
     document.getElementById('txtImg').src='assets/img/add-contact-site.svg';
     document.getElementById('newContactImg').classList.remove('display-none');
-    if (window.innerWidth < 650) {
+    document.getElementById('iconEdit').classList.add('display-none');
+    if (window.innerWidth < 1070) {
         document.getElementById('txtImg').src = 'assets/img/add-contact-site-resp.svg';
     }
     
@@ -161,6 +168,7 @@ async function deleteContact(){
     await setItem('contact', JSON.stringify(allContacts));
     document.getElementById('formContact').reset();
     initContact();
+    location.reload();
 }
 
 function closeForm(){
@@ -169,3 +177,6 @@ function closeForm(){
     document.getElementById('add-contact-form').classList.add('display-none');
 }
 
+function closeFormDetail(){
+    document.getElementById('contactsRight').style.display = "none";
+}

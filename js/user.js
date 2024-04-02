@@ -23,23 +23,31 @@ function getRandomColor() {
 
 async function register() {
     registerBtn.disabled = true;
-    if (userPassword.value == userPasswordConfirm.value) {
-        let userColor = getRandomColor();
-        initialien = document.getElementById('userEmail').value
-        initialien2 = initialien.charAt(0).toUpperCase()+initialien.charAt(1).toUpperCase();
-        users.push({
-            name: userName.value,
-            email: userEmail.value,
-            password: userPassword.value,
-            ucolor: userColor,
-            initial: initialien2,
-        });
-        await setItem('users', JSON.stringify(users));
-        resetForm();
+    let useremail = document.getElementById('userEmail');
+    let user = users.find(u => u.email == useremail.value);
+    if (!user) {
+        if (userPassword.value == userPasswordConfirm.value) {
+            let userColor = getRandomColor();
+            initialien = document.getElementById('userEmail').value
+            initialien2 = initialien.charAt(0).toUpperCase()+initialien.charAt(1).toUpperCase();
+            users.push({
+                name: userName.value,
+                email: userEmail.value,
+                password: userPassword.value,
+                ucolor: userColor,
+                initial: initialien2,
+            });
+            await setItem('users', JSON.stringify(users));
+            resetForm();
+        }else{
+            document.getElementById("passwordIncorrect").style.display = "block";
+            resetForm();
+        }
     }else{
-        alert('Passwörte stimmen nicht überein');
+        document.getElementById("notRegister").style.display = "block";
         resetForm();
     }
+
 }
 
 function resetForm() {
@@ -53,13 +61,16 @@ function resetForm() {
 function loginUser(){
     let useremail = document.getElementById('userEmail');
     let userpassword = document.getElementById('userpassword');
-    let user = users.find(u => u.email == useremail.value && u.password == userpassword.value && u.name)
-    if(user){
+    
+    let user = users.find(u => u.email == useremail.value)
+    if (!user) {
+        document.getElementById("notRegister").style.display = "block";
+    }else if((user['email']== useremail.value) && (user['password']== userpassword.value)){
         localStorage.setItem('user', user.name);
         localStorage.setItem('userEmail', user.email);
         window.location.href='summary.html'
-    }else{
-        alert('Bitte registrieren');
+    }else if((user['email']== useremail.value) && !(user['password']== userpassword.value)){
+        document.getElementById("passwordIncorrect").style.display = "block";
     }
 }
 

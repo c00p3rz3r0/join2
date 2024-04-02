@@ -35,7 +35,7 @@ function init() {
 async function initsummary() {
   await actUser();
   await loadUsers();
-  document.getElementById('userName').innerHTML = name;
+  document.getElementById('userName').innerHTML = loggedInUserName;
   await initSummaryForm();
   activeLink(1);
 }
@@ -61,7 +61,9 @@ async function initContact() {
   await sortContact();
   await loadContactPage();
   activeLink(4);
-  loadDetail(0);
+  if (window.innerWidth > 1070) {
+    loadDetail(0);
+  }
   document.getElementById('contactinfo').classList.remove('display-none');
 
 }

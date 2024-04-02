@@ -146,7 +146,7 @@ function allowDrop(ev) {
 }
 
 function openAddTask(index) {
-    if (window.innerWidth < 1100 && index !== 1) {
+    if (window.innerWidth < 690 && index !== 1) {
         window.location.href = "add_task.html";
     } else {
         document.getElementById('addTaskBoard').classList.remove('display-none');
@@ -233,7 +233,7 @@ function closeAdd() {
 }
 
 function openDetail(id) {
-    if (window.innerWidth < 650) {
+    if (window.innerWidth < 690) {
 
         document.body.classList.add('overlay-scroll-lock')
     }
@@ -252,7 +252,7 @@ function closeDetail() {
     let detailDiv = document.getElementById('taskDetail');
     detailDiv.innerHTML = '';
     document.getElementById('popUp').classList.add('display-none');
-    if (window.innerWidth < 650) {
+    if (window.innerWidth < 690) {
 
         document.body.classList.remove('overlay-scroll-lock')
     }
