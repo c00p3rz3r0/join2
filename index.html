@@ -21,12 +21,11 @@
 
 <body onload="init()">
     <div class="login-page">
-        <img src="assets/img/logo-dark.svg" alt="" style="height: 244px;" id="LogoStartTransit">
-        <div class="login-head" style="display: none;" id="LoginHead">
-            <div class="logo-left">
-                <img class="logo-mob-index" src="assets/img/logo-dark.svg" alt="">
+        <div class="login-head"id="LoginHead">
+            <div class="logo-left" id="LogoStartTransit">
+                <img class="logo-mob-index" id="logo" src="assets/img/logo-dark.svg" alt="">
             </div>
-            <div class="sing-up desktop MobileNo">
+            <div class="sing-up desktop MobileNo" id="singUpHead" style="display: none;">
                 <div style="font-size: 20px;">Not a Join User?</div>
                 <a href="signup.html"><button class="dark-btn btn-sign-up btn-wo-icon s16 fw700">Sign up</button></a>
             </div>
@@ -47,6 +46,8 @@
                     <div class="input-login"><input id="userpassword" required class="s20" type="password"
                             placeholder="Password"><img src="assets/img/key.svg" alt=""></div>
                 </div>
+                <div id="passwordIncorrect" style="display:none; color:red;">Incorrect password. Please try again.</div>
+                <div id="notRegister" style="display:none; color:red;">Please register</div>
                 <div class="remember">
                     <input type="checkbox" name="remember" id="">
                     <p class="s16 fw400">Remember Me</p>
@@ -58,7 +59,7 @@
                 </div>
             </form>
         </div>
-        <div class="sing-up display-none" id="footerUser">
+        <div class="sing-up display-none MobileYes" id="footerUser">
             <div style="font-size: 20px;">Not a Join User?</div>
             <a href="signup.html"><button class="dark-btn btn-sign-up btn-wo-icon s16 fw700">Sign up</button></a>
         </div>
@@ -70,47 +71,23 @@
 
     <!-- Loading anmation script -->
     <script>
-        setTimeout(function () {
-            var logo = document.getElementById('LogoStartTransit');
-            var login = document.getElementById('LoginHead');
-            var loginOverlay = document.getElementById('LoginFrame');
-            var loginfooter = document.getElementById('LogoFooter');
-            if (window.innerWidth < 650) {
-                var loginfooterUser = document.getElementById('footerUser');
-            }
-
-            // Check viewport width
-            var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-            if (viewportWidth >= 1100) {
-                // Apply transition and transformation for larger viewport
-                logo.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
-                logo.style.transform = 'translate(-200%, -200%) scale(0.5)';
-            } else {
-                // If viewport is smaller than 1100px, fade out the logo
-                logo.style.transition = 'opacity 1s ease-in-out';
-                logo.style.opacity = '0';
-            }
-    
-            setTimeout(function () {
-                // Show login elements after a delay
-                login.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
-                login.style.display = 'flex';
-                loginOverlay.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
-                loginOverlay.style.display = 'flex';
-                loginfooter.style.display = 'flex';
-                loginfooter.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
-                loginfooter.style.transform = 'opacity(1.0)';
-                if (window.innerWidth < 650) {
-                loginfooterUser.style.display = 'flex';
-                loginfooterUser.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
-                loginfooterUser.style.transform = 'opacity(1.0)';
-                }
-
-                logo.style.display = 'none';
-            }, 550);
-        }, 1500); // 2-second delay
+    setTimeout(function() {
+        var logo = document.getElementById('LogoStartTransit');
+        logo.style.transform = 'translate(-20%, -20%) scale(1)'; // Setze die Position und Skalierung des Logos
+        setTimeout(function() {
+            var loginHead = document.getElementById('LoginHead');
+            var loginFrame = document.getElementById('LoginFrame');
+            var logoFooter = document.getElementById('LogoFooter');
+            var singUpHead = document.getElementById('singUpHead');
+            loginHead.style.display = 'flex';
+            loginFrame.style.display = 'flex';
+            logoFooter.style.display = 'flex';
+            singUpHead.style.display = 'flex';
+        }, 500); // Lass die restlichen Inhalte nach einer halben Sekunde erscheinen
+    }, 1500);
+        
     </script>
-    
+
 
 
 
