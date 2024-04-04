@@ -8,18 +8,24 @@ let subTasks = [];
 let defaultCategories =['To Do', 'In progress', 'Await feedback','Done'];
 let edit = false;
 
+/**
+ * init task form
+ */
 async function initTaskform(){
-    await loadContacts();
+    await loadUsers();
     await loadAllTask();
     await loadAllContacts();
     await sortContact();
 }
-
-
+/**
+ * clar task form and reload page
+ */
 function clearTaskForm(){
     location.reload();
 }
-
+/**
+ * save edit or add task
+ */
 function sendForm(){
     if (edit === false) {
         addTask();
@@ -27,7 +33,9 @@ function sendForm(){
         saveTask();
     }
 }
-
+/**
+ * add a new task and save to the backend
+ */
 async function addTask() {
     submitTask.disabled = true;
     let taskT = document.getElementById('taskTitle');
@@ -50,24 +58,22 @@ async function addTask() {
     loadAllTask();
     location.reload();
 }
-
-
+/**
+ * 
+ * @param {string} buttonId - selected priority button
+ */
 function selectPriority(buttonId) {
     const buttons = document.querySelectorAll('.priority-btn');
-
-    // Remove the 'active' class from all buttons
     buttons.forEach((button) => {
         button.classList.remove('active');
     });
-
-    // Add the 'active' class to the selected button
     document.getElementById(buttonId).classList.add('active');
-
-    // Update the selected priority
     selectedPrio = buttonId;
     document.getElementById('priority-input').value = selectedPrio;
 }
-
+/**
+ * show contacts for the assigne user
+ */
 function showContacts(){
     let contactdiv = document.getElementById('assignedContacts');
     let assDiv = document.getElementById('assinedPersons');
@@ -91,8 +97,10 @@ function showContacts(){
         showAssignedPersons();
     }
 }
-
-function addAssigne(index){
+/**
+ * add and show assigne users 
+ */
+function addAssigne(){
     assignedPerson = [];
     for (let i = 0; i < allContacts.length; i++) {
         const element = allContacts[i];
@@ -105,9 +113,13 @@ function addAssigne(index){
             });
         }
     }
-
 }
-
+/**
+ * index of the  checked users
+ * 
+ * @param {number} index - index of the actual task
+ * @returns 
+ */
 function checked(index){
     for (let i = 0; i < assignedPerson.length; i++) {
         const element = assignedPerson[i]['firstname'];
@@ -116,7 +128,9 @@ function checked(index){
         }
     } return false;
 }
-
+/**
+ * show the assinged users after closing the drop down
+ */
 function showAssignedPersons() {
     let assDiv = document.getElementById('assinedPersons');
     assDiv.innerHTML = ``;
@@ -130,7 +144,12 @@ function showAssignedPersons() {
         `;
     }
 }
-
+/**
+ * get first letters of the first and last name
+ * 
+ * @param {string} name - name of the user
+ * @returns 
+ */
 function getLetters(name){
     let letter1 = name.charAt(0).toUpperCase();
     let letter2Pos = name.indexOf(" ");
@@ -138,7 +157,9 @@ function getLetters(name){
     let letters = letter1+letter2;
     return letters;
 }
-
+/**
+ * add subtask to the new task
+ */
 function addSubtask(){
     let inputSubtask = document.getElementById('subtask');
     if (inputSubtask.value == "") {
@@ -146,13 +167,15 @@ function addSubtask(){
     }else{
     subTasks.push({
         task: inputSubtask.value,
-        taskStatus: 'open',
+        taskStatus: '',
     });
     inputSubtask.value = ``;
     generateSubTask();
     }
 }
-
+/**
+ * generate html for the added subtask
+ */
 function generateSubTask(){
     let addedSubtask = document.getElementById('addSubtask');
     addedSubtask.innerHTML = ``;
@@ -169,30 +192,47 @@ function generateSubTask(){
         </div>
         </div>
         `
-        //document.getElementById('subTask'+i).addEventListener('focusin',editSubtask(i));
     }
 }
-
+/**
+ * load new information of the editinal subtask
+ * 
+ * @param {JsonWebKey} element - actual array
+ * @param {number} i - index of the element
+ */
 function confirmeditSubtask(element,i){
     const index = searchIndexOf(subTasks, element);
     if (index !== 1){}
     subTasks[index] = document.getElementById('subTask'+i).value;
     generateSubTask();
 }
-
+/**
+ * delete subtask fomr the task
+ * 
+ * @param {JSON} element - actual task
+ */
 function deletSubtask(element){
     const index = searchIndexOf(subTasks, element);
     if (index >-1){}
     subTasks.splice(index,1);
     generateSubTask();
 }
-
+/**
+ * seahr index of an array by an specific value
+ * 
+ * @param {JSON} array - specific arry
+ * @param {string} value - specific value
+ * @returns 
+ */
 function searchIndexOf(array, value){
     let indexOf = array.indexOf(value);
     return indexOf;
 }
-
-
+/**
+ * edit the sub task
+ * 
+ * @param {num#} index - index of the subtask to edit
+ */
 function editSubtask(index){
     document.getElementById('subTask'+index).disabled = false;
     document.getElementById('subTaskEdit'+index).classList.add('display-none');

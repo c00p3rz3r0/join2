@@ -77,6 +77,35 @@ h1 {
     font-weight: 700;
 }
 
+.logo-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  .big-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50vw, -50vh) scale(2); /* Logo ist zuerst groß */
+    transition: transform 0.5s ease-in-out; /* Füge eine Transition hinzu */
+  }
+
+  #LogoStartTransit {
+    top: 50%;
+    transform: translate(35vw, 35vh) scale(2);
+    opacity: 1;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  #logo {
+    max-width: 100%; /* Stelle sicher, dass das Logo nicht breiter als sein Container wird */
+  }
+
 .login-page {
     display: flex;
     flex-direction: column;
@@ -87,7 +116,7 @@ h1 {
 
 .login-head {
     position: absolute;
-    top: 0;
+    top: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -353,6 +382,11 @@ header {
     gap: 30px;
     padding-right: 30px;
 }
+.index{
+    a{
+        color: black;
+    }
+}
 
 nav {
     background-color: #2a3647;
@@ -439,6 +473,11 @@ nav {
     padding-top: 80px;
     gap: 30px;
     align-items: center;
+}
+.highlight-drag{
+    background-color: rgba(96, 96, 96, 0.26);
+    height: 150px;
+    border-radius: 30px;
 }
 
 .summary-page {
@@ -914,6 +953,7 @@ nav {
 
 .card-bottom {
     display: flex;
+    align-items: center;
 }
 
 .contacts {
@@ -948,6 +988,9 @@ nav {
     gap: 54px;
     margin-top: 40px;
     margin-bottom: 40px;
+    h4{
+        margin-top: 40px;
+    }
 }
 
 .edit-contact {
@@ -1003,7 +1046,7 @@ nav {
 }
 
 .contact-side {
-    width: 456px;
+    width: 500px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -1185,6 +1228,10 @@ nav {
 .card-bottom-div {
     display: flex;
     justify-content: space-between;
+}
+
+.more-Assigne{
+    padding-left: 20px;
 }
 
 .add-task-board {
@@ -1421,7 +1468,179 @@ nav {
     align-items: center;
 }
 
-@media only screen and (max-width: 1100px) {
+.contact-Detail-Yes{
+    display: none;
+}
+.contact-Detail-No{
+    display: flex;
+}
+@media only screen and (max-width: 1160px) {
+    .v-line{
+        display: none;
+    }
+    .add-task{
+        flex-direction: column;
+    }
+    .add-task-btns{
+        flex-direction: column;
+    }
+    .p-hello{
+        display: none;
+    }
+    .p-hello-name{
+        display: none;
+    }
+    .contact-information-top{
+        flex-direction: column;
+        align-items: baseline;
+    }
+}
+@media only screen and (max-width: 1070px) {
+    .board-head{
+        flex-direction: column;
+    }
+    .add-btn{
+        width: 312px;
+    }
+
+    .contacts-right{
+        display: none;
+    }
+    .add-contact-form-right {
+        flex-direction: column;
+        background-color: white;
+        width: 90%;
+        height: 79%;
+        border-radius: 20px;
+        font-size: 16px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        margin-top: -30px;
+        padding-bottom: 30px;
+    }
+
+    .contacts-right-fields {
+        div {
+            div {
+                input {
+                    height: 36px;
+                }
+
+                img {
+                    top: 10px;
+                }
+            }
+        }
+    }
+    .contacts-right{
+        position: fixed;
+        top: 20px;
+
+        
+        background-color: #F6F7F8;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 10px;
+        height: 100%;
+        width: 100%;
+        padding-left: 15px;
+        
+        .contacts-head{
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-start;
+            h1{
+                font-size: 47px;
+            }
+            span{
+                font-size: 20px;
+            }
+        }
+    }
+    .contact-information-top{
+        gap: unset;
+        width: 100%;
+        justify-content: space-evenly;
+        margin-bottom: 20px;
+        gap: 30px;
+        #name{
+            font-size: 36px;
+            font-weight: 700;
+        }
+        h4{
+            margin: unset;
+        }
+    }
+    .contact-information{
+        h4{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    }
+    .icon-contact{
+        width: 90px;
+        height: 90px;
+        font-size: 27px;
+    }
+    .header-contacts{
+        gap: 80px;
+    }
+    .contact-Detail-Yes{
+        display: flex;
+    }
+    .contact-Detail-No{
+        display: none;
+    }
+    .add-contact-form {
+        flex-direction: column;
+        position: fixed;
+        top: 80px;
+        left: unset;
+        width: 100%;
+        height: 70%;
+        background-color: transparent;
+    }
+    .lodo-add-contact {
+        width: 90%;
+        display: flex;
+        flex-direction: inherit;
+        align-items: end;
+        border-bottom-left-radius: unset;
+        border-top-right-radius: 27px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+        #txtImg {
+            width: 200px;
+            height: 75px;
+            padding-right: 35%;
+        }
+
+        img {
+            padding: unset;
+            width: 30px;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 920px) {
+    .FooTextMob{
+        display: none;
+    }
+
+}
+@media only screen and (max-width: 800px) {
+.header-title{
+    display: none;
+}
+
+}
+
+
+@media only screen and (max-width: 690px) {
     .overlay-scroll-lock {
         overflow: hidden;
     }
@@ -1447,7 +1666,7 @@ nav {
     }
 
     .MobileNo {
-        display: none;
+        display: none !important;
     }
 
     .MobileYes {
@@ -1516,6 +1735,9 @@ nav {
         gap: 6px;
         border-radius: 4px;
         border-color: #E7E7E7;
+        p{
+            display: block;
+        }
     }
 
     .activeLink {
@@ -1631,7 +1853,7 @@ nav {
             align-items: center;
             width: 100%;
             padding-bottom: 165px;
-            padding-top: 16px;
+            padding-top: 60px;
 
 
             .add-task {
@@ -1677,7 +1899,6 @@ nav {
         gap: 5px;
         display: flex;
         position: relative;
-        left: 48%;
 
         div {
             margin-right: 0;
@@ -1812,57 +2033,9 @@ nav {
         width: unset;
     }
 
-    .lodo-add-contact {
-        width: 90%;
-        display: flex;
-        flex-direction: inherit;
-        align-items: end;
-        border-bottom-left-radius: unset;
-        border-top-right-radius: 27px;
-        padding-top: 50px;
-        padding-bottom: 50px;
 
-        #txtImg {
-            width: 200px;
-            height: 75px;
-            padding-right: 35%;
-        }
 
-        img {
-            padding: unset;
-            width: 30px;
-        }
-    }
-
-    .add-contact-form-right {
-        flex-direction: column;
-        background-color: white;
-        width: 90%;
-        height: 79%;
-        border-radius: 20px;
-        font-size: 16px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        border-bottom-left-radius: 30px;
-        border-bottom-right-radius: 30px;
-        margin-top: -30px;
-        padding-bottom: 30px;
-    }
-
-    .contacts-right-fields {
-        div {
-            div {
-                input {
-                    height: 36px;
-                }
-
-                img {
-                    top: 10px;
-                }
-            }
-        }
-    }
-
+    
     .input-login input {
         width: 80vw;
     }
@@ -1937,15 +2110,7 @@ nav {
         }
     }
 
-    .add-contact-form {
-        flex-direction: column;
-        position: fixed;
-        top: 80px;
-        left: unset;
-        width: 100%;
-        height: 70%;
-        background-color: transparent;
-    }
+
 
     h3 {
         margin: 16px 0px;
@@ -1970,9 +2135,6 @@ nav {
         position: relative;
     }
 
-    .contacts-right {
-        display: none;
-    }
 
     .contact-list {
         padding-left: 0;
@@ -1997,17 +2159,19 @@ nav {
         height: 40px;
     }
 
-}
+    .edit-task-board {
 
-.edit-task-board {
-
-    #formTask {
-        .add-task-btns {
-            top: unset;
+        #formTask {
+            .add-task-btns {
+                top: unset;
+            }
+    
         }
-
     }
+    
+    
 }
+
 
 
 

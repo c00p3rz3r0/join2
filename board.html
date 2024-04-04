@@ -21,6 +21,7 @@
 <body onload="initBorad()">
     <div class="bg-popup display-none" id="popUp"></div>
         <div class="" w3-include-html="assets/templates/desktop_template.html"></div>
+        <script>includeHTML();</script>
         <div class="board">
             <div class="board-head">
                 <div class="MobBoard">
@@ -42,7 +43,7 @@
                         <span>To do</span>
                         <img class="add-btn-board" src="assets/img/plus-btn.svg" alt="" onclick="openAddTask()">
                     </div>
-                    <div id="boardToDo" class="boarc-column" ondrop="moveTo('To Do')" ondragover="allowDrop(event)">
+                    <div id="boardToDo" class="boarc-column" ondrop="moveTo('To Do'); removeHighLight('boardToDo')" ondragleave="removeHighLight('boardToDo')"  ondragover="allowDrop(event); highlight('boardToDo')">
                     </div>
                 </div>
                 <div class="board-cat">
@@ -50,23 +51,21 @@
                         <span>In progress</span>
                         <img class="add-btn-board" src="assets/img/plus-btn.svg" alt="" onclick="openAddTask()">
                     </div>
-                    <div id="boardProgress" class="boarc-column" ondrop="moveTo('In progress')"
-                        ondragover="allowDrop(event)"></div>
+                    <div id="boardProgress" class="boarc-column" ondrop="moveTo('In progress'); removeHighLight('boardProgress')" ondragleave="removeHighLight('boardProgress')" ondragover="allowDrop(event); highlight('boardProgress')"></div>
                 </div>
                 <div class="board-cat">
                     <div class="board-topic s20 fw700">
                         <span>Await feedback</span>
                         <img class="add-btn-board" src="assets/img/plus-btn.svg" alt="" onclick="openAddTask()">
                     </div>
-                    <div id="boardFeedback" class="boarc-column" ondrop="moveTo('Await feedback')"
-                        ondragover="allowDrop(event)"></div>
+                    <div id="boardFeedback" class="boarc-column" ondrop="moveTo('Await feedback'); removeHighLight('boardFeedback')" ondragleave="removeHighLight('boardFeedback')" ondragover="allowDrop(event); highlight('boardFeedback')"></div>
                 </div>
                 <div class="board-cat">
                     <div class="board-topic s20 fw700">
                         <span>Done</span>
                         <img class="add-btn-board" src="assets/img/plus-btn.svg" alt="" onclick="openAddTask()">
                     </div>
-                    <div id="boardDone" class="boarc-column" ondrop="moveTo('Done')" ondragover="allowDrop(event)">
+                    <div id="boardDone" class="boarc-column" ondrop="moveTo('Done'); removeHighLight('boardDone')"  ondragleave="removeHighLight('boardDone')" ondragover="allowDrop(event); highlight('boardDone')">
                     </div>
                 </div>
             </div>
