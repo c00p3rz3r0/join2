@@ -4,6 +4,9 @@ let users = [];
 let loggedInUserName; // Changed variable name from 'name' to 'loggedInUserName'
 let uemail;
 
+/**
+ * Load users from backend to users[]
+ */
 async function loadUsers(){
     try {
         users = JSON.parse(await getItem('users'));
@@ -11,7 +14,11 @@ async function loadUsers(){
         console.error('Loading error:', e);
     }
 }
-
+/**
+ * Get a random Color for a new user
+ * 
+ * @returns 
+ */
 function getRandomColor() {
     const letters = '0123456789ABCDEF';
     let color = '#';
@@ -20,7 +27,9 @@ function getRandomColor() {
     }
     return color;
 }
-
+/**
+ * registration of a new user an validation of, password, register 
+ */
 async function register() {
     registerBtn.disabled = true;
     let useremail = document.getElementById('userEmail');
@@ -39,6 +48,8 @@ async function register() {
             });
             await setItem('users', JSON.stringify(users));
             resetForm();
+            document.getElementById("passwordIncorrect").style.display = "block";
+            document.getElementById("passwordIncorrect").innerHTML = "You have been successfully registered!";
         }else{
             document.getElementById("passwordIncorrect").style.display = "block";
             resetForm();
@@ -49,7 +60,9 @@ async function register() {
     }
 
 }
-
+/**
+ * Reset sign up form after registration
+ */
 function resetForm() {
     userName.value = '';
     userEmail.value = '';
@@ -57,7 +70,9 @@ function resetForm() {
     userPasswordConfirm.value = '';
     registerBtn.disabled = false;
 }
-
+/**
+ * User login and validation of registration
+ */
 function loginUser(){
     let useremail = document.getElementById('userEmail');
     let userpassword = document.getElementById('userpassword');
@@ -73,12 +88,16 @@ function loginUser(){
         document.getElementById("passwordIncorrect").style.display = "block";
     }
 }
-
+/**
+ * Login for guest and save Guest in local storage
+ */
 function guestLogIn(){
     window.location.href='summary.html';
     localStorage.setItem('user', 'Guest');
 }
-
+/**
+ * lod information of the actual user
+ */
 function actUser(){
     loggedInUserName = localStorage.getItem('user');
     uemail = localStorage.getItem('userEmail');
@@ -88,7 +107,9 @@ function actUser(){
         document.getElementById('actUser').innerHTML = uemail.charAt(0).toUpperCase() + uemail.charAt(1).toUpperCase();
     }
 }
-
+/**
+ * reset actual user and clar local storage after logout
+ */
 function restoreActUser() {
     localStorage.setItem('user', '');
 }

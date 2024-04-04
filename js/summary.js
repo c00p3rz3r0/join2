@@ -1,12 +1,15 @@
 
 let dueDateNext = [];
-
+/**
+ * Init of the form of summary.html
+ */
 async function initSummaryForm(){
     await loadAllTask();
     updateSummary();
 }
-
-
+/**
+ * Update and sort the ammount of the categorys
+ */
 function updateSummary(){
     let todo = loadSum('To Do'); //ToDo
     let done = loadSum('Done');//Done
@@ -24,6 +27,12 @@ function updateSummary(){
     document.getElementById('urgentDate').innerHTML = urgentDate;
 }
 
+/**
+ * Load the total ammount of an secific arry
+ * 
+ * @param {string} index - this is the name of the category
+ * @returns 
+ */
 function loadSum(index){
     let sum = 0;
     for (let i = 0; i < allTasks.length; i++) {
@@ -34,13 +43,22 @@ function loadSum(index){
     }
     return sum;
 }
-
+/**
+ * Search for the next urgent date in the urgent array
+ * 
+ * @returns 
+ */
 function urgentDates(){
     dueDateNext.sort((a, b) => new Date(a) - new Date(b));
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dueDateNext[0]).toLocaleDateString('en-US', options);
 }
-
+/**
+ * load the sum of the urgent tasks
+ * 
+ * @param {string} index - name of the urgent typ
+ * @returns 
+ */
 function loadUrgent(index){
     let sum = 0;
     for (let i = 0; i < allTasks.length; i++) {
@@ -52,9 +70,11 @@ function loadUrgent(index){
     }
     return sum;
 }
-
-
-
+/**
+ * change the image of the pen by cursor hover
+ * 
+ * @param {number} i - 1 or 2 
+ */
 function changeImage(i) {
     var element = document.getElementById('image'+i);
     if (i==1) {
@@ -63,7 +83,11 @@ function changeImage(i) {
         element.src = 'assets/img/checkbutton_white.svg';
     }
   }
-  
+ /**
+ * change the image of the pen by cursor hover
+ * 
+ * @param {number} i - 1 or 2 
+ */
   function restoreImage(i) {
     var element =  document.getElementById('image'+i);
     if (i==1) {

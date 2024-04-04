@@ -5,7 +5,10 @@ let currentLetter = null;
 let currentContact;
 let editContactDetails = false;
 
-
+/**
+ * load the contacts
+ * 
+ */
 function loadContactPage(){
     let contactsDiv = document.getElementById('contactBlock');
     contactsDiv.innerHTML = ``;
@@ -26,7 +29,9 @@ function loadContactPage(){
     }
 
 }
-
+/**
+ * add Stop Mail in the mobile view
+ */
 function addStopMail(){
     document.querySelectorAll('a.contact-mail').forEach(function(link) {
         link.addEventListener('click', function(event) {
@@ -34,7 +39,12 @@ function addStopMail(){
         });
     });
 }
-
+/**
+ * Create the first letter for the letter group
+ * 
+ * @param {divs} contactsDiv - div for all contacts
+ * @param {string} firstLetter - first letter of the name 
+ */
 function createLetter(contactsDiv, firstLetter) {
     let gourpDiv = document.createElement('div');
     gourpDiv.classList.add('sign');
@@ -42,19 +52,38 @@ function createLetter(contactsDiv, firstLetter) {
     contactsDiv.appendChild(gourpDiv);
     currentLetter = firstLetter;
 }
-
+/**
+ * Creat an user card
+ * 
+ * @param {divs} contactsDiv - div for all contacts
+ * @param {number} i - index
+ * @param {string} color - color for the contacts
+ * @param {string} inital - first letter from first an last name
+ * @param {string} name - name of the user
+ * @param {string} mail - mail adress of the user
+ */
 function crateCard(contactsDiv, i, color, inital, name, mail){
+        let truncatedEmail
+        if (mail.length > 20) {
+            truncatedEmail = mail.substring(0,20)+'...';
+        }else{
+            truncatedEmail = mail;
+        }
         contactsDiv.innerHTML +=`
         <div class="contact-block" id="contact${i}" onclick="loadDetail(${i})">
         <div class="icon-board" style="background-color: ${color};">${inital}</div>
         <div class="">
         <span class="s20">${name}</span><br>
-        <a class="s16 contact-mail" href="mailto:${mail}">${mail}</a>
+        <a class="s16 contact-mail" href="mailto:${mail}">${truncatedEmail}</a>
         </div>
         </div>`
         ;
 }
-
+/**
+ * show detail informations of the active contzacte
+ * 
+ * @param {number} index - index number of the contact
+ */
 function loadDetail(index){
     if (window.innerWidth < 1070) {
         document.getElementById('contactsRight').style.display = "flex";
@@ -77,7 +106,9 @@ function loadDetail(index){
     contactHighlight.style.color = '#FFFFFF';
     currentContact = index;
 }
-
+/**
+ * reset highlight of the last contact
+ */
 function resetHighlight(){
     for (let i = 0; i < allContacts.length; i++) {
         const element = allContacts[i];
@@ -86,7 +117,12 @@ function resetHighlight(){
         divs.style.color = '#000000';
     }
 }
-
+/**
+ * get the letters of the first and lastname of the new user
+ * 
+ * @param {string} name - first an last name
+ * @returns 
+ */
 function getInitials(name) {
     let parts = name.split(" ");
     let initials = "";
@@ -95,7 +131,9 @@ function getInitials(name) {
     });
     return initials;
 }
-
+/**
+ * add and save a new contact
+ */
 async function addContact(){
     submitContact.disabled = true;
     let cName = document.getElementById('cName');
@@ -120,12 +158,18 @@ async function addContact(){
     initContact();
     location.reload();
 }
-
+/**
+ * get an random color for the new contact
+ * 
+ * @returns 
+ */
 function getRandomColor(){
     let randomIndex = Math.floor(Math.random()*colors.length);
     return colors[randomIndex];
 }
-
+/**
+ * show the add contact form
+ */
 function addContactForm(){
     document.getElementById('add-contact-form').classList.remove('display-none');
     document.getElementById('txtImg').src='assets/img/add-contact-site.svg';
@@ -136,7 +180,9 @@ function addContactForm(){
     }
     
 }
-    
+/**
+ * show the edit contact form
+ */
 function editContactForm(){
     document.getElementById('add-contact-form').classList.remove('display-none');
     document.getElementById('submitContact').style.backgroundImage = "url('assets/img/contact-save.svg')";
@@ -153,7 +199,11 @@ function editContactForm(){
     icon.innerHTML = document.getElementById('icon').innerText;
     icon.style.backgroundColor = document.getElementById('icon').style.backgroundColor;
 }
-
+/**
+ * show different form with the same function
+ * 
+ * @param {string} index - edit or add form
+ */
 function openForm(index){
     if (index === "add") {
         addContactForm();
@@ -162,7 +212,9 @@ function openForm(index){
         editContactForm();
     }
 }
-
+/**
+ * delete contact and save the changes in the backend
+ */
 async function deleteContact(){
     allContacts.splice(currentContact,1);
     await setItem('contact', JSON.stringify(allContacts));
@@ -170,13 +222,17 @@ async function deleteContact(){
     initContact();
     location.reload();
 }
-
+/**
+ * close form add or edit
+ */
 function closeForm(){
     document.getElementById('formContact').reset();
     document.getElementById('newContactImg').classList.add('display-none');
     document.getElementById('add-contact-form').classList.add('display-none');
 }
-
+/**
+ * close form Detail in the mobile view
+ */
 function closeFormDetail(){
     document.getElementById('contactsRight').style.display = "none";
 }

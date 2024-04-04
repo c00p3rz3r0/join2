@@ -21,6 +21,7 @@
 <body onload="initContact()">
 
     <div w3-include-html="assets/templates/desktop_template.html"></div>
+    <script>includeHTML();</script>
     <div class="contacts">
         <div class="contact-side">
             <div onclick="openForm('add')">
@@ -93,7 +94,7 @@
                     </div>
                     <div>
                         <div class="input-login"><input id="cPhone" required class="s20" type="tel"
-                                placeholder="Phone"><img src="assets/img/call.svg" alt=""></div>
+                                placeholder="Phone" pattern="[0-9+]+"><img src="assets/img/call.svg" alt=""></div>
                     </div>
                     <div class="gap16">
                         <input onclick="closeForm();" class="btn-seconday-wo-icon clear-contact-btn s20 fw400"
@@ -105,11 +106,7 @@
             </div>
         </div>
     </form>
-    <script>
-
-
-includeHTML();
-    </script>
+    
 </body>
 
 </html>
