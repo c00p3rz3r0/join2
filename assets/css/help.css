@@ -1,0 +1,11 @@
+.help-page{
+    position: absolute;
+    left: 280px;
+    top: 150px;
+    padding-right: 60px;
+}
+.help-text{
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}

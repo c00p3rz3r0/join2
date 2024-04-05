@@ -17,12 +17,16 @@ async function initTaskform(){
     await loadAllContacts();
     await sortContact();
 }
+
+
 /**
  * clar task form and reload page
  */
 function clearTaskForm(){
     location.reload();
 }
+
+
 /**
  * save edit or add task
  */
@@ -33,6 +37,8 @@ function sendForm(){
         saveTask();
     }
 }
+
+
 /**
  * add a new task and save to the backend
  */
@@ -56,8 +62,10 @@ async function addTask() {
     await setItem('tasks', JSON.stringify(allTasks));
     document.getElementById('formTask').reset();
     loadAllTask();
-    location.reload();
+    navigateTo('board.html');
 }
+
+
 /**
  * 
  * @param {string} buttonId - selected priority button
@@ -71,32 +79,20 @@ function selectPriority(buttonId) {
     selectedPrio = buttonId;
     document.getElementById('priority-input').value = selectedPrio;
 }
-/**
- * show contacts for the assigne user
- */
-function showContacts(){
-    let contactdiv = document.getElementById('assignedContacts');
-    let assDiv = document.getElementById('assinedPersons');
-    if (contactdiv.classList.contains('display-none')) {
-        contactdiv.innerHTML = ``;
-        assDiv.innerHTML = ``;
-        contactdiv.classList.remove('display-none');
-        for (let i = 0; i < allContacts.length; i++) {
-            const element = allContacts[i];
-            const firstLetter = getLetters(element['name']) // element['name'].charAt(0).toUpperCase();
-            const checkChecked = checked(i);
-            contactdiv.innerHTML +=`
-            <div class="assigneContact">
-            <div class="assigned-circle" style="background-color: ${element['bgcolor']};">${firstLetter}</div>
-            <p>${element['name']}</p> 
-            <input onclick="addAssigne(${i})" ${checkChecked} id="check${i}" type="checkbox">
-            </div>`
-        }
+
+
+function checkTheAssign(index) {
+    let box = document.getElementById('check'+index);
+    if (box.checked === true) {
+        box.checked = '';
+        addAssigne(index);
     }else{
-        contactdiv.classList.add('display-none');
-        showAssignedPersons();
-    }
+    document.getElementById('check'+index).checked = true;
+    addAssigne(index);
 }
+}
+
+
 /**
  * add and show assigne users 
  */
@@ -114,6 +110,8 @@ function addAssigne(){
         }
     }
 }
+
+
 /**
  * index of the  checked users
  * 
@@ -128,22 +126,9 @@ function checked(index){
         }
     } return false;
 }
-/**
- * show the assinged users after closing the drop down
- */
-function showAssignedPersons() {
-    let assDiv = document.getElementById('assinedPersons');
-    assDiv.innerHTML = ``;
-    for (let i = 0; i < assignedPerson.length; i++) {
-        const element = assignedPerson[i];
-        const firstLetter = getLetters(element['firstname']) //element['firstname'].charAt(0).toUpperCase()+element['firstname'].ch;
-        assDiv.innerHTML += `
-        <div>
-        <div class="assigned-circle" style="background-color: ${element['color']};">${firstLetter}</div>
-        </div>
-        `;
-    }
-}
+
+
+
 /**
  * get first letters of the first and last name
  * 
@@ -157,6 +142,8 @@ function getLetters(name){
     let letters = letter1+letter2;
     return letters;
 }
+
+
 /**
  * add subtask to the new task
  */
@@ -173,39 +160,39 @@ function addSubtask(){
     generateSubTask();
     }
 }
+
+
 /**
- * generate html for the added subtask
+ * show the assinged users after closing the drop down
  */
-function generateSubTask(){
-    let addedSubtask = document.getElementById('addSubtask');
-    addedSubtask.innerHTML = ``;
-    for (let i = 0; i < subTasks.length; i++) {
-        const element = subTasks[i];
-        addedSubtask.innerHTML +=`
-        <div class="input-subtask" ondblclick="editSubtask(${i})">
-        <input id=subTask${i}  type="text" disabled   value="${element['task']}">
-        <div class="subtaskIcons">
-        <img src="assets/img/edit-subtask.svg" onclick="editSubtask(${i})" id=subTaskEdit${i} alt="" srcset="">
-        <img src="assets/img/check-change.svg" class="display-none" onclick="confirmeditSubtask('${element['task']}',${i})" id=checksubTaskEdit${i} alt="" srcset="">
-        <img src="assets/img/vector-subtask.svg" id=subTaskEdit${i} alt="" srcset="">
-        <img src="assets/img/delet.svg" onclick="deletSubtask('${element['task']}')" id=deleteSubtask${element['task']} alt="" srcset="">
+function showAssignedPersons() {
+    let assDiv = document.getElementById('assinedPersons');
+    assDiv.innerHTML = ``;
+    for (let i = 0; i < assignedPerson.length; i++) {
+        const element = assignedPerson[i];
+        const firstLetter = getLetters(element['firstname']) //element['firstname'].charAt(0).toUpperCase()+element['firstname'].ch;
+        assDiv.innerHTML += `
+        <div>
+        <div class="assigned-circle" style="background-color: ${element['color']};">${firstLetter}</div>
         </div>
-        </div>
-        `
+        `;
     }
 }
+
+
 /**
  * load new information of the editinal subtask
  * 
  * @param {JsonWebKey} element - actual array
  * @param {number} i - index of the element
  */
-function confirmeditSubtask(element,i){
-    const index = searchIndexOf(subTasks, element);
-    if (index !== 1){}
-    subTasks[index] = document.getElementById('subTask'+i).value;
+function confirmeditSubtask(i){
+    let editSubtask = subTasks[i];
+    editSubtask['task'] = document.getElementById('subTask'+i).value;
     generateSubTask();
 }
+
+
 /**
  * delete subtask fomr the task
  * 
@@ -217,6 +204,8 @@ function deletSubtask(element){
     subTasks.splice(index,1);
     generateSubTask();
 }
+
+
 /**
  * seahr index of an array by an specific value
  * 
@@ -228,6 +217,8 @@ function searchIndexOf(array, value){
     let indexOf = array.indexOf(value);
     return indexOf;
 }
+
+
 /**
  * edit the sub task
  * 
@@ -237,5 +228,5 @@ function editSubtask(index){
     document.getElementById('subTask'+index).disabled = false;
     document.getElementById('subTaskEdit'+index).classList.add('display-none');
     document.getElementById('checksubTaskEdit'+index).classList.remove('display-none');
-    console.log('Test')
+
 }

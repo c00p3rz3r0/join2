@@ -180,6 +180,10 @@ h1 {
     width: 110px;
     height: 48px;
 }
+.sucess-btn {
+    width: 300px;
+    height: 48px;
+}
 
 .login-gst-btn {
     width: 177px;
@@ -379,6 +383,7 @@ header {
     padding-bottom: 15px;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 30px;
     padding-right: 30px;
 }
@@ -647,7 +652,7 @@ nav {
 }
 
 .priority-btn {
-    width: 136px;
+    width: 125px;
     height: 56px;
     border-radius: 10px;
     gap: 8px;
@@ -818,8 +823,6 @@ nav {
     display: flex;
     width: 312px;
     height: 48px;
-    position: relative;
-
 }
 
 .search input {
@@ -859,6 +862,7 @@ nav {
     padding: 16px;
     transition: transform 0.2s ease-in-out;
     cursor: pointer;
+    min-width: 220px;
 }
 
 .board-card:hover {
@@ -866,9 +870,8 @@ nav {
 }
 
 .full-board {
-    display: inline-flex;
+    display: flex;
     gap: 24px;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
 }
@@ -1300,7 +1303,7 @@ nav {
 }
 
 .board-card-detail {
-    position: absolute;
+    position: fixed;
     top: 15%;
     left: 30%;
     background-color: white;
@@ -1311,6 +1314,8 @@ nav {
     font-size: 20px;
     gap: 30px;
     display: grid;
+    width: 380px;
+    z-index: 999;
 
     .detail-top {
         display: flex;
@@ -1351,7 +1356,7 @@ nav {
 }
 
 .bg-popup {
-    position: absolute;
+    position: fixed;
     /* Positionierung absolut, um über der anderen Div zu liegen */
     top: 0;
     left: 0;
@@ -1460,6 +1465,9 @@ nav {
     display: none;
 }
 
+.iput-date{
+    display: block;
+}
 
 .sub-link {
     width: 130px;
@@ -1473,6 +1481,36 @@ nav {
 }
 .contact-Detail-No{
     display: flex;
+}
+.activeLink {
+    background-color: #091931;
+}
+.links-ds{
+    a{
+        color: rgb(98, 11, 237) !important;
+    }
+    padding-right: 60px;
+    padding-bottom: 80px;
+    padding-top: 120px;
+}
+@media only screen and (max-width: 1280px) {
+    .boarc-column {
+        flex-direction: row;
+        overflow-x: scroll;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .board-cat{
+        width: 100%;
+    }
+    .board{
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    .full-board{
+        flex-direction: column;
+
+    }
 }
 @media only screen and (max-width: 1160px) {
     .v-line{
@@ -1491,8 +1529,9 @@ nav {
         display: none;
     }
     .contact-information-top{
-        flex-direction: column;
+        flex-direction: row;
         align-items: baseline;
+        align-items: center;
     }
 }
 @media only screen and (max-width: 1070px) {
@@ -1517,10 +1556,14 @@ nav {
         border-top-right-radius: 0;
         border-bottom-left-radius: 30px;
         border-bottom-right-radius: 30px;
-        margin-top: -30px;
         padding-bottom: 30px;
     }
-
+    .logo-mobile-margin{
+        margin-top: -30px;
+    }
+    .paddig-right-15{
+        padding-right: 15px;
+    }
     .contacts-right-fields {
         div {
             div {
@@ -1536,16 +1579,14 @@ nav {
     }
     .contacts-right{
         position: fixed;
-        top: 20px;
-
-        
+        top: 75px;
         background-color: #F6F7F8;
         align-items: flex-start;
-        justify-content: center;
-        padding-top: 10px;
-        height: 100%;
-        width: 100%;
+        padding-top: 45px;
+        height: 100vh;
+        width: 100vw;
         padding-left: 15px;
+        padding-right: 15px;
         
         .contacts-head{
             flex-direction: column;
@@ -1574,14 +1615,15 @@ nav {
         }
     }
     .contact-information{
+        padding-right: 30px;
         h4{
             margin-top: 10px;
             margin-bottom: 10px;
         }
     }
     .icon-contact{
-        width: 90px;
-        height: 90px;
+        width: 60px;
+        height: 60px;
         font-size: 27px;
     }
     .header-contacts{
@@ -1619,7 +1661,8 @@ nav {
         }
 
         img {
-            padding: unset;
+            padding-top: unset;
+            padding-left: unset;
             width: 30px;
         }
     }
@@ -1644,7 +1687,9 @@ nav {
     .overlay-scroll-lock {
         overflow: hidden;
     }
-
+    #actUser{
+        font-size: 12px;
+    }
     .sub-menu {
         top: 75px;
     }
@@ -2051,6 +2096,9 @@ nav {
     .login-btn {
         width: 177px;
     }
+    .sucess-btn{
+        width: 300px;
+    }
 
     .sing-up {
         padding-top: 40px;
@@ -2085,7 +2133,7 @@ nav {
     #newContactImg {
         width: 90px;
         position: relative;
-        margin-top: -45px;
+        margin-top: -15px;
     }
 
     .login-btn-area {

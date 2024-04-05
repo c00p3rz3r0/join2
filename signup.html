@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 
     <script src="js/storage.js"></script>
-
+    <script src="js/html_temp.js"></script>
     <script src="js/user.js"></script>
     <script src="script.js"></script>
     <link rel="shortcut icon" href="assets/img/logo-dark.svg" type="image/x-icon">
@@ -47,16 +47,17 @@
                 <div id="passwordIncorrect" style="display:none; color:red;">The passwords do not match</div>
                 <div class="remember">
                     <input required type="checkbox" name="remember" id="">
-                    <p class="s16 fw400">I accept the <a href="#"  style="color: black !important;">Privacy policy</a></p>
+                    <p class="s16 fw400">I accept the <a  target="_blank" rel="noopener noreferrer" style="color: rgb(67, 5, 255) !important; font-weight: 600; text-decoration: underline;" href="datenschutzerklext.html">Privacy policy</a></p>
                 </div>
                 <div class="login-btn-area">
                     <input class="dark-btn login-btn s21 fw700" type="submit" id="registerBtn" value="Sign up">
+                    <input class="dark-btn sucess-btn s21 fw700 display-none" type="button" onclick="navigateTo('index.html')" id="successBtn" value="You Signed Up successfully">
                 </div>
             </form>
         </div>
         <div class="login-footer">
-            <a class="a-footer s16 fw400" href="datenschutzerkl.html">Privacy Policy</a>
-            <a class="a-footer s16 fw400" href="impressum.html">Legal Notice</a>
+            <a target="_blank" rel="noopener noreferrer" class="a-footer s16 fw400" href="datenschutzerklext.html">Privacy Policy</a>
+            <a target="_blank" rel="noopener noreferrer" class="a-footer s16 fw400" href="impressumext.html">Legal Notice</a>
         </div>
     </div>
 </body>

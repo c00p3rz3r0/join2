@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="style.css">
     <!--<link rel="stylesheet" href="addContact.css">-->
     <script src="js/storage.js"></script>
+    <script src="js/html_temp.js"></script>
     <script src="js/user.js"></script>
     <script src="script.js"></script>
     <script src="js/add_task.js"></script>
@@ -59,13 +60,13 @@
                 </div>
             </form>
         </div>
-        <div class="sing-up display-none MobileYes" id="footerUser">
+        <div class="sing-up display-none" id="footerUser">
             <div style="font-size: 20px;">Not a Join User?</div>
             <a href="signup.html"><button class="dark-btn btn-sign-up btn-wo-icon s16 fw700">Sign up</button></a>
         </div>
         <div class="login-footer" style="display: none;" id="LogoFooter">
-            <a class="a-footer s16 fw400" href="datenschutzerkl.html">Privacy Policy</a>
-            <a class="a-footer s16 fw400" href="impressum.html">Legal Notice</a>
+            <a target="_blank" rel="noopener noreferrer" class="a-footer s16 fw400" href="datenschutzerklext.html">Privacy Policy</a>
+            <a target="_blank" rel="noopener noreferrer" class="a-footer s16 fw400" href="impressumext.html">Legal Notice</a>
         </div>
     </div>
 
@@ -79,10 +80,14 @@
             var loginFrame = document.getElementById('LoginFrame');
             var logoFooter = document.getElementById('LogoFooter');
             var singUpHead = document.getElementById('singUpHead');
+            var singUpFooter = document.getElementById('footerUser');
             loginHead.style.display = 'flex';
             loginFrame.style.display = 'flex';
             logoFooter.style.display = 'flex';
             singUpHead.style.display = 'flex';
+            if (window.innerWidth<650) {
+                singUpFooter.style.display = 'flex';
+            }
         }, 500); // Lass die restlichen Inhalte nach einer halben Sekunde erscheinen
     }, 1500);
         

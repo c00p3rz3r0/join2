@@ -29,6 +29,8 @@ function loadContactPage(){
     }
 
 }
+
+
 /**
  * add Stop Mail in the mobile view
  */
@@ -39,6 +41,8 @@ function addStopMail(){
         });
     });
 }
+
+
 /**
  * Create the first letter for the letter group
  * 
@@ -52,6 +56,8 @@ function createLetter(contactsDiv, firstLetter) {
     contactsDiv.appendChild(gourpDiv);
     currentLetter = firstLetter;
 }
+
+
 /**
  * Creat an user card
  * 
@@ -62,6 +68,8 @@ function createLetter(contactsDiv, firstLetter) {
  * @param {string} name - name of the user
  * @param {string} mail - mail adress of the user
  */
+
+
 function crateCard(contactsDiv, i, color, inital, name, mail){
         let truncatedEmail
         if (mail.length > 20) {
@@ -69,16 +77,11 @@ function crateCard(contactsDiv, i, color, inital, name, mail){
         }else{
             truncatedEmail = mail;
         }
-        contactsDiv.innerHTML +=`
-        <div class="contact-block" id="contact${i}" onclick="loadDetail(${i})">
-        <div class="icon-board" style="background-color: ${color};">${inital}</div>
-        <div class="">
-        <span class="s20">${name}</span><br>
-        <a class="s16 contact-mail" href="mailto:${mail}">${truncatedEmail}</a>
-        </div>
-        </div>`
-        ;
+        createCardHTML(contactsDiv,i, color, inital, name, mail, truncatedEmail);
+
 }
+
+
 /**
  * show detail informations of the active contzacte
  * 
@@ -87,6 +90,7 @@ function crateCard(contactsDiv, i, color, inital, name, mail){
 function loadDetail(index){
     if (window.innerWidth < 1070) {
         document.getElementById('contactsRight').style.display = "flex";
+        document.body.style.overflow = ('hidden');
     }
     resetHighlight();
     let element = allContacts[index];
@@ -106,6 +110,8 @@ function loadDetail(index){
     contactHighlight.style.color = '#FFFFFF';
     currentContact = index;
 }
+
+
 /**
  * reset highlight of the last contact
  */
@@ -117,6 +123,8 @@ function resetHighlight(){
         divs.style.color = '#000000';
     }
 }
+
+
 /**
  * get the letters of the first and lastname of the new user
  * 
@@ -131,6 +139,8 @@ function getInitials(name) {
     });
     return initials;
 }
+
+
 /**
  * add and save a new contact
  */
@@ -158,6 +168,8 @@ async function addContact(){
     initContact();
     location.reload();
 }
+
+
 /**
  * get an random color for the new contact
  * 
@@ -167,10 +179,13 @@ function getRandomColor(){
     let randomIndex = Math.floor(Math.random()*colors.length);
     return colors[randomIndex];
 }
+
+
 /**
  * show the add contact form
  */
 function addContactForm(){
+    document.getElementById('popUp').classList.remove('display-none');
     document.getElementById('add-contact-form').classList.remove('display-none');
     document.getElementById('txtImg').src='assets/img/add-contact-site.svg';
     document.getElementById('newContactImg').classList.remove('display-none');
@@ -180,10 +195,13 @@ function addContactForm(){
     }
     
 }
+
+
 /**
  * show the edit contact form
  */
 function editContactForm(){
+    document.getElementById('popUp').classList.remove('display-none');
     document.getElementById('add-contact-form').classList.remove('display-none');
     document.getElementById('submitContact').style.backgroundImage = "url('assets/img/contact-save.svg')";
     document.getElementById('submitContact').style.width = "120px";
@@ -199,6 +217,8 @@ function editContactForm(){
     icon.innerHTML = document.getElementById('icon').innerText;
     icon.style.backgroundColor = document.getElementById('icon').style.backgroundColor;
 }
+
+
 /**
  * show different form with the same function
  * 
@@ -212,6 +232,8 @@ function openForm(index){
         editContactForm();
     }
 }
+
+
 /**
  * delete contact and save the changes in the backend
  */
@@ -222,6 +244,8 @@ async function deleteContact(){
     initContact();
     location.reload();
 }
+
+
 /**
  * close form add or edit
  */
@@ -229,10 +253,14 @@ function closeForm(){
     document.getElementById('formContact').reset();
     document.getElementById('newContactImg').classList.add('display-none');
     document.getElementById('add-contact-form').classList.add('display-none');
+    document.getElementById('popUp').classList.add('display-none');
 }
+
+
 /**
  * close form Detail in the mobile view
  */
 function closeFormDetail(){
     document.getElementById('contactsRight').style.display = "none";
+    document.getElementById('popUp').classList.add('display-none');
 }

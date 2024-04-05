@@ -7,8 +7,8 @@
             <p class="s24 header-title MobileNo">Kanban Project Management Tool</p>
         </div>
         <div class="header-right">
-            <img src="assets/img/help.svg" alt="">
-            <div class="circle" onclick="loadSubMenu(1)">
+            <a href="help.html"><img src="assets/img/help.svg" alt=""></a>
+            <div class="circle" id="openSub" onclick="loadSubMenu(1)">
                 <p id="actUser"></p>
             </div>
         </div>
@@ -26,19 +26,19 @@
             <img src="./assets/img/logo-light.svg" alt="">
         </div>
         <div class="nav-list">
-            <div onclick="location.href='summary.html'" class="link">
+            <div onclick="location.href='summary.html'" id="sumMob" class="link">
                 <img src="./assets/img/summary-icon.svg" alt="">
                 <p>Summary</p>
             </div>
-            <div onclick="location.href='add_task.html'" class="link">
+            <div onclick="location.href='add_task.html'" id="addMob" class="link">
                 <img src="./assets/img/add-task-icon.svg" alt="">
                 <p>Add Task</p>
             </div>
-            <div onclick="location.href='board.html'" class="link">
+            <div onclick="location.href='board.html'" id="boardMob" class="link">
                 <img src="./assets/img/board-icon.svg" alt="">
                 <p>Board</p>
             </div>
-            <div onclick="location.href='contacts.html'" class="link">
+            <div onclick="location.href='contacts.html'" id="contMob" class="link">
                 <img src="./assets/img/contacts-icon.svg" alt="">
                 <p>Contacts</p>
             </div>

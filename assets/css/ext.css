@@ -1,0 +1,18 @@
+.ext-page{
+    a{
+        text-decoration: underline;
+        color: black;
+    }
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 120px;
+}
+.back-to-login{
+    a{
+        text-decoration: underline;
+        color: black;
+    }
+    padding-left: 60px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}

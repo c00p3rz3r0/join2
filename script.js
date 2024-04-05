@@ -138,6 +138,12 @@ function activeLink(page) {
     document.getElementById('contMob').classList.add('activeLink');
   }
 }
+function closePage(){
+  window.close();
+}
+
+
+
 /**
  * Load template HTML
  * 
@@ -170,3 +176,5 @@ function includeHTML() {
     }
   }
 }
+
+

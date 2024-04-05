@@ -36,20 +36,9 @@ async function register() {
     let user = users.find(u => u.email == useremail.value);
     if (!user) {
         if (userPassword.value == userPasswordConfirm.value) {
-            let userColor = getRandomColor();
-            initialien = document.getElementById('userEmail').value
-            initialien2 = initialien.charAt(0).toUpperCase()+initialien.charAt(1).toUpperCase();
-            users.push({
-                name: userName.value,
-                email: userEmail.value,
-                password: userPassword.value,
-                ucolor: userColor,
-                initial: initialien2,
-            });
-            await setItem('users', JSON.stringify(users));
+            await pushUserInformation();
             resetForm();
-            document.getElementById("passwordIncorrect").style.display = "block";
-            document.getElementById("passwordIncorrect").innerHTML = "You have been successfully registered!";
+            showCuccess();
         }else{
             document.getElementById("passwordIncorrect").style.display = "block";
             resetForm();
@@ -59,6 +48,23 @@ async function register() {
         resetForm();
     }
 
+}
+function showCuccess(){
+    document.getElementById('registerBtn').classList.add('display-none');
+    document.getElementById('successBtn').classList.remove('display-none');
+}
+async function pushUserInformation(){
+    let userColor = getRandomColor();
+    initialien = document.getElementById('userEmail').value
+    initialien2 = initialien.charAt(0).toUpperCase()+initialien.charAt(1).toUpperCase();
+    users.push({
+        name: userName.value,
+        email: userEmail.value,
+        password: userPassword.value,
+        ucolor: userColor,
+        initial: initialien2,
+    });
+    await setItem('users', JSON.stringify(users));
 }
 /**
  * Reset sign up form after registration
@@ -104,7 +110,7 @@ function actUser(){
     if (loggedInUserName === 'Guest') {
         document.getElementById('actUser').innerHTML = loggedInUserName;
     }else{
-        document.getElementById('actUser').innerHTML = uemail.charAt(0).toUpperCase() + uemail.charAt(1).toUpperCase();
+        document.getElementById('actUser').innerHTML = getLetters(loggedInUserName);
     }
 }
 /**
