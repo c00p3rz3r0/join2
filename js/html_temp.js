@@ -23,7 +23,7 @@ function generateCard(boardCat, element, i) {
     let progressvalue = (openSubtask/subtaskAmount)*100;
     let priority = getPriority(element);
     document.getElementById(boardCat).innerHTML += `
-    <div class="board-card" id="${element['createdAt']}" draggable="true" onclick="openDetail('${element['createdAt']}')" ondragstart="startDragging('${element['createdAt']}')">
+    <div class="board-card" id="${element['createdAt']}" draggable="true" touchmove="startDragging('${element['createdAt']}')" onclick="openDetail('${element['createdAt']}')" ondragstart="startDragging('${element['createdAt']}')">
     <div><span class="lable-board-card">User Story</span></div>
     <div>
     <h3>${element['title']}</h3>

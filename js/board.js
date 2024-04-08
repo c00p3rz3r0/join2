@@ -113,7 +113,6 @@ function getPriorityName(element) {
     return probtn;
 }
 
-
 /**
  * start the drag and drop process
  * 

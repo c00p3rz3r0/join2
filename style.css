@@ -1486,12 +1486,18 @@ nav {
     background-color: #091931;
 }
 .links-ds{
+    display: block;
+    padding-left: 280px;
+    padding-right: 60px;
     a{
         color: rgb(98, 11, 237) !important;
     }
     padding-right: 60px;
     padding-bottom: 80px;
     padding-top: 120px;
+    h1{
+        word-break: break-all;
+    }
 }
 @media only screen and (max-width: 1280px) {
     .boarc-column {
@@ -1499,6 +1505,7 @@ nav {
         overflow-x: scroll;
         padding-top: 10px;
         padding-bottom: 10px;
+        height: 260px;
     }
     .board-cat{
         width: 100%;
@@ -1545,6 +1552,7 @@ nav {
     .contacts-right{
         display: none;
     }
+
     .add-contact-form-right {
         flex-direction: column;
         background-color: white;
@@ -1673,11 +1681,22 @@ nav {
     .FooTextMob{
         display: none;
     }
-
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 860px) {
 .header-title{
     display: none;
+}
+.row{
+    width: 410px;
+}
+.summary-page{
+    padding-left: 260px;
+}
+.first-row-card{
+    width: 200px;
+}
+.thirs-row-card{
+    width: 130px;
 }
 
 }
@@ -1686,6 +1705,9 @@ nav {
 @media only screen and (max-width: 690px) {
     .overlay-scroll-lock {
         overflow: hidden;
+    }
+    .header-contacts{
+        gap: 60px;
     }
     #actUser{
         font-size: 12px;
@@ -1752,6 +1774,7 @@ nav {
 
     .detail-style {
         gap: 8px;
+        overflow-x: scroll;
     }
 
     .circle {
@@ -2007,6 +2030,7 @@ nav {
     }
 
     .row {
+        display: flex;
         width: unset;
         flex-direction: row;
         gap: 8px;
@@ -2028,6 +2052,7 @@ nav {
     }
 
     .content {
+        display: flex;
         margin-bottom: 100px;
         gap: 5px;
     }
@@ -2039,19 +2064,17 @@ nav {
     .board-card-detail {
         position: fixed;
         left: 15px;
-        height: auto;
+        height: 70vh;
         width: 83%;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
         gap: 8px;
         padding-left: 18px;
         padding-right: 18px;
         padding-top: 18px;
         padding-bottom: 8px;
         font-size: 16px;
-        max-height: 63%;
-        overflow-y: scroll;
+
 
         h3 {
             font-size: 36px;
@@ -2216,7 +2239,16 @@ nav {
     
         }
     }
-    
+    .links-ds{
+
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 180px;
+        h1{
+            font-size: 50px;
+            word-wrap: break-word;
+        }
+    }
     
 }
 
