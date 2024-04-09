@@ -19,12 +19,12 @@ function createCardHTML(contactsDiv, i, color, inital, name, mail, truncatedEmai
  */
 function generateCard(boardCat, element, i) {
     let subtaskAmount = element['subTasks'].length;
-    let openSubtask = element['subTasks'].filter(obj=> obj['taskStatus'] === 'true').length;
-    let progressvalue = (openSubtask/subtaskAmount)*100;
+    let openSubtask = element['subTasks'].filter(obj => obj['taskStatus'] === 'true').length;
+    let progressvalue = (openSubtask / subtaskAmount) * 100;
     let priority = getPriority(element);
     document.getElementById(boardCat).innerHTML += `
     <div class="board-card" id="${element['createdAt']}" draggable="true" touchmove="startDragging('${element['createdAt']}')" onclick="openDetail('${element['createdAt']}')" ondragstart="startDragging('${element['createdAt']}')">
-    <div><span class="lable-board-card">User Story</span></div>
+    <div style="display: flex;"><span class="lable-board-card">User Story</span></div>
     <div>
     <h3>${element['title']}</h3>
     </div>
@@ -37,7 +37,7 @@ function generateCard(boardCat, element, i) {
     <img src="${priority}" alt=""></div>
     `
     if (subtaskAmount == 0) {
-        document.getElementById('progressSubtask'+i).classList.add('display-none');
+        document.getElementById('progressSubtask' + i).classList.add('display-none');
     }
 }
 
@@ -58,7 +58,7 @@ function generateAssignUsers(boardCat, i, element) {
             assignCard.innerHTML += `
             <div class="assigned-circle" style="background-color: ${element2['color']};">${firstLetter}</div>
             `
-        }else{
+        } else {
             moreAssigne++;
         }
 
@@ -118,7 +118,15 @@ function generateDetail(detailDiv, element, priority, prioName) {
     <div class="board-card-detail ">
     <div class="detail-top">
         <span class="lable-board-card">User Story</span>
+        <div class="MobileYes cat-switch">
+        <span>Switch Category</span>
+        <div>
+            <img  style="z-index: 9999;" id="arrowUp" onclick="prevCat()"  src="assets/img/arrow-up2.svg">
+            <img id="arrowDown" onclick="nextCat()" src="assets/img/arrow-down2.svg">
+            </div>
+        </div>
         <img src="assets/img/close.svg" onclick="closeDetail()" alt="">
+        
     </div>
     <div>
     <h3>${element['title']}</h3>
@@ -167,9 +175,9 @@ function generateSubtaskDetail(element) {
     for (let i = 0; i < element['subTasks'].length; i++) {
         const subtask = element['subTasks'][i];
         let checkedbox = '';
-        if (subtask['taskStatus']== 'true') {
+        if (subtask['taskStatus'] == 'true') {
             checkedbox = 'checked';
-        }else{
+        } else {
             checkedbox = '';
         }
         subtasks.innerHTML += `
@@ -205,7 +213,7 @@ function generateAssignUsersDetail(element) {
 /**
  * show contacts for the assigne user
  */
-function showContacts(){
+function showContacts() {
     let contactdiv = document.getElementById('assignedContacts');
     let assDiv = document.getElementById('assinedPersons');
     if (contactdiv.classList.contains('display-none')) {
@@ -216,14 +224,14 @@ function showContacts(){
             const element = allContacts[i];
             const firstLetter = getLetters(element['name']) // element['name'].charAt(0).toUpperCase();
             const checkChecked = checked(i);
-            contactdiv.innerHTML +=`
+            contactdiv.innerHTML += `
             <div onclick="checkTheAssign(${i})" class="assigneContact">
             <div class="assigned-circle" style="background-color: ${element['bgcolor']};">${firstLetter}</div>
             <p>${element['name']}</p> 
             <input onclick="addAssigne(${i})" ${checkChecked} id="check${i}" type="checkbox">
             </div>`
         }
-    }else{
+    } else {
         contactdiv.classList.add('display-none');
         showAssignedPersons();
     }
@@ -233,12 +241,12 @@ function showContacts(){
 /**
  * generate html for the added subtask
  */
-function generateSubTask(){
+function generateSubTask() {
     let addedSubtask = document.getElementById('addSubtask');
     addedSubtask.innerHTML = ``;
     for (let i = 0; i < subTasks.length; i++) {
         const element = subTasks[i];
-        addedSubtask.innerHTML +=`
+        addedSubtask.innerHTML += `
         <div class="input-subtask" ondblclick="editSubtask(${i})">
         <input id=subTask${i}  type="text" disabled   value="${element['task']}">
         <div class="subtaskIcons">

@@ -225,6 +225,33 @@ async function saveTask() {
     await addTask();
 }
 
+function nextCat(){
+    let actCat = allTasks[currentDraggedElement]['category'];
+    if (actCat === 'To Do') {
+        allTasks[currentDraggedElement]['category'] = 'In progress';
+    }
+    if (actCat === 'In progress') {
+        allTasks[currentDraggedElement]['category'] = 'Await feedback';
+    }
+    if (actCat === 'Await feedback') {
+        allTasks[currentDraggedElement]['category'] = 'Done';
+    }
+    closeDetail(currentDraggedElement);
+}
+function prevCat() {
+    let actCat = allTasks[currentDraggedElement]['category'];
+    if (actCat === 'Done') {
+        allTasks[currentDraggedElement]['category'] = 'Await feedback';
+    }
+    if (actCat === 'Await feedback') {
+        allTasks[currentDraggedElement]['category'] = 'In progress';
+    }
+    if (actCat === 'In progress') {
+        allTasks[currentDraggedElement]['category'] = 'To Do';
+    }
+    closeDetail(currentDraggedElement);
+}
+
 
 /**
  * close add tsak form
@@ -258,6 +285,13 @@ function openDetail(id) {
     generateDetail(detailDiv, element, priority, prioName);
     generateSubtaskDetail(element);
     generateAssignUsersDetail(element);
+    let actCat = element['category'];
+    if (actCat === 'To Do') {
+        document.getElementById('arrowUp').classList.add('display-none');
+    }
+    if (actCat === 'Done') {
+        document.getElementById('arrowDown').classList.add('display-none');
+    }
 }
 
 

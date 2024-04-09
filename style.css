@@ -1255,14 +1255,19 @@ nav {
 
 .edit-task-board {
     flex-direction: row;
+    position: fixed;
     background-color: white;
     border-radius: 20px;
-    padding: 40px;
+    padding: 48px 40px 48px 40px;
     display: flex;
     align-items: baseline;
     gap: 30px;
     overflow-y: scroll;
     height: 600px;
+    top: 15%;
+    left: 30%;
+    font-size: 20px;
+    width: 420px;
 
     #formTask {
         .add-task-btns {
@@ -1280,6 +1285,9 @@ nav {
         display: none;
     }
 
+}
+.edit-task-board::-webkit-scrollbar{
+    width: unset;
 }
 
 .detail-style {
@@ -1747,6 +1755,13 @@ nav {
         width: 100%;
         z-index: 10000;
 
+    }
+
+    .cat-switch{
+        display: flex;
+        flex-direction: column;
+        font-size: 10px;
+        align-items: center;
     }
 
     .MobiFoo {
