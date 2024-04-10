@@ -4,7 +4,7 @@ function createCardHTML(contactsDiv, i, color, inital, name, mail, truncatedEmai
     <div class="icon-board" style="background-color: ${color};">${inital}</div>
     <div class="">
     <span class="s20">${name}</span><br>
-    <a class="s16 contact-mail" href="mailto:${mail}">${truncatedEmail}</a>
+    <a class="s16 contact-mail" >${truncatedEmail}</a>
     </div>
     </div>`
         ;
@@ -228,7 +228,7 @@ function showContacts() {
             <div onclick="checkTheAssign(${i})" class="assigneContact">
             <div class="assigned-circle" style="background-color: ${element['bgcolor']};">${firstLetter}</div>
             <p>${element['name']}</p> 
-            <input onclick="addAssigne(${i})" ${checkChecked} id="check${i}" type="checkbox">
+            <input onclick="checkTheAssign(${i})" ${checkChecked} id="check${i}" type="checkbox">
             </div>`
         }
     } else {

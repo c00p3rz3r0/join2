@@ -1412,7 +1412,15 @@ nav {
         padding-left: 40px;
     }
 }
-
+#taskCategory {
+    background-image: url('assets/img/arrow-down.svg'); /* Hintergrundbild mit dem Pfeil */
+    background-repeat: no-repeat;
+    background-position: right;
+    padding-right: 20px !important; /* Platz für den Pfeil hinzufügen */
+    -webkit-appearance: none; /* Webkit-Browser (z.B. Chrome, Safari) */
+    -moz-appearance: none; /* Mozilla-Browser (z.B. Firefox) */
+    appearance: none; /* Andere Browser */
+  }
 
 .add-contact-form-right {
     width: 745px;
@@ -1714,6 +1722,7 @@ nav {
     .overlay-scroll-lock {
         overflow: hidden;
     }
+
     .header-contacts{
         gap: 60px;
     }
@@ -2052,17 +2061,17 @@ nav {
     }
 
     .first-row-card {
-        width: 175px;
+        width: 150px;
         height: 110px;
     }
 
     .secon-row-card {
-        width: 350px;
+        width: 300px;
         height: 110px;
     }
 
     .thirs-row-card {
-        width: 116px;
+        width: 100px;
         height: 116px;
     }
 

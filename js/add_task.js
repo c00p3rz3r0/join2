@@ -23,7 +23,7 @@ async function initTaskform(){
  * clar task form and reload page
  */
 function clearTaskForm(){
-    location.reload();
+    document.getElementById('formTask').reset();
 }
 
 

@@ -24,9 +24,6 @@ function loadContactPage(){
         };
         crateCard(contactsDiv, i, color, inital, name, mail);
     }
-    if (window.innerWidth < 690) {
-        addStopMail();
-    }
 
 }
 
@@ -103,7 +100,7 @@ function loadDetail(index){
     icon.style.backgroundColor = element['bgcolor'];
     name.innerHTML = element['name'];
     email.innerHTML = element['email'];
-    email.href = element['email'];
+    email.href = 'mailto:'+element['email'];
     phone.innerHTML = element['phone'];
     phone.href = element['phone'];
     contactHighlight.style.backgroundColor = '#2A3647';
