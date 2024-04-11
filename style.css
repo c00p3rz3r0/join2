@@ -86,6 +86,9 @@ h1 {
     align-items: center;
   }
   
+  .cp{
+    cursor: pointer;
+  }
 
   .big-logo {
     position: absolute;
@@ -1701,7 +1704,7 @@ nav {
 @media only screen and (max-width: 860px) {
 .header-title{
     display: none;
-}
+}3
 .row{
     width: 410px;
 }
@@ -2269,8 +2272,9 @@ nav {
     .links-ds{
 
         padding-left: 10px;
-        padding-right: 10px;
+        padding-right: unset;
         padding-bottom: 180px;
+        font-size: 12px;
         h1{
             font-size: 50px;
             word-wrap: break-word;

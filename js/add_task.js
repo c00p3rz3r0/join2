@@ -23,6 +23,11 @@ async function initTaskform(){
  * clar task form and reload page
  */
 function clearTaskForm(){
+    subTasks = [];
+    generateSubTask();
+    assignedPerson = [];
+    showAssignedPersons();
+    document.getElementById('assignedContacts').classList.add('display-none');
     document.getElementById('formTask').reset();
 }
 

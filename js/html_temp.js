@@ -125,7 +125,7 @@ function generateDetail(detailDiv, element, priority, prioName) {
             <img id="arrowDown" onclick="nextCat()" src="assets/img/arrow-down2.svg">
             </div>
         </div>
-        <img src="assets/img/close.svg" onclick="closeDetail()" alt="">
+        <img class="cp" src="assets/img/close.svg" onclick="closeDetail()" alt="">
         
     </div>
     <div>
